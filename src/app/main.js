@@ -25,7 +25,7 @@ function (has, require) {
   require(["dojox/mobile/parser","app/view",
            "dojox/mobile","dojox/mobile/ScrollableView",
            "dojox/mobile/TabBar",
-           "dojox/mobile/compat","dojo/domReady!"],
+           "dojox/mobile/compat","dojo/domReady!"], // dojo/domReady! comando ! aguarda carregar toda a biblioteca da DOM
   function(mobileParser, view) {
     view.createDom();
     mobileParser.parse();
