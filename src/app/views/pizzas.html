@@ -5,28 +5,47 @@
                          back:'Home',
                          moveTo:'home'">
     </h1>
-    
+
+
+    <div class = "pizza-Accordion" data-dojo-type="dojox/mobile/Accordion">
+      <ul data-dojo-type="dojox/mobile/RoundRectList"
+         data-dojo-props="label:'Calabresa',
+                          icon1:'app/resources/img/pizza.png'">
+        <li id = "pizzas-calabresa"
+            data-dojo-type="dojox/mobile/ListItem"
+            data-dojo-props="icon:'mblDomButtonBluePlus',
+                             clickable:true,
+                             noArrow: true
+            ">
+          Calabresa fatiada, cebola, azeitonas pretas, mussarela e molho de tomate.
+        </li> 
+      </ul>
+    </div>
+
+
     <ul data-dojo-type="dojox/mobile/RoundRectList">
 
-		<li id = "pizzas-calabresa"
+		<li class = "pizza-list"
           data-dojo-type="dojox/mobile/ListItem"
           data-dojo-props="label:'Calabresa',
-                           rightText:'Detalhes'">
-		</li>
-		
-		<li id = "pizzas-peperoni"
+                           anchorLabel:true,
+                           rightIcon2:'mblDomButtonBluePlus',
+                           icon:'app/resources/img/pizza.png' ">
+    </li>
+
+    <li id = "pizzas-peperoni"
           data-dojo-type="dojox/mobile/ListItem"
           data-dojo-props="label:'Peperoni:',
                           rightText:'Detalhes'">
-		</li>
-	
+    </li>
+
 		<li id = "pizzas-milho"
           data-dojo-type="dojox/mobile/ListItem"
           data-dojo-props="label:'Milho:',
                           rightText:'Detalhes'">
 		</li>
 		
-				<li id = "pizzas-amodadacasa"
+		<li id = "pizzas-amodadacasa"
           data-dojo-type="dojox/mobile/ListItem"
           data-dojo-props="label:'A Moda da Casa:',
                           rightText:'Detalhes'">

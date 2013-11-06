@@ -12,3 +12,13 @@
 @import '../../dojox/mobile/themes/custom/custom.css';
 
 
+.pizza-Accordion .mblAccordionTitle {
+  height : 75px;
+  line-height : 75px;
+}
+
+.pizza-list {
+  height : 72px;
+  line-height : 72px;
+}
+

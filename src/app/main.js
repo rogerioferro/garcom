@@ -24,11 +24,13 @@ define(['dojo/has', 'require'],
 function (has, require) {
   require(["dojox/mobile/parser","app/view",
            "dojox/mobile","dojox/mobile/ScrollableView",
+           "dojox/mobile/Accordion",
            "dojox/mobile/TabBar",
            "dojox/mobile/compat","dojo/domReady!"], // dojo/domReady! comando ! aguarda carregar toda a biblioteca da DOM
   function(mobileParser, view) {
     view.createDom();
     mobileParser.parse();
+    view.pizzas.activate();
 
     app.view = view;
     // Wait for device API libraries to load

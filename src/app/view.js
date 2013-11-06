@@ -5,18 +5,18 @@ define(["app/views/home",
         "dojo/_base/window",
         "require",
         "dijit/registry"],
-function(home, pizza, about, footer, win, require, registry) {
+function(home, pizzas, about, footer, win, require, registry) {
   return {
     //expose screens
     home : home,
-    pizza : pizza,
+    pizzas : pizzas,
     about : about,
     footer: footer,
     //createDom
     createDom : function() {
       var body = win.body();
       body.innerHTML = home.getHtml() +
-                       pizza.getHtml() +
+                       pizzas.getHtml() +
                        about.getHtml() +
                        footer.getHtml(); //show in all upper screens
     },
