@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="br.com.hcel.garcom" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Garçom</name>
+    <description>
+        Software para fazer pedido de comida pelo celular.
+    </description>
+    <author email="rogerioferro@gmail.com" href="http://hcel.com.br">
+        HCel Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <preference name="fullscreen" value="false" />
+    <preference name="webviewbounce" value="true" />
+</widget>

@@ -17,6 +17,8 @@
  * More information about everything described about the loader throughout this file can be found at
  * <http://dojotoolkit.org/reference-guide/loader/amd.html>.
  */
+
+app = {};
  
 define(['dojo/has', 'require'],
 function (has, require) {
@@ -28,31 +30,33 @@ function (has, require) {
     view.createDom();
     mobileParser.parse();
 
+    app.view = view;
     // Wait for device API libraries to load
     document.addEventListener("deviceready", onDeviceReady, false);
-
-    // device APIs are available
-    function onDeviceReady() {
-      var networkState = navigator.connection.type;
-      var states = {};
-      states[Connection.UNKNOWN]  = 'Unknown connection';
-      states[Connection.ETHERNET] = 'Ethernet connection';
-      states[Connection.WIFI]     = 'WiFi connection';
-      states[Connection.CELL_2G]  = 'Cell 2G connection';
-      states[Connection.CELL_3G]  = 'Cell 3G connection';
-      states[Connection.CELL_4G]  = 'Cell 4G connection';
-      states[Connection.CELL]     = 'Cell generic connection';
-      states[Connection.NONE]     = 'No network connection';
-      var element = document.getElementById('deviceProperties');
-      element.innerHTML =  'Connection type: ' + states[networkState] + '<br />';
-      
-      view.about.setModel(device.model);
-      view.about.setCordova(device.cordova);
-      view.about.setPlatform(device.platform);
-      view.about.setUUID(device.uuid);
-      view.about.setVersion(device.version);
-    }
   });
 });
 
+
+// device APIs are available
+function onDeviceReady() {
+  var networkState = navigator.connection.type;
+  var states = {};
+  states[Connection.UNKNOWN]  = 'Unknown connection';
+  states[Connection.ETHERNET] = 'Ethernet connection';
+  states[Connection.WIFI]     = 'WiFi connection';
+  states[Connection.CELL_2G]  = 'Cell 2G connection';
+  states[Connection.CELL_3G]  = 'Cell 3G connection';
+  states[Connection.CELL_4G]  = 'Cell 4G connection';
+  states[Connection.CELL]     = 'Cell generic connection';
+  states[Connection.NONE]     = 'No network connection';
+  var element = document.getElementById('deviceProperties');
+  element.innerHTML =  'Connection type: ' + states[networkState] + '<br />';
+
+  var about = app.view.about;
+  about.setModel(device.model);
+  about.setCordova(device.cordova);
+  about.setPlatform(device.platform);
+  about.setUUID(device.uuid);
+  about.setVersion(device.version);
+}
 

@@ -36,7 +36,19 @@ echo -n "Cleaning old files..."
 rm -rf "$DISTDIR"
 echo " Done"
 
-mkdir "$DISTDIR"
+cd "$TOOLSDIR"
+
+if which node >/dev/null; then
+	node ../../dojo/dojo.js load=build --require "$LOADERCONF" --profile "$PROFILE" --releaseDir "$DISTDIR" $@
+elif which java >/dev/null; then
+	java -Xms256m -Xmx256m  -cp ../shrinksafe/js.jar:../closureCompiler/compiler.jar:../shrinksafe/shrinksafe.jar org.mozilla.javascript.tools.shell.Main  ../../dojo/dojo.js baseUrl=../../dojo load=build --require "$LOADERCONF" --profile "$PROFILE" --releaseDir "$DISTDIR" $@
+else
+	echo "Need node.js or Java to build!"
+	exit 1
+fi
+
+echo "Copy & minify index.html to $DISTDIR..."
+
 cd "$BASEDIR"
 
 LOADERMID=${LOADERMID//\//\\\/}
@@ -49,15 +61,23 @@ perl -pe "
   s/<script src=\"$LOADERMID.*?\/script>//;  # Remove script app/run
   s/\s+/ /g;                                 # Collapse white-space" > "$DISTDIR/index.html"
 
-cd "$TOOLSDIR"
+echo " Done"
 
-if which node >/dev/null; then
-	node ../../dojo/dojo.js load=build --require "$LOADERCONF" --profile "$PROFILE" --releaseDir "$DISTDIR" $@
-elif which java >/dev/null; then
-	java -Xms256m -Xmx256m  -cp ../shrinksafe/js.jar:../closureCompiler/compiler.jar:../shrinksafe/shrinksafe.jar org.mozilla.javascript.tools.shell.Main  ../../dojo/dojo.js baseUrl=../../dojo load=build --require "$LOADERCONF" --profile "$PROFILE" --releaseDir "$DISTDIR" $@
-else
-	echo "Need node.js or Java to build!"
-	exit 1
-fi
+echo "Copy config.xml to $DISTDIR..."
+cp "$SRCDIR/config.xml" "$DISTDIR"
+echo " Done"
+
+echo "Cleaning $DISTDIR..."
+cd "$DISTDIR"
+find app  -maxdepth 1 ! -name app ! -name "resources" -exec rm -rf {} \;
+find dojo -maxdepth 1 ! -name dojo ! -name "dojo.js" -exec rm -rf {} \;
+rm -rf dijit dojox build*
+echo " Done"
+
+echo "Update www"
+cd "$BASEDIR"
+rm -rf www
+mv dist www
+echo " Done"
 
 echo "Build complete"
