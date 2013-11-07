@@ -1,38 +1,34 @@
 <div id="bebidas" data-dojo-type="dojox/mobile/ScrollableView">
-	<h1 data-dojo-type="dojox/mobile/Heading"
+  <h1 data-dojo-type="dojox/mobile/Heading"
         data-dojo-props="label:'About',
                          fixed:'top',
                          back:'Home',
                          moveTo:'home'">
-    </h1>
+  </h1>
 
-    <ul data-dojo-type="dojox/mobile/RoundRectList">
 
-		<li id="bebidas-sucos" class = "pizza-list"
+    <ul data-dojo-type="dojox/mobile/RoundRectList"
+        data-dojo-props="select:'multiple'">
+
+    <li id = "bebidas-sucos" class = "menu-list"
           data-dojo-type="dojox/mobile/ListItem"
           data-dojo-props="label:'Sucos',
-                           anchorLabel:true,
-                           rightIcon2:'mblDomButtonBluePlus',
                            icon:'app/resources/img/sucos_64.png' ">
     </li>
 
-    <li id = "bebidas-refrigerantes" class = "pizza-list"
+    <li id = "bebidas-refrigerantes" class = "menu-list"
           data-dojo-type="dojox/mobile/ListItem"
           data-dojo-props="label:'Refrigerantes',
-                           anchorLabel:true,
-                           rightIcon2:'mblDomButtonBluePlus',
                            icon:'app/resources/img/refrigerantes_64.png' ">
     </li>
 
-		<li id = "bebidas-cervejas" class = "pizza-list"
+    <li id = "bebidas-cervejas" class = "menu-list"
           data-dojo-type="dojox/mobile/ListItem"
           data-dojo-props="label:'Cervejas',
-                           anchorLabel:true,
-                           rightIcon2:'mblDomButtonBluePlus',
                            icon:'app/resources/img/cervejas_64.png' ">
-		</li>
-    
-	</ul>
+    </li>
+
+  </ul>
 
     <div style = "height: 45px"></div> <!-- space to footer -->
 </div>
