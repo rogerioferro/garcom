@@ -4,27 +4,28 @@
                          fixed:'top'">
   </h1>
 
-  <br>
-  <br>
+  <div data-dojo-type = "dojox/mobile/RoundRect">
+    Cart go here...
 
-  <label class="login-label" for="c_login">Login (CPF ou e-mail)</label><br>
-  <input id="c_login" size="50" data-dojo-type="dojox/mobile/TextBox" style="background-color:white;"
-    data-dojo-props='maxLength:50, value:"", placeHolder:"CPF ou e-mail", onChange:function(newValue){ alert("value changed to " + newValue); }' />
-  <br><br>
+    <label class="login-label" for="c_login">Login (CPF ou e-mail)</label><br>
+    <input id="c_login" size="50" data-dojo-type="dojox/mobile/TextBox" style="background-color:white;"
+      data-dojo-props='maxLength:50, value:"", placeHolder:"CPF ou e-mail", onChange:function(newValue){ alert("value changed to " + newValue); }' />
+    <br><br>
 
-  <label class="login-label" for="password">Senha</label><br>
-  <input id="password" size="50" data-dojo-type="dojox/mobile/TextBox" style="background-color:white;"
-    data-dojo-props='maxLength:50, value:"", placeHolder:"senha", onChange:function(newValue){ alert("value changed to " + newValue); }' />
-  <br>
+    <label class="login-label" for="password">Senha</label><br>
+    <input id="password" size="50" data-dojo-type="dojox/mobile/TextBox" style="background-color:white;"
+      data-dojo-props='maxLength:50, value:"", placeHolder:"senha", onChange:function(newValue){ alert("value changed to " + newValue); }' />
+    <br>
 
-  <button id="button_iforgotmypassword" class="button_iforgotmypassword" data-dojo-type="dojox/mobile/Button">Esqueci a minha senha</button>
-  <br><br>
+    <button id="button_iforgotmypassword" type="password" class="button_iforgotmypassword" style="-webkit-border-radius" data-dojo-type="dojox/mobile/Button">Esqueci a minha senha</button>
+    <br><br>
 
-  <button id="send" class="iphone-blue" data-dojo-type="dojox/mobile/Button">ENVIAR</button>
-  <br><br><br>
+    <button id="send" class="iphone-blue" data-dojo-type="dojox/mobile/Button">ENVIAR</button>
+    <br><br><br>
 
-  <button id="newregister" class="iphone-blue" data-dojo-type="dojox/mobile/Button">NOVO CADASTRO</button>
-  <br><br>
+    <button id="newregister" class="iphone-blue" data-dojo-type="dojox/mobile/Button">NOVO CADASTRO</button>
+    <br><br>
 
-  <div style = "height: 45px"></div> <!-- space to footer -->
+    <div style = "height: 45px"></div> <!-- space to footer -->
+  </div>
 </div>
