@@ -25,12 +25,12 @@ function (has, require) {
            "dojox/mobile","dojox/mobile/ScrollableView",
            "dojox/mobile/TabBar",
            "dojox/mobile/ToggleButton",
-           "dojox/mobile/compat","dojo/domReady!"], // dojo/domReady! comando ! aguarda carregar toda a biblioteca da DOM
+           "dojox/mobile/compat","dojo/domReady!"], // dojo/domReady! This "!" command make the programm waits to load the DOM
   function(mobileParser, view, dom) {
     view.createDom();
 
     mobileParser.parse();
-   
+
     app.view = view;
     // Wait for device API libraries to load
     document.addEventListener("deviceready", onDeviceReady, false);
