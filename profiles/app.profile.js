@@ -56,7 +56,6 @@ var profile = {
             "dojo/request/xhr",
             "dojox/mobile/parser",
             "dojox/mobile",
-            "dojox/mobile/compat",
             "dojox/mobile/ScrollableView",
             "dojox/mobile/TabBar",
             "dojox/mobile/Accordion",
@@ -65,9 +64,10 @@ var profile = {
             "app/main",
             "app/view",
             "app/screenClass",
-            "app/views/home",
+            "app/views/menu",
             "app/views/pizzas",
             "app/views/about",
+            "app/views/cart",
             "app/views/footer"
           ],
 
