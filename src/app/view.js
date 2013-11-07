@@ -1,17 +1,17 @@
 define(["app/views/home",
         "app/views/pizzas",
-        "app/views/bebidas",
+        "app/views/drinks",
         "app/views/about",
         "app/views/footer",
         "dojo/_base/window",
         "require",
         "dijit/registry"],
-function(home, pizzas, bebidas, about, footer, win, require, registry) {
+function(home, pizzas, drinks, about, footer, win, require, registry) {
   return {
     //expose screens
     home : home,
     pizzas : pizzas,
-    bebidas : bebidas,
+    drinks : drinks,
     about : about,
     footer: footer,
     //createDom
@@ -19,7 +19,7 @@ function(home, pizzas, bebidas, about, footer, win, require, registry) {
       var body = win.body();
       body.innerHTML = home.getHtml() +
                        pizzas.getHtml() +
-                       bebidas.getHtml() +
+                       drinks.getHtml() +
                        about.getHtml() +
                        footer.getHtml(); //show in all upper screens
     },
