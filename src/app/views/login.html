@@ -1,0 +1,49 @@
+<div id="drinks" data-dojo-type="dojox/mobile/ScrollableView">
+  <h1 data-dojo-type="dojox/mobile/Heading"
+        data-dojo-props="label:'Bebidas',
+                         fixed:'top',
+                         back:'Card&aacute;pio',
+                         moveTo:'menu'">
+  </h1>
+
+    <h3>Login (CPF ou e-mail)</h3><br>
+    <input id="login" data-dojo-type="dojox/mobile/TextBox" style="background-color:lightgray;"
+      data-dojo-props='maxLength:20, value:"CPF ou e-mail", onChange:function(newValue){ alert("value changed to " + newValue); }' />
+    <br><br>
+
+    <h3>Senha</h3><br>
+    <input id="password" data-dojo-type="dojox/mobile/TextBox" style="background-color:lightgray;"
+      data-dojo-props='maxLength:20, value:"senha", onChange:function(newValue){ alert("value changed to " + newValue); }' />
+    <br>
+    <button id="iforgotmypassword" data-dojo-type="dojox/mobile/Button">Esqueci a minha senha</button><br><br>
+
+    <button id="send" data-dojo-type="dojox/mobile/Button">Enviar</button><br><br>
+
+    <button id="newcart" data-dojo-type="dojox/mobile/Button">Criar novo cadastro</button><br><br>
+
+
+    <ul data-dojo-type="dojox/mobile/RoundRectList"
+        data-dojo-props="select:'multiple'">
+
+    <li id = "drinks-juices" class = "menu-list"
+          data-dojo-type="dojox/mobile/ListItem"
+          data-dojo-props="label:'Sucos',
+                           icon:'app/resources/img/juices_64.png' ">
+    </li>
+
+    <li id = "drinks-sodas" class = "menu-list"
+          data-dojo-type="dojox/mobile/ListItem"
+          data-dojo-props="label:'Refrigerantes',
+                           icon:'app/resources/img/sodas_64.png' ">
+    </li>
+
+    <li id = "drinks-beers" class = "menu-list"
+          data-dojo-type="dojox/mobile/ListItem"
+          data-dojo-props="label:'Cervejas',
+                           icon:'app/resources/img/beers_64.png' ">
+    </li>
+
+  </ul>
+
+    <div style = "height: 45px"></div> <!-- space to footer -->
+</div>
