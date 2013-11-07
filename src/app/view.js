@@ -1,4 +1,4 @@
-define(["app/views/home",
+define(["app/views/menu",
         "app/views/pizzas",
         "app/views/drinks",
         "app/views/about",
@@ -6,10 +6,10 @@ define(["app/views/home",
         "dojo/_base/window",
         "require",
         "dijit/registry"],
-function(home, pizzas, drinks, about, footer, win, require, registry) {
+function(menu, pizzas, drinks, about, footer, win, require, registry) {
   return {
     //expose screens
-    home : home,
+    menu : menu,
     pizzas : pizzas,
     drinks : drinks,
     about : about,
@@ -17,7 +17,7 @@ function(home, pizzas, drinks, about, footer, win, require, registry) {
     //createDom
     createDom : function() {
       var body = win.body();
-      body.innerHTML = home.getHtml() +
+      body.innerHTML = menu.getHtml() +
                        pizzas.getHtml() +
                        drinks.getHtml() +
                        about.getHtml() +
