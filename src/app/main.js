@@ -21,10 +21,12 @@
 app = {};
  define(['dojo/has', 'require'],
 function (has, require) {
-  require(["dojox/mobile/parser","app/view", 
+  require(["dojox/mobile/parser","app/view",
            "dojox/mobile","dojox/mobile/ScrollableView",
            "dojox/mobile/TabBar",
            "dojox/mobile/ToggleButton",
+           "dojox/mobile/TextBox",
+           "dojox/mobile/Button",
            "dojo/domReady!"], // dojo/domReady! This "!" command make the programm waits to load the DOM
   function(mobileParser, view) {
     view.createDom();
