@@ -28,5 +28,7 @@
 /home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/assets/www/plugins/org.apache.cordova.device/www/device.js \
 /home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/assets/www/app/resources \
 /home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/assets/www/app/resources/app.css \
+/home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/assets/www/app/resources/img \
+/home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/assets/www/app/resources/img/pizza.png \
 /home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/assets/www/dojo/dojo.js \
 /home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/bin/AndroidManifest.xml \

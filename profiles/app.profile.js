@@ -59,12 +59,14 @@ var profile = {
             "dojox/mobile/compat",
             "dojox/mobile/ScrollableView",
             "dojox/mobile/TabBar",
+            "dojox/mobile/Accordion",
 
             "app/run",
             "app/main",
             "app/view",
             "app/screenClass",
             "app/views/home",
+            "app/views/pizzas",
             "app/views/about",
             "app/views/footer"
           ],

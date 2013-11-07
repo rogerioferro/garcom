@@ -19,19 +19,18 @@
  */
 
 app = {};
- 
-define(['dojo/has', 'require'],
+ define(['dojo/has', 'require'],
 function (has, require) {
-  require(["dojox/mobile/parser","app/view",
+  require(["dojox/mobile/parser","app/view", "dojo/dom",
            "dojox/mobile","dojox/mobile/ScrollableView",
-           "dojox/mobile/Accordion",
            "dojox/mobile/TabBar",
+           "dojox/mobile/ToggleButton",
            "dojox/mobile/compat","dojo/domReady!"], // dojo/domReady! comando ! aguarda carregar toda a biblioteca da DOM
-  function(mobileParser, view) {
+  function(mobileParser, view, dom) {
     view.createDom();
-    mobileParser.parse();
-    view.pizzas.activate();
 
+    mobileParser.parse();
+   
     app.view = view;
     // Wait for device API libraries to load
     document.addEventListener("deviceready", onDeviceReady, false);

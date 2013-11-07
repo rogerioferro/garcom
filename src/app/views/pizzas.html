@@ -1,57 +1,40 @@
 <div id="pizzas" data-dojo-type="dojox/mobile/ScrollableView">
-	<h1 data-dojo-type="dojox/mobile/Heading"
+  <h1 data-dojo-type="dojox/mobile/Heading"
         data-dojo-props="label:'About',
                          fixed:'top',
                          back:'Home',
                          moveTo:'home'">
-    </h1>
+  </h1>
 
 
-    <div class = "pizza-Accordion" data-dojo-type="dojox/mobile/Accordion">
-      <ul data-dojo-type="dojox/mobile/RoundRectList"
-         data-dojo-props="label:'Calabresa',
-                          icon1:'app/resources/img/pizza.png'">
-        <li id = "pizzas-calabresa"
-            data-dojo-type="dojox/mobile/ListItem"
-            data-dojo-props="icon:'mblDomButtonBluePlus',
-                             clickable:true,
-                             noArrow: true
-            ">
-          Calabresa fatiada, cebola, azeitonas pretas, mussarela e molho de tomate.
-        </li> 
-      </ul>
-    </div>
-
-
-    <ul data-dojo-type="dojox/mobile/RoundRectList">
-
-		<li class = "pizza-list"
+    <ul data-dojo-type="dojox/mobile/RoundRectList"
+        data-dojo-props="select:'multiple'">
+    
+    <li id = "pizzas-calbresa" class = "carte-list"
           data-dojo-type="dojox/mobile/ListItem"
           data-dojo-props="label:'Calabresa',
-                           anchorLabel:true,
-                           rightIcon2:'mblDomButtonBluePlus',
                            icon:'app/resources/img/pizza.png' ">
     </li>
 
-    <li id = "pizzas-peperoni"
+    <li id = "pizzas-peperoni" class = "carte-list"
           data-dojo-type="dojox/mobile/ListItem"
           data-dojo-props="label:'Peperoni:',
-                          rightText:'Detalhes'">
+                          icon:'app/resources/img/pizza.png'">
     </li>
 
-		<li id = "pizzas-milho"
+    <li id = "pizzas-milho" class = "carte-list"
           data-dojo-type="dojox/mobile/ListItem"
           data-dojo-props="label:'Milho:',
-                          rightText:'Detalhes'">
-		</li>
-		
-		<li id = "pizzas-amodadacasa"
+                          icon:'app/resources/img/pizza.png'">
+    </li>
+    
+    <li id = "pizzas-amodadacasa" class = "carte-list"
           data-dojo-type="dojox/mobile/ListItem"
           data-dojo-props="label:'A Moda da Casa:',
-                          rightText:'Detalhes'">
-		</li>
-		
-	</ul>
+                          icon:'app/resources/img/pizza.png'">
+    </li>
+    
+  </ul>
 
     <div style = "height: 45px"></div> <!-- space to footer -->
 </div>
