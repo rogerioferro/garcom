@@ -53,18 +53,23 @@ var profile = {
     // module ID.
       "dojo/dojo": {
           include: [
+            //dojo module used in the project FROM Main.js
             "dojo/request/xhr",
             "dojox/mobile/parser",
             "dojox/mobile",
             "dojox/mobile/ScrollableView",
             "dojox/mobile/TabBar",
             "dojox/mobile/Accordion",
+            "dojox/mobile/TextBox",
+            "dojox/mobile/Button",
 
+
+            //program
             "app/run",
             "app/main",
             "app/view",
             "app/screenClass",
-            //copy from view.js
+            //Views -> copy from view.js
             "app/views/menu",
             "app/views/pizzas",
             "app/views/drinks",
