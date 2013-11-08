@@ -12,9 +12,8 @@
 @import '../../dojox/mobile/themes/custom/custom.css';
 
 .mblTextBox {
-  width: 100%;
-  padding: 1px 10px;
-  box-sizing: border-box;
+  width: 92%;
+  padding: 1px 4%;
   border-radius : 25px;
 
 }
@@ -77,9 +76,8 @@
     border-top: solid #a6aeb9 1px;
     border-right: solid #66707d 1px;
     border-bottom: solid #303e4f 1px;
-    background: linear-gradient(to bottom, #838b96, #515966);
-    -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#838b96, endColorStr=#515966);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#838b96, endColorStr=#515966);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(##838b96), to(#515966));
+    background-image: linear-gradient(to bottom, #838b96 0%, #515966 100%);
     display: inline-block;
 }
 .iphone-blue:hover
