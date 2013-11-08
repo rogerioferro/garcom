@@ -64,9 +64,12 @@ var profile = {
             "app/main",
             "app/view",
             "app/screenClass",
+            //copy from view.js
             "app/views/menu",
             "app/views/pizzas",
-            "app/views/about",
+            "app/views/drinks",
+            "app/views/juices",
+            "app/views/login",
             "app/views/cart",
             "app/views/footer"
           ],
