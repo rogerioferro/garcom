@@ -59,7 +59,6 @@ var profile = {
             "dojox/mobile",
             "dojox/mobile/ScrollableView",
             "dojox/mobile/TabBar",
-            "dojox/mobile/Accordion",
             "dojox/mobile/TextBox",
             "dojox/mobile/Button",
 
