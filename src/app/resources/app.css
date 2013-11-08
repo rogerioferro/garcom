@@ -11,6 +11,13 @@
 */
 @import '../../dojox/mobile/themes/custom/custom.css';
 
+
+
+.container-center {
+  margin: 0 auto;
+  max-width: 400px;
+}
+
 .menu-list {
   height : 72px;
   line-height : 72px;
@@ -46,7 +53,7 @@
 .iphone-blue
 {
   height: 50px;
-  width: 400px;
+  width: 100%;
     font-family: Helvetica, Arial;
     font-weight: bold;
     font-size: 16px;

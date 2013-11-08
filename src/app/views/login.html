@@ -4,7 +4,8 @@
                          fixed:'top'">
   </h1>
 
-  <div data-dojo-type = "dojox/mobile/RoundRect">
+  <div data-dojo-type = "dojox/mobile/RoundRect" class = "container-center">
+    
     <label class="login-label" for="c_login">Login (CPF ou e-mail)</label><br>
     <input id="c_login" size="50" data-dojo-type="dojox/mobile/TextBox" style="background-color:white;"
       data-dojo-props='maxLength:50, value:"", placeHolder:"CPF ou e-mail", onChange:function(newValue){ alert("value changed to " + newValue); }' />
@@ -26,4 +27,5 @@
 
     <div style = "height: 45px"></div> <!-- space to footer -->
   </div>
+
 </div>
