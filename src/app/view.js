@@ -1,19 +1,21 @@
 define(["app/views/menu",
         "app/views/pizzas",
         "app/views/drinks",
+        "app/views/juices",
         "app/views/login",
         "app/views/cart",
         "app/views/footer",
         "dojo/_base/window",
         "require",
         "dijit/registry"],
-function(menu, pizzas, drinks, login, cart, footer,
+function(menu, pizzas, drinks, juices, login, cart, footer,
          win, require, registry) {
   return {
     //expose screens
     menu : menu,
     pizzas : pizzas,
     drinks : drinks,
+    juices : juices,
     login : login,
     cart: cart,
     footer: footer,
@@ -23,6 +25,7 @@ function(menu, pizzas, drinks, login, cart, footer,
       body.innerHTML = menu.getHtml() +
                        pizzas.getHtml() +
                        drinks.getHtml() +
+                       juices.getHtml() +
                        login.getHtml() +
                        cart.getHtml() +
                        footer.getHtml(); // show in all upper screens
