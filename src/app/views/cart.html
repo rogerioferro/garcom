@@ -5,7 +5,63 @@
   </h1>
 
   <div data-dojo-type = "dojox/mobile/RoundRect">
-      Cart go here...
+
+    <div data-dojo-type="dojox/mobile/GridLayout" data-dojo-props='cols:3' style="height: 400px;">
+      <div data-dojo-type="dojox/mobile/Pane">
+        Pizza Calabresa Grande
+      </div>
+      <div data-dojo-type="dojox/mobile/Pane">
+        R$ 30,00
+      </div>
+      <div data-dojo-type="dojox/mobile/Pane">
+        <div data-dojo-type="dojox/mobile/ValuePickerSlot"
+            labelFrom="0" labelTo="30" style="width:50px;">
+        </div>
+      </div>
+
+      <div data-dojo-type="dojox/mobile/Pane">
+        Suco de Laranja Grande
+      </div>
+      <div data-dojo-type="dojox/mobile/Pane">
+        R$ 5,00
+      </div>
+      <div data-dojo-type="dojox/mobile/Pane">
+        <div data-dojo-type="dojox/mobile/ValuePickerSlot"
+            labelFrom="0" labelTo="30" style="width:50px;">
+        </div>
+      </div>
+
+      <div data-dojo-type="dojox/mobile/Pane">
+        TOTAL =
+      </div>
+      <div data-dojo-type="dojox/mobile/Pane">
+        R$ 35,00
+      </div>
+      <div data-dojo-type="dojox/mobile/Pane">
+
+      </div>
+    </div>
+
+    <div data-dojo-type="dojox/mobile/GridLayout" data-dojo-props='cols:2' style="height: 150px;">
+      <div data-dojo-type="dojox/mobile/Pane">
+        <input id="takenow" type="radio" name="group" value="Retirar agora" data-dojo-type="dojox/mobile/RadioButton"
+            data-dojo-props='value:"Retirar agora", checked:true,
+            onChange:function(checked){ if(checked)alert("on selected"); }' />
+          <label for="takenow">Retirar agora</label><br>
+          <input id="schedule"type="radio" name="group" value="Agendar para" data-dojo-type="dojox/mobile/RadioButton"
+          data-dojo-props='value:"Agendar para",
+          onChange:function(checked){ if(checked)alert("off selected"); }' />
+        <label for="schedule">Agendar para</label><br><br>
+      </div>
+
+      <div data-dojo-type="dojox/mobile/Pane">
+        <div id="picker1" data-dojo-type="dojox/mobile/ValuePickerTimePicker"
+                          data-dojo-props='is24h:true'></div>
+      </div>
+    </div>
+
+    <button id="cart_send" class="mblBlueButton mblBigButton" data-dojo-type="dojox/mobile/Button">ENVIAR PEDIDO</button>
+    <br>
   </div>
 
 

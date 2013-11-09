@@ -26,6 +26,10 @@ function (has, require) {
            "dojox/mobile/TabBar",
            "dojox/mobile/TextBox",
            "dojox/mobile/Button",
+           "dojox/mobile/ValuePickerTimePicker",
+           "dojox/mobile/RadioButton",
+           "dojox/mobile/GridLayout",
+           "dojox/mobile/ValuePickerSlot",
            "dojo/domReady!"], // dojo/domReady! This "!" command make the programm waits to load the DOM
   function(mobileParser, view) {
     view.createDom();

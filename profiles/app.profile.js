@@ -61,7 +61,10 @@ var profile = {
             "dojox/mobile/TabBar",
             "dojox/mobile/TextBox",
             "dojox/mobile/Button",
-
+            "dojox/mobile/ValuePickerTimePicker",
+            "dojox/mobile/RadioButton",
+            "dojox/mobile/GridLayout",
+            "dojox/mobile/ValuePickerSlot",
 
             //program
             "app/run",
