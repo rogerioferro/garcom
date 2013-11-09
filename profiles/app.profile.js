@@ -43,6 +43,8 @@ var profile = {
   // only suitable if you are not supporting IE7 and earlier.)
   selectorEngine: 'lite',
 
+  localeList:["pt-br"],
+
 
   // Builds can be split into multiple different JavaScript files called "layers". This allows applications to
   // defer loading large sections of code until they are actually required while still allowing multiple modules to
@@ -61,7 +63,6 @@ var profile = {
             "dojox/mobile/TabBar",
             "dojox/mobile/TextBox",
             "dojox/mobile/Button",
-            "dojox/mobile/ValuePickerTimePicker",
             "dojox/mobile/RadioButton",
             "dojox/mobile/GridLayout",
             "dojox/mobile/ValuePickerSlot",

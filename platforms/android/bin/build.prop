@@ -1,9 +1,5 @@
 #Last build type
-<<<<<<< HEAD
-#Fri, 08 Nov 2013 16:06:01 -0200
-=======
-#Fri, 08 Nov 2013 19:43:01 -0200
->>>>>>> d25293d02da9326f42039a1a4a24a4c5306ed0c8
+#Sat, 09 Nov 2013 20:05:33 -0200
 
 build.last.target=debug
 

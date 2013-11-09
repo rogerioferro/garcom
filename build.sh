@@ -70,7 +70,8 @@ echo " Done"
 echo "Cleaning $DISTDIR..."
 cd "$DISTDIR"
 find app  -maxdepth 1 ! -name app ! -name "resources" -exec rm -rf {} \;
-find dojo -maxdepth 1 ! -name dojo ! -name "dojo.js" -exec rm -rf {} \;
+find dojo/nls -maxdepth 1 ! -name nls ! -name "dojo_pt-br.js"  -exec rm -rf {} \;
+find dojo -maxdepth 1 ! -name dojo ! -name "dojo.js" ! -name "nls" -exec rm -rf {} \;
 rm -rf dijit dojox build*
 echo " Done"
 

@@ -21,20 +21,24 @@
 app = {};
  define(['dojo/has', 'require'],
 function (has, require) {
-  require(["dojox/mobile/parser","app/view",
-           "dojox/mobile","dojox/mobile/ScrollableView",
+  require(["dojox/mobile/parser","app/view", "dojo/query",
+           "dojox/mobile",
+           "dojox/mobile/ScrollableView",
            "dojox/mobile/TabBar",
            "dojox/mobile/TextBox",
            "dojox/mobile/Button",
-           "dojox/mobile/ValuePickerTimePicker",
            "dojox/mobile/RadioButton",
            "dojox/mobile/GridLayout",
            "dojox/mobile/ValuePickerSlot",
            "dojo/domReady!"], // dojo/domReady! This "!" command make the programm waits to load the DOM
-  function(mobileParser, view) {
+  function(mobileParser, view, query) {
     view.createDom();
 
     mobileParser.parse();
+
+    query(".mblValuePickerSlotInput").forEach(function(node, index, nodelist){
+      node.readOnly = true;
+    });
 
     app.view = view;
     // Wait for device API libraries to load
