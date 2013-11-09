@@ -34,8 +34,6 @@ div.inner{
   border: none;
 }
 
-
-
 .mblButton {
   border-radius : 25px;
   margin-top:5px;
@@ -44,7 +42,7 @@ div.inner{
 
 .mblBigButton {
   height: 50px;
-  width: 100%;
+  width:100%;
   font-weight: bold;
   font-size: 16px;
 }
@@ -82,38 +80,75 @@ div.inner{
   font-size: 14px;
 }
 
-.iphone-blue
-{
-  height: 50px;
-  width: 100%;
-  font-family: Helvetica, Arial;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
-    color: #ffffff;
-    padding-top: 10px;
-    padding-right: 15px;
-    padding-bottom: 10px;
-    padding-left: 15px;
-    text-decoration: none;
-    border-radius: 25px;    
-    box-shadow: 1px 1px 3px rgba( 0, 0, 0, .5 );
-    text-shadow: -1px -1px 0px #455566;
-    border-top: solid #a6aeb9 1px;
-    border-right: solid #66707d 1px;
-    border-bottom: solid #303e4f 1px;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(##838b96), to(#515966));
-    background-image: linear-gradient(to bottom, #838b96 0%, #515966 100%);
-    display: inline-block;
+
+.cart-center {
+  margin: auto;
+  max-width: 800px;
 }
-.iphone-blue:hover
-{
-    box-shadow: 1px 1px 3px rgba( 0, 0, 0, .5 ), inset 0 0 20px #8e94a2;
+
+.cart-list{
+  height:80px;
+  line-height:80px;
+  font-weight:normal;
+  background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#6fb248), color-stop(0.5, #5fa238), to(#54972d));
+  background-image: linear-gradient(to bottom, #6fb248 0%, #5fa238 50%, #54972d 100%);  
 }
-.iphone-blue:active
-{
-    color: #bbb;
-    border: 1px solid #3d4651;
-    background: #5e6874;
-    box-shadow: 0px 0px 3px rgba( 0, 0, 0, .3), inset 0 0 20px #2b3446;
+
+.cart-list .mblValuePickerSlotInputArea{
+  height: 20px;
+}
+.cart-list .mblValuePickerSlotInput{
+  font-size: 14px;
+}
+.cart-list .mblValuePickerSlotButton{
+  height: 30px;
+}
+.cart-list .mblValuePickerSlotIcon{
+ top:2px;
+}
+
+.cart-c1{
+  position:absolute;
+  right:110px;
+  left:0px;
+  top:0px;
+  bottom:0px;
+  padding-left:5px;
+  padding-right:5px;
+}
+.cart-c1 span {
+  display: inline-block;
+  line-height:normal;
+}
+.cart-c2{
+  position:absolute;
+  right:30px;
+  
+  width:75px;
+  padding-right: 5px; /*width total = 80px*/
+  
+  text-align: right;
+  border-left: 1px solid #c0c0c0;
+}
+.cart-c3{
+  position:absolute;
+  right:0px;
+  width:30px;
+  border-left: 1px solid #c0c0c0;
+}
+
+.cart-c23{
+  position:absolute;
+  right:0px;
+  width:110px;
+  border-left: 1px solid #c0c0c0;
+  text-align:center;
+}
+
+.cart-title>div{
+  text-align: center;
+}
+
+.cart-footer>.cart-c1{
+  text-align:right;
 }
