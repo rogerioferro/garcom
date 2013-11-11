@@ -9,32 +9,35 @@
       <span>*Quantidade</span>
       <ul data-dojo-type="dojox/mobile/RoundRectList">
         <li data-dojo-type="dojox/mobile/ListItem" class="cart-title">
+          <div class="cart-c3">*</div>
           <div class="cart-c1">Descri&ccedil;&atilde;o</div>
           <div class="cart-c2">R$</div>
-          <div class="cart-c3">*</div>
         <li data-dojo-type="dojox/mobile/ListItem" class="cart-list" >
+          <div class="cart-c3">
+            <div data-dojo-type="dojox/mobile/ValuePickerSlot"
+              labelFrom="0" labelTo="30">
+             </div>
+          </div>
           <div class="cart-c1"><span>Pizza Calabresa Grande</span></div>
           <div class="cart-c2">35,00</div>
-          <div class="cart-c3">
-            <div data-dojo-type="dojox/mobile/ValuePickerSlot"
-              labelFrom="0" labelTo="30">
-             </div>
-          </div>
+
         </li>
         <li data-dojo-type="dojox/mobile/ListItem" class="cart-list">
-          <div class="cart-c1"><span>Suco Laranja</span></div>
-          <div class="cart-c2">5,00</div>
           <div class="cart-c3">
             <div data-dojo-type="dojox/mobile/ValuePickerSlot"
               labelFrom="0" labelTo="30">
              </div>
           </div>
+          <div class="cart-c1"><span>Suco Laranja</span></div>
+          <div class="cart-c2">5,00</div>
+
         </li>
         <li data-dojo-type="dojox/mobile/ListItem" class="cart-footer">
           <div class="cart-c1">TOTAL:</div>
           <div class="cart-c23">R$ 40,00</div>
         </li>
       </ul>
+
       <div data-dojo-type="dojox/mobile/GridLayout" data-dojo-props='cols:2' style="height: 150px;">
         <div data-dojo-type="dojox/mobile/Pane">
           <input id="takenow" type="radio" name="group" value="Retirar agora" data-dojo-type="dojox/mobile/RadioButton"

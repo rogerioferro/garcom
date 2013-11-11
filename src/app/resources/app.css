@@ -12,7 +12,7 @@
 @import '../../dojox/mobile/themes/custom/custom.css';
 
 input:focus, input[type="password"]:focus,
-input[type="text"]:focus, 
+input[type="text"]:focus,
 textarea:focus, select:focus{
   outline:none;
  -webkit-tap-highlight-color:rgba(0,0,0,0);
@@ -80,7 +80,6 @@ div.inner{
   font-size: 14px;
 }
 
-
 .cart-center {
   margin: auto;
   max-width: 800px;
@@ -90,8 +89,7 @@ div.inner{
   height:80px;
   line-height:80px;
   font-weight:normal;
-  background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#6fb248), color-stop(0.5, #5fa238), to(#54972d));
-  background-image: linear-gradient(to bottom, #6fb248 0%, #5fa238 50%, #54972d 100%);  
+  background-color:#FFFDDF;
 }
 
 .cart-list .mblValuePickerSlotInputArea{
@@ -99,6 +97,7 @@ div.inner{
 }
 .cart-list .mblValuePickerSlotInput{
   font-size: 14px;
+  background-color:#FFFDDF;
 }
 .cart-list .mblValuePickerSlotButton{
   height: 30px;
@@ -110,39 +109,41 @@ div.inner{
 .cart-c1{
   position:absolute;
   right:110px;
-  left:0px;
+  left:35px;
   top:0px;
   bottom:0px;
   padding-left:5px;
   padding-right:5px;
+  border-left: 1px solid #c0c0c0;
 }
+
 .cart-c1 span {
   display: inline-block;
   line-height:normal;
 }
 .cart-c2{
   position:absolute;
-  right:35px;
-  
+  right:0px;
+
   width:70px;
   padding-right: 5px; /*width total = 75px*/
-  
+
   text-align: right;
   border-left: 1px solid #c0c0c0;
 }
 .cart-c3{
   position:absolute;
-  right:0px;
+  left:0px;
   width:35px;
-  border-left: 1px solid #c0c0c0;
 }
 
 .cart-c23{
   position:absolute;
   right:0px;
-  width:110px;
+  width:75px;
   border-left: 1px solid #c0c0c0;
   text-align:center;
+  background-color: #85BFFE; /*if you change this color, you must take a look at .cart-footer and .cart-title */
 }
 
 .cart-title>div{
@@ -152,3 +153,16 @@ div.inner{
 .cart-footer>.cart-c1{
   text-align:right;
 }
+
+.cart-footer{
+  background-color: #85BFFE; /*if you change this color, you must take a look at .cart-c23 and .cart-title */
+}
+
+.cart-title{
+  background-color: #85BFFE; /*if you change this color, you must take a look at .cart-c23 and .cart-footer */
+}
+
+/*
+  background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#cbcc68), color-stop(0.5, #f5f6cb), to(#cbcc68));
+  background-image: linear-gradient(to bottom, #cbcc68 0%, #f5f6cb 50%, #cbcc68 100%);
+*/
