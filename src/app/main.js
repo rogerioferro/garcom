@@ -25,6 +25,7 @@ function (has, require) {
   require(["dojox/mobile/parser",
            "app/view",
            "dojo/query",
+           "dojo/on",
            "dojox/mobile",
            "dojox/mobile/ScrollableView",
            "dojox/mobile/TabBar",
@@ -33,21 +34,31 @@ function (has, require) {
            "dojox/mobile/RadioButton",
            "dojox/mobile/GridLayout",
            "dojox/mobile/ValuePickerSlot",
-           "dojo/mouse", // Tests from here
-           "dojo/dom-style",
-           "dojo/dom",
-           "dojo/on",
-           "dojo/string",
-           "dojo/query",// 'Till here
            "dojo/domReady!"], // dojo/domReady! This "!" command waits finish the command (get ready). In this case make the programm waits to load the DOM
-  function(mobileParser, view, query) {
+  function(mobileParser, view, query, on) {
     view.createDom();
 
     mobileParser.parse();
 
     query(".mblValuePickerSlotInput").forEach(function(node, index, nodelist){
       node.readOnly = true;
+      on(node, "change", function(){
+        console.log("change value");
+      });
     });
+
+    query(".mblValuePickerSlotPlusButton").forEach(function(node, index, nodelist){
+      on(node, "click", function(){
+        console.log("click plus");
+      });      
+    });
+
+    query(".mblValuePickerSlotMinusButton").forEach(function(node, index, nodelist){
+      on(node, "click", function(){
+        console.log("click minus");
+      });      
+    });
+
 
     app.view = view;
     // Wait for device API libraries to load
