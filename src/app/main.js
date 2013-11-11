@@ -18,10 +18,13 @@
  * <http://dojotoolkit.org/reference-guide/loader/amd.html>.
  */
 
+
 app = {};
  define(['dojo/has', 'require'],
 function (has, require) {
-  require(["dojox/mobile/parser","app/view", "dojo/query",
+  require(["dojox/mobile/parser",
+           "app/view",
+           "dojo/query",
            "dojox/mobile",
            "dojox/mobile/ScrollableView",
            "dojox/mobile/TabBar",
@@ -30,7 +33,13 @@ function (has, require) {
            "dojox/mobile/RadioButton",
            "dojox/mobile/GridLayout",
            "dojox/mobile/ValuePickerSlot",
-           "dojo/domReady!"], // dojo/domReady! This "!" command make the programm waits to load the DOM
+           "dojo/mouse", // Tests from here
+           "dojo/dom-style",
+           "dojo/dom",
+           "dojo/on",
+           "dojo/string",
+           "dojo/query",// 'Till here
+           "dojo/domReady!"], // dojo/domReady! This "!" command waits finish the command (get ready). In this case make the programm waits to load the DOM
   function(mobileParser, view, query) {
     view.createDom();
 

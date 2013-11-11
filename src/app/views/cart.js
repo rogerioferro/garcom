@@ -9,3 +9,4 @@ function(html, screenClass, declare){
   });
   return new myClass(html);
 });
+

@@ -143,7 +143,6 @@ div.inner{
   width:75px;
   border-left: 1px solid #c0c0c0;
   text-align:center;
-  background-color: #85BFFE; /*if you change this color, you must take a look at .cart-footer and .cart-title */
 }
 
 .cart-title>div{
@@ -154,15 +153,11 @@ div.inner{
   text-align:right;
 }
 
-.cart-footer{
-  background-color: #85BFFE; /*if you change this color, you must take a look at .cart-c23 and .cart-title */
+.cart-footer, .cart-title{
+  background-color: #85BFFE;
 }
 
-.cart-title{
-  background-color: #85BFFE; /*if you change this color, you must take a look at .cart-c23 and .cart-footer */
-}
-
-/*
+/* Gradient color
   background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#cbcc68), color-stop(0.5, #f5f6cb), to(#cbcc68));
   background-image: linear-gradient(to bottom, #cbcc68 0%, #f5f6cb 50%, #cbcc68 100%);
 */

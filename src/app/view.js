@@ -4,11 +4,12 @@ define(["app/views/menu",
         "app/views/juices",
         "app/views/login",
         "app/views/cart",
+        "app/views/tests",
         "app/views/footer",
         "dojo/_base/window",
         "require",
         "dijit/registry"],
-function(menu, pizzas, drinks, juices, login, cart, footer,
+function(menu, pizzas, drinks, juices, login, cart, tests, footer,
          win, require, registry) {
   return {
     //expose screens
@@ -18,6 +19,7 @@ function(menu, pizzas, drinks, juices, login, cart, footer,
     juices : juices,
     login : login,
     cart: cart,
+    tests : tests,
     footer: footer,
     //createDom
     createDom : function() {
@@ -28,6 +30,7 @@ function(menu, pizzas, drinks, juices, login, cart, footer,
                        juices.getHtml() +
                        login.getHtml() +
                        cart.getHtml() +
+                       tests.getHtml() +
                        footer.getHtml(); // show in all upper screens
     },
     show : function(viewId) {
