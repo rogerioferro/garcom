@@ -10,7 +10,6 @@ define(["app/views/menu",
         "dijit/registry"],
 function(menu, pizzas, drinks, juices, login, cart, footer,
          win, require, registry) {
-//  var screens:[menu, pizzas, drinks, juices, login, cart, footer];
   return {
     //expose screens
     screens:{
