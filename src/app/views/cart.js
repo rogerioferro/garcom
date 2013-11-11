@@ -27,7 +27,7 @@ function(html, screenClass, declare, mobile, domConstruct, registry, query, on, 
       },
       updateScreen : function(){
         this.clearList();
-        this.addItem(1,'suco de maria mole', 2.00);
+        this.addItem(2,'suco de maria mole', 2.00);
         this.addItem(1,'salada de pirulito', 3.30);
         this.addItem(1,'sanduiche de macarrão', 10.25);
         this.updateTotal();
@@ -43,7 +43,7 @@ function(html, screenClass, declare, mobile, domConstruct, registry, query, on, 
         item.domNode.innerHTML = '<div class="cart-c3"></div>\
                                    <div class="cart-c2">'+Number(price).toFixed(2)+'</div>\
                                    <div class="cart-c1"><span>'+desc+'<\span></div>';
-        var picker = new mobile.ValuePickerSlot({value:'1', labelFrom:1, labelTo:MAX_VALUE, readOnly:true});
+        var picker = new mobile.ValuePickerSlot({value:quant, labelFrom:1, labelTo:MAX_VALUE, readOnly:true});
         picker.placeAt(query(".cart-c3", item.domNode)[0]);
         on(query('.mblValuePickerSlotPlusButton',picker.domNode)[0],"click",
         lang.hitch(this,function(picker,obj,e){
