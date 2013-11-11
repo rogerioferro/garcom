@@ -6,6 +6,8 @@ function(declare){
     },
     getHtml : function() {
       return this.html;
+    },
+    start : function() {
     }
   });
 

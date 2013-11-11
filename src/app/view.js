@@ -10,15 +10,18 @@ define(["app/views/menu",
         "dijit/registry"],
 function(menu, pizzas, drinks, juices, login, cart, footer,
          win, require, registry) {
+//  var screens:[menu, pizzas, drinks, juices, login, cart, footer];
   return {
     //expose screens
-    menu : menu,
-    pizzas : pizzas,
-    drinks : drinks,
-    juices : juices,
-    login : login,
-    cart: cart,
-    footer: footer,
+    screens:{
+      menu:menu,
+      pizzas:pizzas,
+      drinks:drinks,
+      juices:juices,
+      login:login,
+      cart:cart,
+      footer:footer
+    },
     //createDom
     createDom : function() {
       var body = win.body();
@@ -32,6 +35,12 @@ function(menu, pizzas, drinks, juices, login, cart, footer,
     },
     show : function(viewId) {
       registry.byId(viewId).show();
+    },
+    start : function () {
+      for (var key in this.screens){
+        this.screens[key].start();
+      }
     }
   };
 });
+
