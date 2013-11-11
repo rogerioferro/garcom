@@ -42,11 +42,14 @@ function(html, screenClass, declare, mobile, domConstruct, registry, query, on, 
       },
       updateScreen : function(){
         console.log("Into in Cart");
-        var child = new mobile.ListItem({class:'cart-list'});
-        child.domNode.innerHTML = '<div class="cart-c3"></div>\
-                                   <div class="cart-c2">5,00</div>\
-                                   <div class="cart-c1"><span>doce de abóbora<\span></div>';
-        child.placeAt(this.footer,"before");
+        var item = new mobile.ListItem({class:'cart-list'});
+        item.domNode.innerHTML = '<div class="cart-c3"></div>\
+                                   <div class="cart-c2">5,50</div>\
+                                   <div class="cart-c1"><span>suco de maria mole<\span></div>';
+        item.placeAt(this.footer,"before");
+        var quant = new mobile.ValuePickerSlot({value:'1',labelFrom:0,labelTo:30});
+        var node = query(".cart-c3", item.domNode)[0];
+        quant.placeAt(node);
       }
   });
   return new myClass(html);
