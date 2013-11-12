@@ -1,5 +1,5 @@
 
-var MAX_VALUE = 99; /*MAX VALUE OF....*/
+var MAX_VALUE = 99; /*MAX VALUE OF Picker*/
 
 define(["dojo/text!app/views/cart.html",
         "app/screenClass",
@@ -23,8 +23,7 @@ function(html, screenClass, declare, mobile, domConstruct, registry, query, on, 
         }));
         this.DomList = query("ul",this.view.domNode)[0];
         this.DomFooter = query(".cart-footer", this.DomList)[0];
-        this.DomTotal = query(".cart-c23", this.DomFooter)[0];
-        /*this.DomPartial = query(".cart-c4", this.DomList)[0];*/
+        this.DomTotal = query(".cart-total", this.DomFooter)[0];
       },
       updateScreen : function(){
         this.clearList();
@@ -38,16 +37,20 @@ function(html, screenClass, declare, mobile, domConstruct, registry, query, on, 
         this.listArray.length = 0;
       },
       addItem : function(quant, desc, price, totalprice){
-        var obj = {quant:quant, desc:desc, price:price, totalprice:totalprice};
-        this.listArray.push(obj);
         var item = new mobile.ListItem({'class':'cart-list'});
-        item.domNode.innerHTML = '<div class="cart-c3"></div>\
-                                  <div class="cart-c1"><span>'+desc+'<\span></div>\
-                                  <div class="cart-c2">'+Number(price).toFixed(2)+'</div>\
-                                  <div class="cart-c4">'+Number(totalprice).toFixed(2)+'</div>'; /**/
+        item.domNode.innerHTML = '<div class="cart-quant"></div>\
+                                  <div class="cart-desc"><span>'+desc+'<\span></div>\
+                                  <div class="cart-price-un">'+Number(price).toFixed(2)+'</div>\
+                                  <div class="cart-price-tot">'+Number(totalprice).toFixed(2)+'</div>'; /**/
+        var obj = { quant:quant,
+                    desc:desc,
+                    price:price,
+                    totalprice:totalprice,
+                    item:item };
+        this.listArray.push(obj);
 
         var picker = new mobile.ValuePickerSlot({value:quant, labelFrom:1, labelTo:MAX_VALUE, readOnly:true});
-        picker.placeAt(query(".cart-c3", item.domNode)[0]);
+        picker.placeAt(query(".cart-quant", item.domNode)[0]);
         on(query('.mblValuePickerSlotPlusButton',picker.domNode)[0],"click",
         lang.hitch(this,function(picker,obj,e){
           var val = Number(picker.get('value'));
@@ -77,9 +80,10 @@ function(html, screenClass, declare, mobile, domConstruct, registry, query, on, 
           var obj = this.listArray[i];
           line = obj.quant * obj.price;
           total += line;
-          this.DomTotal.innerHTML =Number(line).toFixed(2); /*onde insere o valor na lista?*/
+          var dom = query('.cart-price-tot', obj.item.domNode)[0];
+          dom.innerHTML =Number(line).toFixed(2); /*onde insere o valor na lista?*/
         }
-        this.DomTotal.innerHTML =Number(total).toFixed(2);
+        this.DomTotal.innerHTML = 'R$ '+Number(total).toFixed(2);
       }
   });
   return new myClass(html);

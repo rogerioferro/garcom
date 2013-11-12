@@ -120,10 +120,20 @@ div.inner{
  top:2px;
 }
 
+
+/*
+ Button " + " and " - " table of cart
+*/
+.cart-quant{
+  position:absolute;
+  left:0px;
+  width:35px;
+}
+
 /*
  Description table of cart
 */
-.cart-c1{
+.cart-desc{
   position:absolute;
   right:151px;
   left:35px;
@@ -134,10 +144,11 @@ div.inner{
   border-left: 1px solid #c0c0c0;
 }
 
+
 /*
  Description table of cart
 */
-.cart-c1 span {
+.cart-desc span {
   display: inline-block;
   line-height:normal;
 }
@@ -145,7 +156,7 @@ div.inner{
 /*
  Unity Price table of cart
 */
-.cart-c2{
+.cart-price-un{
   position:absolute;
 
   right:56px;
@@ -157,18 +168,9 @@ div.inner{
 }
 
 /*
- Button " + " and " - " table of cart
-*/
-.cart-c3{
-  position:absolute;
-  left:0px;
-  width:35px;
-}
-
-/*
  Total Value table of cart
 */
-.cart-c4 {
+.cart-price-tot {
   position:absolute;
   right:0px;
 
@@ -182,7 +184,7 @@ div.inner{
 /*
  Total cart value table of cart
 */
-.cart-c23{
+.cart-total{
   position:absolute;
   right:0px;
   width:111px;
@@ -194,7 +196,12 @@ div.inner{
   text-align: center;
 }
 
-.cart-footer>.cart-c1{
+.cart-title .cart-price-un,
+.cart-title .cart-price-tot{
+  line-height: normal;
+}
+
+.cart-footer>.cart-desc{
   text-align:right;
 }
 
