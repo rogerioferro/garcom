@@ -120,9 +120,12 @@ div.inner{
  top:2px;
 }
 
+/*
+ Description table of cart
+*/
 .cart-c1{
   position:absolute;
-  right:75px;
+  right:151px;
   left:35px;
   top:0px;
   bottom:0px;
@@ -131,30 +134,58 @@ div.inner{
   border-left: 1px solid #c0c0c0;
 }
 
+/*
+ Description table of cart
+*/
 .cart-c1 span {
   display: inline-block;
   line-height:normal;
 }
+
+/*
+ Unity Price table of cart
+*/
 .cart-c2{
   position:absolute;
-  right:0px;
 
-  width:70px;
-  padding-right: 5px; /*width total = 75px*/
+  right:56px;
+  width:50px;
+  padding-right: 5px; /*width total = 55px*/
 
   text-align: right;
   border-left: 1px solid #c0c0c0;
 }
+
+/*
+ Button " + " and " - " table of cart
+*/
 .cart-c3{
   position:absolute;
   left:0px;
   width:35px;
 }
 
+/*
+ Total Value table of cart
+*/
+.cart-c4 {
+  position:absolute;
+  right:0px;
+
+  width:50px;
+  padding-right: 5px; /*width total = 55px*/
+
+  text-align: right;
+  border-left: 1px solid #c0c0c0;
+}
+
+/*
+ Total cart value table of cart
+*/
 .cart-c23{
   position:absolute;
   right:0px;
-  width:75px;
+  width:111px;
   border-left: 1px solid #c0c0c0;
   text-align:center;
 }

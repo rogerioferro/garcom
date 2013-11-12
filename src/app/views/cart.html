@@ -7,35 +7,24 @@
   <div data-dojo-type = "dojox/mobile/RoundRect">
     <div class = "cart-center">
       <span>*Quantidade</span>
+
+      <!-- Title of the table -->
       <ul data-dojo-type="dojox/mobile/RoundRectList">
         <li data-dojo-type="dojox/mobile/ListItem" class="cart-title">
           <div class="cart-c3">*</div>
           <div class="cart-c1">Descri&ccedil;&atilde;o</div>
-          <div class="cart-c2">R$</div>
-        <li data-dojo-type="dojox/mobile/ListItem" class="cart-list" >
-          <div class="cart-c3">
-            <div data-dojo-type="dojox/mobile/ValuePickerSlot"
-              labelFrom="0" labelTo="30">
-             </div>
-          </div>
-          <div class="cart-c1"><span>Pizza Calabresa Grande</span></div>
-          <div class="cart-c2">35,00</div>
-
+          <div class="cart-c2">R$ Un.</div>
+          <div class="cart-c4">R$ Tot.</div>
         </li>
-        <li data-dojo-type="dojox/mobile/ListItem" class="cart-list">
-          <div class="cart-c3">
-            <div data-dojo-type="dojox/mobile/ValuePickerSlot"
-              labelFrom="0" labelTo="30">
-             </div>
-          </div>
-          <div class="cart-c1"><span>Suco Laranja</span></div>
-          <div class="cart-c2">5,00</div>
 
-        </li>
+        <!-- Lines of the table will be created dinamically in JS-->
+
+        <!-- Footer of the table -->
         <li data-dojo-type="dojox/mobile/ListItem" class="cart-footer">
-          <div class="cart-c1">TOTAL:</div>
-          <div class="cart-c23">R$ 40,00</div>
+          <div class="cart-c1">TOTAL GERAL</div>
+          <div class="cart-c23">{%valortotal%}</div>
         </li>
+
       </ul>
 
       <div data-dojo-type="dojox/mobile/GridLayout" data-dojo-props='cols:2' style="height: 150px;">
@@ -59,9 +48,5 @@
     </div>
   </div>
 
-  <button id="myButton">Click me!</button>
-  <div id="myDiv">Hover over me!</div>
-
-
-    <div style = "height: 32px"></div> <!-- space to footer -->
+  <div style = "height: 32px"></div> <!-- space to footer -->
 </div>
