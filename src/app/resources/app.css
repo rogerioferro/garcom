@@ -80,9 +80,23 @@ div.inner{
   font-size: 14px;
 }
 
+.mblRoundRect{
+  margin-left:0;
+  margin-right:0;
+  padding-left:0;
+  padding-right:0;
+}
+
+.mblRoundRectList{
+  margin-left:auto;
+  margin-right:auto;
+  max-width:800px;
+}
+
 .cart-center {
   margin: auto;
   max-width: 800px;
+  padding:0;
 }
 
 .cart-list{
