@@ -57,6 +57,7 @@ var profile = {
           include: [
             //dojo module used in the project FROM Main.js
             "dojo/request/xhr",
+            "dojo/query",
             "dojox/mobile/parser",
             "dojox/mobile",
             "dojox/mobile/ScrollableView",

@@ -33,13 +33,13 @@ function(html, screenClass, declare, mobile, domConstruct, registry, query, on, 
         this.updateTotal();
       },
       clearList: function(){
-        query('.cart-list',this.list).orphan();
+        query('.cart-list',this.list).forEach(domConstruct.destroy);
         this.listArray.length = 0;
       },
       addItem : function(quant, desc, price){
         var obj = {quant:quant, desc:desc, price:price};
         this.listArray.push(obj);
-        var item = new mobile.ListItem({class:'cart-list'});
+        var item = new mobile.ListItem({'class':'cart-list'});
         item.domNode.innerHTML = '<div class="cart-c3"></div>\
                                    <div class="cart-c2">'+Number(price).toFixed(2)+'</div>\
                                    <div class="cart-c1"><span>'+desc+'<\span></div>';
