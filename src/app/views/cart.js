@@ -21,31 +21,33 @@ function(html, screenClass, declare, mobile, domConstruct, registry, query, on, 
         this.view.on("BeforeTransitionIn",lang.hitch(this,function(){
           this.updateScreen();
         }));
+        
         this.DomList = query("ul",this.view.domNode)[0];
         this.DomFooter = query(".cart-footer", this.DomList)[0];
         this.DomTotal = query(".cart-total", this.DomFooter)[0];
+        list = registry.byNode(this.DomList);
+        list.startEdit();
       },
       updateScreen : function(){
         this.clearList();
-        this.addItem(2,'Vinho Sarget de Gruaud Larose 2005', 222.22, 0);
-        this.addItem(1,'Vinho Gruaud Larose 2005', 555.55, 0);
-        this.addItem(1,'Pão com banha', 1.25, 0);
+        this.addItem(2,'Vinho Sarget de Gruaud Larose 2005', 222.22);
+        this.addItem(1,'Vinho Gruaud Larose 2005', 555.55);
+        this.addItem(1,'Pão com banha', 1.25);
         this.updateTotal();
       },
       clearList: function(){
         query('.cart-list',this.list).forEach(domConstruct.destroy);
         this.listArray.length = 0;
       },
-      addItem : function(quant, desc, price, totalprice){
+      addItem : function(quant, desc, price){
         var item = new mobile.ListItem({'class':'cart-list'});
         item.domNode.innerHTML = '<div class="cart-quant"></div>\
-                                  <div class="cart-desc"><span>'+desc+'<\span></div>\
+                                  <div class="cart-desc"><span>'+desc+'</span></div>\
                                   <div class="cart-price-un">'+Number(price).toFixed(2)+'</div>\
-                                  <div class="cart-price-tot">'+Number(totalprice).toFixed(2)+'</div>'; /**/
+                                  <div class="cart-price-tot">'+Number(price*quant).toFixed(2)+'</div>'; /**/
         var obj = { quant:quant,
                     desc:desc,
                     price:price,
-                    totalprice:totalprice,
                     item:item };
         this.listArray.push(obj);
 

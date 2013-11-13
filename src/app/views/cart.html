@@ -1,26 +1,31 @@
 <div id="cart" data-dojo-type="dojox/mobile/ScrollableView">
   <h1 data-dojo-type="dojox/mobile/Heading"
-        data-dojo-props="label:'Pedido',
-                         fixed:'top'">
+      data-dojo-props="label:'Pedido',
+                       fixed:'top'">
   </h1>
 
   <div data-dojo-type = "dojox/mobile/RoundRect">
     <div class = "cart-center">
       <span>*Quantidade</span>
 
-      <!-- Title of the table -->
-      <ul data-dojo-type="dojox/mobile/RoundRectList">
+      
+      <ul data-dojo-type="dojox/mobile/RoundRectList" class="cart-edit"
+          data-dojo-props="editable:true">
+        <!-- Title of the table -->
         <li data-dojo-type="dojox/mobile/ListItem" class="cart-title">
           <div class="cart-quant">*</div>
           <div class="cart-desc">Descri&ccedil;&atilde;o</div>
           <div class="cart-price-un">R$ Un.</div>
-          <div class="cart-price-tot">R$ Tot.</div>
+          <div class="cart-price-tot">R$ Total</div>
         </li>
-
+        
         <!-- Lines of the table will be created dinamically in JS-->
 
         <!-- Footer of the table -->
         <li data-dojo-type="dojox/mobile/ListItem" class="cart-footer">
+          <div class="cart-button">
+            <button class="mblBlueButton" data-dojo-type="dojox/mobile/Button">Remover</button>
+          </div>
           <div class="cart-desc">TOTAL GERAL</div>
           <div class="cart-total">{%valortotal%}</div>
         </li>
