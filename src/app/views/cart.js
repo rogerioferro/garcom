@@ -86,9 +86,13 @@ function(html, screenClass, declare, mobile, domConstruct, registry, query, on, 
         item.placeAt(this.domFooter,"before");
 
         on(query('.mblListItemIcon',item.domNode)[0],"click",
-        lang.hitch(this,function(item,e){
+        lang.hitch(this,function(obj,e){
+          var item = obj.item;
+          var i = this.listArray.indexOf(obj);
+          this.listArray.splice(i,1);
           item.destroy();
-        },item));
+          this.updateTotal();
+        },obj));
 
       },
 
