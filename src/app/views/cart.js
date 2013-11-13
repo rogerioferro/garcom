@@ -23,11 +23,16 @@ function(html, screenClass, declare, mobile, domConstruct, registry, query, on, 
         }));
         this.nlList = query("ul",this.view.domNode);
         this.domList = this.nlList[0];
+        //this.list = registry.byNode(this.domList);
         this.domFooter = query(".cart-footer", this.domList)[0];
         this.domTotal = query(".cart-total", this.domFooter)[0];
         this.domButton = query('button',this.domFooter)[0];
         on(this.domButton,"click", lang.hitch(this,function(){
           this.nlList.toggleClass('cart-edit');
+          //~ for (var i = 0; i < this.listArray.length; i++){
+            //~ var item = this.listArray[i].item;
+            //~ item.set('icon','mblDomButtonRedCircleMinus');
+          //~ }
         }));
         
       },
@@ -43,7 +48,7 @@ function(html, screenClass, declare, mobile, domConstruct, registry, query, on, 
         this.listArray.length = 0;
       },
       addItem : function(quant, desc, price){
-        var item = new mobile.ListItem({'class':'cart-list'});
+        var item = new mobile.ListItem({'class':'cart-list','icon':'mblDomButtonRedCircleMinus'});
         item.domNode.innerHTML = '<div class="cart-quant"></div>\
                                   <div class="cart-desc"><span>'+desc+'</span></div>\
                                   <div class="cart-price-un">'+Number(price).toFixed(2)+'</div>\

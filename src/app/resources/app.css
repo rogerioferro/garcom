@@ -121,6 +121,20 @@ div.inner{
  top:2px;
 }
 
+.cart-list .mblListItemIcon {
+  display:none;
+}
+
+.cart-edit .mblListItemIcon{
+  display: inline-block;
+  line-height:normal;
+  position:absolute;
+  padding:0;
+  margin:0;
+  top:25px;
+  left:3px;
+}
+
 /*
  Button " + " and " - " table of cart
 */
@@ -131,6 +145,7 @@ div.inner{
 }
 .cart-edit .cart-quant{
   left:30px;
+  display:none;
 }
 
 /*
@@ -146,11 +161,6 @@ div.inner{
   padding-right:5px;
   border-left: 1px solid #c0c0c0;
 }
-
-.cart-edit .cart-desc{
-  left:65px;
-}
-
 
 /*
  Description table of cart
