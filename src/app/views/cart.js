@@ -21,12 +21,15 @@ function(html, screenClass, declare, mobile, domConstruct, registry, query, on, 
         this.view.on("BeforeTransitionIn",lang.hitch(this,function(){
           this.updateScreen();
         }));
+        this.nlList = query("ul",this.view.domNode);
+        this.domList = this.nlList[0];
+        this.domFooter = query(".cart-footer", this.domList)[0];
+        this.domTotal = query(".cart-total", this.domFooter)[0];
+        this.domButton = query('button',this.domFooter)[0];
+        on(this.domButton,"click", lang.hitch(this,function(){
+          this.nlList.toggleClass('cart-edit');
+        }));
         
-        this.DomList = query("ul",this.view.domNode)[0];
-        this.DomFooter = query(".cart-footer", this.DomList)[0];
-        this.DomTotal = query(".cart-total", this.DomFooter)[0];
-        list = registry.byNode(this.DomList);
-        list.startEdit();
       },
       updateScreen : function(){
         this.clearList();
@@ -73,7 +76,7 @@ function(html, screenClass, declare, mobile, domConstruct, registry, query, on, 
           obj.quant = val;
           this.updateTotal();
         },picker,obj));
-        item.placeAt(this.DomFooter,"before");
+        item.placeAt(this.domFooter,"before");
       },
 
       updateTotal : function(){
@@ -85,7 +88,7 @@ function(html, screenClass, declare, mobile, domConstruct, registry, query, on, 
           var dom = query('.cart-price-tot', obj.item.domNode)[0];
           dom.innerHTML =Number(line).toFixed(2); /*onde insere o valor na lista?*/
         }
-        this.DomTotal.innerHTML = 'R$ '+Number(total).toFixed(2);
+        this.domTotal.innerHTML = 'R$ '+Number(total).toFixed(2);
       }
   });
   return new myClass(html);
