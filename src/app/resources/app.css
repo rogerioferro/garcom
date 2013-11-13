@@ -104,6 +104,7 @@ div.inner{
   line-height:80px;
   font-weight:normal;
   background-color:#FFFDDF;
+  font-size: 14px;
 }
 
 .cart-list .mblValuePickerSlotInputArea{
@@ -120,7 +121,6 @@ div.inner{
  top:2px;
 }
 
-
 /*
  Button " + " and " - " table of cart
 */
@@ -129,19 +129,26 @@ div.inner{
   left:0px;
   width:35px;
 }
+.cart-edit .cart-quant{
+  left:30px;
+}
 
 /*
  Description table of cart
 */
 .cart-desc{
   position:absolute;
-  right:151px;
+  right:111px;
   left:35px;
   top:0px;
   bottom:0px;
   padding-left:5px;
   padding-right:5px;
   border-left: 1px solid #c0c0c0;
+}
+
+.cart-edit .cart-desc{
+  left:65px;
 }
 
 
@@ -181,6 +188,29 @@ div.inner{
   border-left: 1px solid #c0c0c0;
 }
 
+
+.cart-title>div{
+  text-align: center;
+}
+
+.cart-title .cart-price-un,
+.cart-title .cart-price-tot{
+  line-height: normal;
+}
+
+.cart-button{
+  position:absolute;
+  left:0px;
+  width:80px;
+}
+
+.cart-footer>.cart-desc{
+  text-align:right;
+  left:80px;
+  border-left:0;
+  padding-right:5px;
+}
+
 /*
  Total cart value table of cart
 */
@@ -192,18 +222,6 @@ div.inner{
   text-align:center;
 }
 
-.cart-title>div{
-  text-align: center;
-}
-
-.cart-title .cart-price-un,
-.cart-title .cart-price-tot{
-  line-height: normal;
-}
-
-.cart-footer>.cart-desc{
-  text-align:right;
-}
 
 .cart-footer, .cart-title{
   background-color: #85BFFE;
