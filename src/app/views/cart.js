@@ -9,8 +9,9 @@ define(["dojo/text!app/views/cart.html",
         "dijit/registry",
         "dojo/query",
         "dojo/on",
-        "dojo/_base/lang"],
-function(html, screenClass, declare, mobile, domConstruct, registry, query, on, lang){
+        "dojo/_base/lang",
+        "dojo/dom-class"],
+function(html, screenClass, declare, mobile, domConstruct, registry, query, on, lang, domClass){
   var myClass = declare(screenClass,{
       constructor : function(args){
         declare.safeMixin(this, args);
@@ -21,19 +22,20 @@ function(html, screenClass, declare, mobile, domConstruct, registry, query, on, 
         this.view.on("BeforeTransitionIn",lang.hitch(this,function(){
           this.updateScreen();
         }));
-        this.nlList = query("ul",this.view.domNode);
-        this.domList = this.nlList[0];
-        //this.list = registry.byNode(this.domList);
+        this.domList = query("ul",this.view.domNode)[0];
         this.domFooter = query(".cart-footer", this.domList)[0];
         this.domTotal = query(".cart-total", this.domFooter)[0];
         this.domButton = query('button',this.domFooter)[0];
         on(this.domButton,"click", lang.hitch(this,function(){
-          this.nlList.toggleClass('cart-edit');
-          //~ for (var i = 0; i < this.listArray.length; i++){
-            //~ var item = this.listArray[i].item;
-            //~ item.set('icon','mblDomButtonRedCircleMinus');
-          //~ }
+          domClass.toggle(this.domList,'cart-edit');
+          if(domClass.contains(this.domList,'cart-edit')){
+            this.domButton.innerHTML = "Ok";
+          }
+          else{
+            this.domButton.innerHTML = "Remover";
+          }
         }));
+        
         
       },
       updateScreen : function(){
@@ -82,6 +84,12 @@ function(html, screenClass, declare, mobile, domConstruct, registry, query, on, 
           this.updateTotal();
         },picker,obj));
         item.placeAt(this.domFooter,"before");
+
+        on(query('.mblListItemIcon',item.domNode)[0],"click",
+        lang.hitch(this,function(item,e){
+          item.destroy();
+        },item));
+
       },
 
       updateTotal : function(){
