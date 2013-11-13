@@ -49,6 +49,6 @@ function (has, require) {
 
 // device APIs are available
 function onDeviceReady() {
-
+  var db = window.openDatabase("test", "1.0", "Test DB", 1000000);
 }
 

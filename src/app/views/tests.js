@@ -1,30 +1,37 @@
 define(["dojo/text!app/views/tests.html",
         "app/screenClass",
+        "dojox/mobile",
+        "dojo/query",
         "dojo/_base/declare"],
-function(html, screenClass, declare){
-  var
-      myClass = declare(screenClass,{
-        constructor : function(args){
-          declare.safeMixin(this, args);
-        }
-      });
+function(html, screenClass, mobile, query, declare){
+  var myClass = declare(screenClass,{
+      constructor : function(args){
+        declare.safeMixin(this, args);
+      },
+
+      start : function(){
+        var roundRectList = new mobile.RoundRectList({
+            label: "RoundRectList",
+            id: "RoundRectList"
+        });
+
+        var listItem = new mobile.ListItem({
+          label:'Pizzas',
+          moveTo:'pizzas'
+        });
+        listItem.placeAt(roundRectList.domNode, "last");
+
+        listItem = new mobile.ListItem({
+          label:'Bebidas',
+          moveTo:'drinks'
+        });
+        listItem.placeAt(roundRectList.domNode, "last");
+
+        this.dom = query("#tests")[0];
+        roundRectList.placeAt(this.dom, "last");
+
+      }
+  });
 
   return new myClass(html);
-
-});
-
-define(["dojo/on", "dojo/dom", "dojo/dom-style", "dojo/mouse", "dojo/domReady!"],
-    function(on, dom, domStyle, mouse) {
-        var myButton = dom.byId("myButton"),
-            myDiv = dom.byId("myDiv");
-
-        on(myButton, "click", function(evt){
-            domStyle.set(myDiv, "backgroundColor", "blue");
-        });
-        on(myDiv, mouse.enter, function(evt){
-            domStyle.set(myDiv, "backgroundColor", "red");
-        });
-        on(myDiv, mouse.leave, function(evt){
-            domStyle.set(myDiv, "backgroundColor", "");
-        });
 });
