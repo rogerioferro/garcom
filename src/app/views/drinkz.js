@@ -1,4 +1,4 @@
-define(["dojo/text!app/views/tests.html",
+define(["dojo/text!app/views/drinkz.html",
         "app/screenClass",
         "dojox/mobile",
         "dojox/mobile/Heading",
@@ -15,35 +15,50 @@ function(html, screenClass, mobile, heading, domConstruct, window, declare){
 
         var rootNode = domConstruct.create("div", null, window.body());
 
-        var tests = new mobile.ScrollableView({id: 'tests'}, rootNode);
+        var drinkz = new mobile.ScrollableView({id: 'drinkz'}, rootNode);
 
         var heading1 = new heading({
-          label: "Tests",
+          label: "drinkz",
           fixed:'top',
           back:'Card&aacute;pio',
           moveTo:'menu'
         });
-        tests.addChild(heading1);
+        drinkz.addChild(heading1);
 
         var roundRectList = new mobile.RoundRectList({
             label: "RoundRectList"
         });
 
-        tests.addChild(roundRectList);
+        drinkz.addChild(roundRectList);
 
         var listItem = new mobile.ListItem({
-          label:'Pizzas',
-          moveTo:'pizzas'
+          label:"Sucos",
+          moveTo:"juices",
+          icon:"app/resources/img/juices_64.png",
+          rightIcon:"mblDomButtonBlueCircleArrow",
+          class: "menu-list"
         });
         roundRectList.addChild(listItem);
 
         listItem = new mobile.ListItem({
-          label:'Bebidas',
-          moveTo:'drinkz'
+          label:"Refrigerantes",
+          moveTo:"tests",
+          icon:"app/resources/img/sodas_64.png",
+          rightIcon:"mblDomButtonBlueCircleArrow",
+          class: "menu-list"
         });
         roundRectList.addChild(listItem);
 
-        tests.startup();
+        listItem = new mobile.ListItem({
+          label:"Cervejas",
+          moveTo:"tests",
+          icon:"app/resources/img/beers_64.png",
+          rightIcon:"mblDomButtonBlueCircleArrow",
+          class: "menu-list"
+        });
+        roundRectList.addChild(listItem);
+
+        drinkz.startup();
       }
   });
 
