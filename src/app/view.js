@@ -32,7 +32,7 @@ function(menu, pizzas, drinks, juices, login, cart, tests, footer,
                        juices.getHtml() +
                        login.getHtml() +
                        cart.getHtml() +
-                       tests.getHtml() +
+                       //~ tests.getHtml() +
                        footer.getHtml(); // show in all upper screens
     },
     show : function(viewId) {

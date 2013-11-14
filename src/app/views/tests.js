@@ -1,10 +1,11 @@
 define(["dojo/text!app/views/tests.html",
         "app/screenClass",
         "dojox/mobile",
-        "dojo/query",
         "dojox/mobile/Heading",
+        "dojo/dom-construct",
+        "dojo/_base/window",
         "dojo/_base/declare"],
-function(html, screenClass, mobile, query, heading, declare){
+function(html, screenClass, mobile, heading, domConstruct, window, declare){
   var myClass = declare(screenClass,{
       constructor : function(args){
         declare.safeMixin(this, args);
@@ -12,7 +13,10 @@ function(html, screenClass, mobile, query, heading, declare){
 
       start : function(){
 
-        var tests = new mobile.ScrollableView(null, "tests");
+        var rootNode = domConstruct.create("div", null, window.body());
+
+        var tests = new mobile.ScrollableView({id: 'tests'}, rootNode);
+
         var heading1 = new heading({
           label: "Tests",
           fixed:'top',
