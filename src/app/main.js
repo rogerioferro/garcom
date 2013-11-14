@@ -32,6 +32,7 @@ function (has, require) {
            "dojox/mobile/RadioButton",
            "dojox/mobile/GridLayout",
            "dojox/mobile/ValuePickerSlot",
+           "dojox/mobile/Heading",
            "dojo/domReady!"], // dojo/domReady! This "!" command waits finish the command (get ready). In this case make the programm waits to load the DOM
   function(mobileParser, view, query, on) {
     view.createDom();
