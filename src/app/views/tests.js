@@ -14,22 +14,22 @@ function(html, screenClass, mobile, query, declare){
             label: "RoundRectList",
             id: "RoundRectList"
         });
-        this.dom = query("#tests")[0];
-        roundRectList.placeAt(this.dom, "last");
 
         var listItem = new mobile.ListItem({
           label:'Pizzas',
           moveTo:'pizzas'
         });
-        this.roundRectList = query("#RoundRectList")[0];
-        listItem.placeAt(this.roundRectList, "last");
+        listItem.placeAt(roundRectList.domNode, "last");
 
-        var listItem = new mobile.ListItem({
+        listItem = new mobile.ListItem({
           label:'Bebidas',
           moveTo:'drinks'
         });
-        this.roundRectList = query("#RoundRectList")[0];
-        listItem.placeAt(this.roundRectList, "last");
+        listItem.placeAt(roundRectList.domNode, "last");
+
+        this.dom = query("#tests")[0];
+        roundRectList.placeAt(this.dom, "last");
+
       }
   });
 
