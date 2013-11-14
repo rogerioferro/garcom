@@ -12,9 +12,12 @@ function(html, screenClass, mobile, query, heading, declare){
 
       start : function(){
 
-        var tests = new View(null, "tests");
-        var heading1 = new Heading({
-          label: "Tests"
+        var tests = new mobile.ScrollableView(null, "tests");
+        var heading1 = new heading({
+          label: "Tests",
+          fixed:'top',
+          back:'Card&aacute;pio',
+          moveTo:'menu'
         });
         tests.addChild(heading1);
 
@@ -30,20 +33,14 @@ function(html, screenClass, mobile, query, heading, declare){
           moveTo:'pizzas'
         });
         roundRectList.addChild(listItem);
-        //~ listItem.placeAt(roundRectList.domNode, "last");
 
         listItem = new mobile.ListItem({
           label:'Bebidas',
           moveTo:'drinks'
         });
         roundRectList.addChild(listItem);
-        //~ listItem.placeAt(roundRectList.domNode, "last");
-
-        //~ this.dom = query("#tests")[0];
-        //~ roundRectList.placeAt(this.dom, "last");
 
         tests.startup();
-        tests.show();
       }
   });
 
