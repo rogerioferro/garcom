@@ -22,7 +22,7 @@ button:focus{
   outline:none;
 }
 
-div.inner{
+div.innerBox{
   border: 1px solid #c0c0c0;
   border-bottom-color: #9b9b9b;
   padding: 3px 10px;
@@ -66,20 +66,6 @@ div.inner{
   background-color: #b0d0ec;
 }
 
-.container-center {
-  margin: auto;
-  max-width: 400px;
-}
-
-.menu-list {
-  height : 72px;
-  line-height : 72px;
-}
-
-.login-label{
-  font-size: 14px;
-}
-
 .mblRoundRect{
   margin-left:0;
   margin-right:0;
@@ -87,10 +73,25 @@ div.inner{
   padding-right:0;
 }
 
-.mblRoundRectList{
+.center-content {
   margin-left:auto;
   margin-right:auto;
-  max-width:800px;
+  max-width:300px;
+}
+
+.center-container {
+  margin-left:auto;
+  margin-right:auto;
+  max-width:700px;
+}
+
+.login-label{
+  font-size: 14px;
+}
+
+.menu-list {
+  height : 72px;
+  line-height : 72px;
 }
 
 .cart-center {

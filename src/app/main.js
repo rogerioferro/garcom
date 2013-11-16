@@ -18,35 +18,15 @@
  * <http://dojotoolkit.org/reference-guide/loader/amd.html>.
  */
 
-
 app = {};
- define(['dojo/has', 'require'],
-function (has, require) {
-  require(["dojox/mobile/parser",
-           "app/view",
-           "dojox/mobile",
-           "dojox/mobile/ScrollableView",
-           "dojox/mobile/TabBar",
-           "dojox/mobile/TextBox",
-           "dojox/mobile/Button",
-           "dojox/mobile/RadioButton",
-           "dojox/mobile/GridLayout",
-           "dojox/mobile/ValuePickerSlot",
-           "dojox/mobile/Heading",
-           "dojo/dom-construct",
-           "dojo/_base/window",
-           "dojo/domReady!"], // dojo/domReady! This "!" command waits finish the command (get ready). In this case make the programm waits to load the DOM
-  function(mobileParser, view, query, on) {
-    view.createDom();
 
-    mobileParser.parse();
-
-    view.start();
-
-    app.view = view;
+define(["app/views/menu", //default view
+        "app/views/login",
+        "app/views/cart",
+        "app/views/footer"],
+function(menu,login,cart) {
     // Wait for device API libraries to load
     document.addEventListener("deviceready", onDeviceReady, false);
-  });
 });
 
 

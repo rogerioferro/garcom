@@ -57,30 +57,9 @@ var profile = {
           include: [
             //dojo module used in the project FROM Main.js
             "dojo/request/xhr",
-            "dojo/query",
-            "dojox/mobile/parser",
-            "dojox/mobile",
-            "dojox/mobile/ScrollableView",
-            "dojox/mobile/TabBar",
-            "dojox/mobile/TextBox",
-            "dojox/mobile/Button",
-            "dojox/mobile/RadioButton",
-            "dojox/mobile/GridLayout",
-            "dojox/mobile/ValuePickerSlot",
 
             //program
-            "app/run",
-            "app/main",
-            "app/view",
-            "app/screenClass",
-            //Views -> copy from view.js
-            "app/views/menu",
-            "app/views/pizzas",
-            "app/views/drinks",
-            "app/views/juices",
-            "app/views/login",
-            "app/views/cart",
-            "app/views/footer"
+            "app/run"
           ],
 
           // By default, the build system will try to include `dojo/main` in the built `dojo/dojo` layer, which adds
