@@ -15,10 +15,15 @@
     <feature name="NetworkStatus">
         <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
     </feature>
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+    </feature>
     <author email="rogerioferro@gmail.com" href="http://hcel.com.br">
         HCel Team
     </author>
     <content src="index.html" />
     <preference name="fullscreen" value="false" />
     <preference name="webviewbounce" value="true" />
+    <preference name="splashscreen" value="splash" />
+    <preference name="splashScreenDelay" value="60000" />
 </widget>

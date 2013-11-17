@@ -1,14 +1,64 @@
 define(["app/screenClass",
         "dojo/_base/declare",
-        "dojox/mobile/Heading"],
-function(screenClass, declare, mblHeading){
+        "dojox/mobile/Heading",
+        "dojox/mobile/RoundRect",
+        "dojox/mobile/Icon",
+        "dojox/mobile/ValuePickerSlot",
+        "dojox/mobile/TextBox",
+        "dojox/mobile/Button"],
+function(screenClass, declare,
+         mblHeading, mblRoundRect,
+         mblIcon, mblValuePickerSlot, mblTextBox, mblButton){
   var view = declare(screenClass,{
+
+    id : "cart",
+    
     createDom : function(){
       this.addFixedBar(
         new mblHeading({label : "Pedido", fixed : "top"}));
+
+      var rect = new mblRoundRect({'class':"center-container"});
+
+      var bt = new mblButton({'class':'mblIconButton', duration:200}).placeAt(rect.domNode);
+      new mblIcon({icon:"mblDomButtonGrayPlus"},bt.domNode);
+
+      new mblIcon({icon:"mblDomButtonTransparent19"},rect.domNode);
+      
+      
+      var bt = new mblButton({'class':'mblIconButton', duration:200}).placeAt(rect.domNode);
+      new mblIcon({icon:"mblDomButtonGrayMinus"},bt.domNode);
+
+      new mblValuePickerSlot().placeAt(rect.domNode);
+
+      new mblIcon({icon:"mblDomButtonBluePlus"},rect.domNode);
+      new mblIcon({icon:"mblDomButtonBlueMinus"},rect.domNode);
+      new mblIcon({icon:"mblDomButtonDarkBluePlus"},rect.domNode);
+      new mblIcon({icon:"mblDomButtonDarkBlueMinus"},rect.domNode);
+      new mblIcon({icon:"mblDomButtonRedPlus"},rect.domNode);
+      new mblIcon({icon:"mblDomButtonRedMinus"},rect.domNode);
+      new mblIcon({icon:"mblDomButtonGreyPlus"},rect.domNode);
+      new mblIcon({icon:"mblDomButtonGreyMinus"},rect.domNode);
+      new mblIcon({icon:"mblDomButtonWhitePlus"},rect.domNode);
+      new mblIcon({icon:"mblDomButtonWhiteMinus"},rect.domNode);
+      new mblIcon({icon:"mblDomButtonSilverCircleGrayButton"},rect.domNode);
+      new mblIcon({icon:"mblDomButtonSilverCircleOrangeButton"},rect.domNode);
+      new mblIcon({icon:"mblDomButtonSilverCircleGreenButton"},rect.domNode);
+
+      new mblIcon({icon:"mblDomButtonSilverCircleGreenPlus"},rect.domNode);
+      new mblIcon({icon:"mblDomButtonSilverCircleRedCross"},rect.domNode);
+
+      new mblIcon({icon:"mblDomButtonGrayKnob"},rect.domNode);
+
+      new mblIcon({icon:"mblDomButtonBlueCirclePlus"},rect.domNode);
+      new mblIcon({icon:"mblDomButtonBlueCircleMinus"},rect.domNode);
+      
+      new mblIcon({icon:"mblDomButtonYellowStar"},rect.domNode);
+
+      this.addChild(rect);        
     }
+    
   });
-  return new view({id:"cart"});
+  return new view({});
 });
 
 

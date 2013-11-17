@@ -18,7 +18,6 @@
  * <http://dojotoolkit.org/reference-guide/loader/amd.html>.
  */
 
-app = {};
 
 define(["app/views/menu", //default view
         "app/views/login",
@@ -27,11 +26,12 @@ define(["app/views/menu", //default view
 function(menu,login,cart) {
     // Wait for device API libraries to load
     document.addEventListener("deviceready", onDeviceReady, false);
+    // device APIs are available
+    function onDeviceReady() {
+      navigator.splashscreen.hide();
+      var db = window.openDatabase("test", "1.0", "Test DB", 1000000);
+    }
 });
 
 
-// device APIs are available
-function onDeviceReady() {
-  var db = window.openDatabase("test", "1.0", "Test DB", 1000000);
-}
 

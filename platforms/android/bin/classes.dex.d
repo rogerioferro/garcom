@@ -10,4 +10,5 @@
 /home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/bin/classes/org/apache/cordova/device/Device.class \
 /home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/bin/classes/org/apache/cordova/networkinformation/NetworkManager.class \
 /home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/bin/classes/org/apache/cordova/networkinformation/NetworkManager$1.class \
+/home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/bin/classes/org/apache/cordova/splashscreen/SplashScreen.class \
 /home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/bin/dexedLibs/cordova-3.1.0-59a3e72aac6e305461b84c177d4d92fd.jar \

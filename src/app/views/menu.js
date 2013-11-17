@@ -6,6 +6,9 @@ define(["app/screenClass",
 function(screenClass, declare,
          mblHeading, mblRoundRectList, mblListItem){
   var view = declare(screenClass,{
+
+    id : "menu",
+    
     createDom : function(){
       this.addFixedBar(
         new mblHeading({label : "Card&aacute;pio", fixed : "top"}));
@@ -24,5 +27,5 @@ function(screenClass, declare,
       new mblListItem({label:'Bebidas', moveTo:'drinks'}));
     }
   });
-  return new view({id:"menu"});
+  return new view();
 });

@@ -9,9 +9,13 @@ define(["app/screenClass",
 function(screenClass, declare, lang, domConstruct,
          mblHeading, mblRoundRect, mblTextBox, mblButton){
   var view = declare(screenClass,{
+    
+    id : "login",
+    
     createDom : function(){
       this.addFixedBar(
         new mblHeading({label : "Login", fixed : "top"}));
+        
       var rect = new mblRoundRect({'class':"center-container"});
 
       var innerBox = "<div class='innerBox'>";
@@ -52,6 +56,8 @@ function(screenClass, declare, lang, domConstruct,
       
       this.addChild(rect);
     }
+
+    
   });
-  return new view({id:"login"});
+  return new view();
 });

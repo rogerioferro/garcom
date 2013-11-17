@@ -8,7 +8,10 @@
 @import '../../dojox/mobile/themes/holodark/holodark.css';
 @import '../../dojox/mobile/themes/iphone/iphone.css';
 @import '../../dojox/mobile/themes/windows/windows.css';
+
+@import '../../dojox/mobile/themes/common/domButtons/DomButtonBlueBadge.css';
 */
+
 @import '../../dojox/mobile/themes/custom/custom.css';
 
 input:focus, input[type="password"]:focus,
@@ -34,13 +37,19 @@ div.innerBox{
   border: none;
 }
 
-.mblButton {
+.mblIconButton{
+  padding: 0;
+}
+.mblIconButtonSelected{
+  padding-top: 1px;
+  padding-left: 1px;
+}
+
+
+.mblBigButton {
   border-radius : 25px;
   margin-top:5px;
   margin-bottom:5px;
-}
-
-.mblBigButton {
   height: 50px;
   width:100%;
   font-weight: bold;
