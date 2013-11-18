@@ -1,17 +1,20 @@
 var menuObj = { 'menu':
-                    { 'head': "Card&aacute;pio", 'list': [
-                      {'icon': '...', 'label': 'Pizzas', 'moveTo': 'pizzas'},
-                      {'icon': '...', 'label': 'Bebidas', 'moveTo': 'drinks'} ]
+                    { 'head': {'label':"Card&aacute;pio"},
+                      'list': [
+                        {'icon': '...', 'label': 'Pizzas', 'moveTo': 'pizzas'},
+                        {'icon': '...', 'label': 'Bebidas', 'moveTo': 'drinks'} ]
                     },
                 'pizzas':
-                    { 'head': "Pizzas", 'list': [
-                       {'label':'pizzas 1', 'descr':'Descrição da pizza 1', 'moveTo': 'drinks'},
-                       {'label':'pizzas 2', 'descr':'Descrição da pizza 2', 'moveTo': 'drinks'}]
+                    { 'head' : { 'label':"Pizzas",'back':'Card&aacute;pio', 'moveTo':"menu"},
+                      'list': [
+                         {'label':'pizzas 1', 'descr':'Descrição da pizza 1'},
+                         {'label':'pizzas 2', 'descr':'Descrição da pizza 2'}]
                     },
                 'drinks':
-                    { 'head': "Bebidas", 'list': [
-                       {'label':'Sucos', 'descr':'Descrição da bebida 1', 'moveTo': 'drinks'},
-                       {'label':'Cerbejas', 'descr':'Descrição da bebida 2', 'moveTo': 'drinks'}]
+                    { 'head': {'label':"Bebidas", 'back':'Card&aacute;pio','moveTo':'menu'},
+                      'list': [
+                         {'label':'Sucos', 'descr':'Descrição da bebida 1'},
+                         {'label':'Cervejas', 'descr':'Descrição da bebida 2'}]
                     }
               };
 
@@ -24,28 +27,33 @@ function(screenClass, declare,
          mblHeading, mblRoundRectList, mblListItem){
     var view = declare(screenClass,{
 
+      viewData: {},
+      _setViewDataAttr: function(viewData){
+        this._set("viewData",viewData);
+      },
       createDom : function(){
-        menu = menuObj;
 
-        var node;
-        for (node in menu){
-          var page = menu[node];
-          var head = page.head || "Card&aacute;pio";
-          this.addFixedBar(
-            new mblHeading({label : head , fixed : "top"}));
+        var head_attr = this.viewData['head'] || {};
+        head_attr.label = head_attr.label || "Card&aacute;pio";
+        head_attr.fixed = head_attr.fixed || "top";
+        var head = new mblHeading(head_attr);
+        this.addFixedBar(head);
+        head.startup();
+        
+        var list = new mblRoundRectList({'class':"center-container"});
+        this.addChild(list);
 
-          var list = new mblRoundRectList({'class':"center-container"});
-          this.addChild(list);
+        var itemList = this.viewData['list'];
 
-          var memberList = page.list;
-          var member;
-          for (member in memberList){
-            list.addChild(
-              new mblListItem({label:member.label, moveTo: member.moveTo}));
-          }
-          //create the page in this point.
+        for( var i = 0; i < itemList.length; i++){
+          list.addChild(new mblListItem(itemList[i]));
         }
       }
   });
-  return new view();
+
+  var menu = menuObj;
+  for (var screen in menu){
+    new view({viewData:menu[screen], id:screen});
+  }
+  return;
 });
