@@ -104,11 +104,13 @@ div.innerBox{
   line-height : 72px;
 }
 
+/*
 .cart-center {
   margin: auto;
   max-width: 800px;
   padding:0;
 }
+*/
 
 .cart-list{
   height:80px;
@@ -247,6 +249,24 @@ div.innerBox{
 
 .cart-footer, .cart-title{
   background-color: #85BFFE;
+}
+
+
+.hcel-picker{
+
+}
+
+.hcel-picker, .hcel-picker-button-plus{
+}
+
+.hcel-picker, .hcel-picker-button-minus{
+}
+
+.hcel-picker, .hcel-picker-value{
+  font-size: 14px;
+  background-color:#FFFDDF;
+  border: 1px solid #c0c0c0;
+  border-bottom-color: #9b9b9b;
 }
 
 /* Gradient color
