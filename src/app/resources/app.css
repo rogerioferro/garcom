@@ -104,11 +104,13 @@ div.innerBox{
   line-height : 72px;
 }
 
+/*
 .cart-center {
   margin: auto;
   max-width: 800px;
   padding:0;
 }
+*/
 
 .cart-list{
   height:80px;

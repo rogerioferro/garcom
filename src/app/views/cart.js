@@ -1,17 +1,34 @@
+var MAX_VALUE = 99; /*MAX VALUE OF Picker*/
+
+var products = {
+  0 : {desc : "Vinho Sarget de Gruaud Larose 2005", price: 222.22},
+  1 : {desc : "Vinho Gruaud Larose 2005", price: 555.55},
+  2 : {desc : "Pão com banha", price: 1.25}
+};
+
 define(["app/screenClass",
         "dojo/_base/declare",
+        "dojo/_base/lang",        
+        "dojo/dom-construct",
+        "dojo/on",
+        "dojo/query",
+        "dojo/dom-class",
         "dojox/mobile/Heading",
         "dojox/mobile/RoundRect",
+        "dojox/mobile/RoundRectList",
+        "dojox/mobile/ListItem",
         "dojox/mobile/Icon",
         "dojox/mobile/ValuePickerSlot",
         "dojox/mobile/TextBox",
         "dojox/mobile/Button"],
-function(screenClass, declare,
-         mblHeading, mblRoundRect,
+function(screenClass, declare, lang, domConstruct, on, query, domClass,
+         mblHeading, mblRoundRect, mblRoundRectList, mblListItem,
          mblIcon, mblValuePickerSlot, mblTextBox, mblButton){
   var view = declare(screenClass,{
 
     id : "cart",
+
+    listArray : [],
     
     createDom : function(){
       this.addFixedBar(
@@ -19,159 +36,166 @@ function(screenClass, declare,
 
       var rect = new mblRoundRect({'class':"center-container"});
 
-      var bt = new mblButton({'class':'mblIconButton', duration:200}).placeAt(rect.domNode);
-      new mblIcon({icon:"mblDomButtonGrayPlus"},bt.domNode);
+      this.list = new mblRoundRectList().placeAt(rect.domNode);
 
-      new mblIcon({icon:"mblDomButtonTransparent19"},rect.domNode);
-      
-      
-      var bt = new mblButton({'class':'mblIconButton', duration:200}).placeAt(rect.domNode);
-      new mblIcon({icon:"mblDomButtonGrayMinus"},bt.domNode);
+      /*Title*/
+      this.title = new mblListItem({'class':"cart-title"});
+      this.title.domNode.innerHTML = '<div class="cart-quant">*</div><div class="cart-desc">Descri&ccedil;&atilde;o</div><div class="cart-price-un">R$ un.</div><div class="cart-price-tot">R$ Total</div>';
+      this.list.addChild(this.title);
 
-      new mblValuePickerSlot().placeAt(rect.domNode);
+      /*Footer*/
+      this.footer = new mblListItem({'class':"cart-footer"});
+      var div = domConstruct.create('div',{'class':'cart-button'},this.footer.domNode,'only');
+      var btn = new mblButton({'class':'mblBlueButton',label:'Remover'}).placeAt(div);
+      domConstruct.create('div',{'class':'cart-desc','innerHTML':'TOTAL GERAL:'},this.footer.domNode);
+      this.total = domConstruct.create('div',{'class':'cart-total','innerHTML':'R$'},this.footer.domNode);
+      this.list.addChild(this.footer);
 
-      new mblIcon({icon:"mblDomButtonBluePlus"},rect.domNode);
-      new mblIcon({icon:"mblDomButtonBlueMinus"},rect.domNode);
-      new mblIcon({icon:"mblDomButtonDarkBluePlus"},rect.domNode);
-      new mblIcon({icon:"mblDomButtonDarkBlueMinus"},rect.domNode);
-      new mblIcon({icon:"mblDomButtonRedPlus"},rect.domNode);
-      new mblIcon({icon:"mblDomButtonRedMinus"},rect.domNode);
-      new mblIcon({icon:"mblDomButtonGreyPlus"},rect.domNode);
-      new mblIcon({icon:"mblDomButtonGreyMinus"},rect.domNode);
-      new mblIcon({icon:"mblDomButtonWhitePlus"},rect.domNode);
-      new mblIcon({icon:"mblDomButtonWhiteMinus"},rect.domNode);
-      new mblIcon({icon:"mblDomButtonSilverCircleGrayButton"},rect.domNode);
-      new mblIcon({icon:"mblDomButtonSilverCircleOrangeButton"},rect.domNode);
-      new mblIcon({icon:"mblDomButtonSilverCircleGreenButton"},rect.domNode);
+      btn.on("click", lang.hitch(this,function(){
+        domClass.toggle(this.list.domNode,'cart-edit');
+        if(domClass.contains(this.list.domNode,'cart-edit')){
+          btn.set('label',"Ok");
+        }
+        else{
+          btn.set('label', "Remover");
+        }
+      }));
 
-      new mblIcon({icon:"mblDomButtonSilverCircleGreenPlus"},rect.domNode);
-      new mblIcon({icon:"mblDomButtonSilverCircleRedCross"},rect.domNode);
+      this.addItem(0);
+      this.addItem(1);
+      this.addItem(2);
+      this.updateTotal();
 
-      new mblIcon({icon:"mblDomButtonGrayKnob"},rect.domNode);
+      this.addChild(rect);
+    },
+    addItem : function(code, quant){
+      if( !products[code] || !products[code].desc || !products[code].price)
+        return;
+      quant = Number(quant) || 1;
+      desc = products[code].desc;
+      price = Number(products[code].price);
+      /*create a new item*/
+      var item = new mblListItem({'class':'cart-list'});
+      /*clear content...*/
+      item.containerNode.innerHTML = "";
+      /*insert icon element*/
+      var div_icon = domConstruct.create('div',
+                                          {'class':'mblListItemIcon'},
+                                          item.containerNode);
+      new mblIcon({icon:'mblDomButtonRedCircleMinus'}, div_icon);
+      /*insert quantity element*/
+      var div_quant = domConstruct.create('div',
+                                          {'class':'cart-quant'},
+                                          item.containerNode);
+      /*insert description element*/
+      domConstruct.create('div',
+                          {'class':'cart-desc',
+                           'innerHTML':'<span>'+desc},
+                          item.containerNode);
+      /*insert unit price element*/
+      domConstruct.create('div',
+                          {'class':'cart-price-un',
+                           'innerHTML':price.toFixed(2)},
+                          item.containerNode);
+      /*insert total price element*/
+      var div_price_tot =
+        domConstruct.create('div',
+                            {'class':'cart-price-tot',
+                             'innerHTML':(price*quant).toFixed(2)},
+                            item.containerNode);
 
-      new mblIcon({icon:"mblDomButtonBlueCirclePlus"},rect.domNode);
-      new mblIcon({icon:"mblDomButtonBlueCircleMinus"},rect.domNode);
-      
-      new mblIcon({icon:"mblDomButtonYellowStar"},rect.domNode);
+      var obj = { quant:quant,
+                  desc:desc,
+                  price:price,
+                  div_price_tot:div_price_tot,
+                  item:item };
+      this.listArray.push(obj);
 
-      this.addChild(rect);        
+      var picker = new mblValuePickerSlot({value:quant, labelFrom:1, labelTo:MAX_VALUE, readOnly:true});
+      picker.placeAt(div_quant);
+      on(query('.mblValuePickerSlotPlusButton',picker.domNode)[0],"click",
+      lang.hitch(this,function(picker,obj,e){
+        var val = Number(picker.get('value'));
+        if (val == 1){
+          val = MAX_VALUE;
+          picker.set('value',MAX_VALUE);
+        }
+        obj.quant = val;
+        this.updateTotal();
+      },picker,obj));
+      on(query('.mblValuePickerSlotMinusButton',picker.domNode)[0],"click",
+      lang.hitch(this,function(picker,e){
+        var val = Number(picker.get('value'));
+        if (val == MAX_VALUE){
+          val = 1;
+          picker.set('value',1);
+        }
+        obj.quant = val;
+        this.updateTotal();
+      },picker,obj));
+
+      on(div_icon,"click", lang.hitch(this,function(obj,e){
+        var item = obj.item;
+        var i = this.listArray.indexOf(obj);
+        this.listArray.splice(i,1);
+        item.destroy();
+        this.updateTotal();
+      },obj));
+
+      item.placeAt(this.footer.domNode,"before");
+
+    },
+    updateTotal : function(){
+      var total = 0;
+      for (var i = 0; i < this.listArray.length; i++){
+        var obj = this.listArray[i];
+        line = obj.quant * obj.price;
+        total += line;
+        //var dom = query('.cart-price-tot', obj.item.domNode)[0];
+        obj.div_price_tot.innerHTML =Number(line).toFixed(2); 
+      }
+      this.total.innerHTML = 'R$ '+Number(total).toFixed(2);
     }
     
   });
-  return new view({});
+  return new view();
 });
 
 
 
-//~ var MAX_VALUE = 99; /*MAX VALUE OF Picker*/
+      //~ var bt = new mblButton({'class':'mblIconButton', duration:200}).placeAt(rect.domNode);
+      //~ new mblIcon({icon:"mblDomButtonGrayPlus"},bt.domNode);
 //~ 
-//~ define(["dojo/text!app/views/cart.html",
-        //~ "app/screenClass",
-        //~ "dojo/_base/declare",
-        //~ "dojox/mobile",
-        //~ "dojo/dom-construct",
-        //~ "dijit/registry",
-        //~ "dojo/query",
-        //~ "dojo/on",
-        //~ "dojo/_base/lang",
-        //~ "dojo/dom-class"],
-//~ function(html, screenClass, declare, mobile, domConstruct, registry, query, on, lang, domClass){
-  //~ var myClass = declare(screenClass,{
-      //~ constructor : function(args){
-        //~ declare.safeMixin(this, args);
-      //~ },
-      //~ start : function(){
-        //~ this.listArray = [];
-        //~ this.view = registry.byId("cart");
-        //~ this.view.on("BeforeTransitionIn",lang.hitch(this,function(){
-          //~ this.updateScreen();
-        //~ }));
-        //~ this.domList = query("ul",this.view.domNode)[0];
-        //~ this.domFooter = query(".cart-footer", this.domList)[0];
-        //~ this.domTotal = query(".cart-total", this.domFooter)[0];
-        //~ this.domButton = query('button',this.domFooter)[0];
-        //~ on(this.domButton,"click", lang.hitch(this,function(){
-          //~ domClass.toggle(this.domList,'cart-edit');
-          //~ if(domClass.contains(this.domList,'cart-edit')){
-            //~ this.domButton.innerHTML = "Ok";
-          //~ }
-          //~ else{
-            //~ this.domButton.innerHTML = "Remover";
-          //~ }
-        //~ }));
-        //~ 
-        //~ 
-      //~ },
-      //~ updateScreen : function(){
-        //~ this.clearList();
-        //~ this.addItem(2,'Vinho Sarget de Gruaud Larose 2005', 222.22);
-        //~ this.addItem(1,'Vinho Gruaud Larose 2005', 555.55);
-        //~ this.addItem(1,'Pão com banha', 1.25);
-        //~ this.updateTotal();
-      //~ },
-      //~ clearList: function(){
-        //~ query('.cart-list',this.list).forEach(domConstruct.destroy);
-        //~ this.listArray.length = 0;
-      //~ },
-      //~ addItem : function(quant, desc, price){
-        //~ var item = new mobile.ListItem({'class':'cart-list','icon':'mblDomButtonRedCircleMinus'});
-        //~ item.domNode.innerHTML = '<div class="cart-quant"></div>\
-                                  //~ <div class="cart-desc"><span>'+desc+'</span></div>\
-                                  //~ <div class="cart-price-un">'+Number(price).toFixed(2)+'</div>\
-                                  //~ <div class="cart-price-tot">'+Number(price*quant).toFixed(2)+'</div>';
-        //~ var obj = { quant:quant,
-                    //~ desc:desc,
-                    //~ price:price,
-                    //~ item:item };
-        //~ this.listArray.push(obj);
+      //~ new mblIcon({icon:"mblDomButtonTransparent19"},rect.domNode);
+      //~ 
+      //~ 
+      //~ var bt = new mblButton({'class':'mblIconButton', duration:200}).placeAt(rect.domNode);
+      //~ new mblIcon({icon:"mblDomButtonGrayMinus"},bt.domNode);
 //~ 
-        //~ var picker = new mobile.ValuePickerSlot({value:quant, labelFrom:1, labelTo:MAX_VALUE, readOnly:true});
-        //~ picker.placeAt(query(".cart-quant", item.domNode)[0]);
-        //~ on(query('.mblValuePickerSlotPlusButton',picker.domNode)[0],"click",
-        //~ lang.hitch(this,function(picker,obj,e){
-          //~ var val = Number(picker.get('value'));
-          //~ if (val == 1){
-            //~ val = MAX_VALUE;
-            //~ picker.set('value',MAX_VALUE);
-          //~ }
-          //~ obj.quant = val;
-          //~ this.updateTotal();
-        //~ },picker,obj));
-        //~ on(query('.mblValuePickerSlotMinusButton',picker.domNode)[0],"click",
-        //~ lang.hitch(this,function(picker,e){
-          //~ var val = Number(picker.get('value'));
-          //~ if (val == MAX_VALUE){
-            //~ val = 1;
-            //~ picker.set('value',1);
-          //~ }
-          //~ obj.quant = val;
-          //~ this.updateTotal();
-        //~ },picker,obj));
-        //~ item.placeAt(this.domFooter,"before");
+      //~ new mblValuePickerSlot().placeAt(rect.domNode);
 //~ 
-        //~ on(query('.mblListItemIcon',item.domNode)[0],"click",
-        //~ lang.hitch(this,function(obj,e){
-          //~ var item = obj.item;
-          //~ var i = this.listArray.indexOf(obj);
-          //~ this.listArray.splice(i,1);
-          //~ item.destroy();
-          //~ this.updateTotal();
-        //~ },obj));
+      //~ new mblIcon({icon:"mblDomButtonBluePlus"},rect.domNode);
+      //~ new mblIcon({icon:"mblDomButtonBlueMinus"},rect.domNode);
+      //~ new mblIcon({icon:"mblDomButtonDarkBluePlus"},rect.domNode);
+      //~ new mblIcon({icon:"mblDomButtonDarkBlueMinus"},rect.domNode);
+      //~ new mblIcon({icon:"mblDomButtonRedPlus"},rect.domNode);
+      //~ new mblIcon({icon:"mblDomButtonRedMinus"},rect.domNode);
+      //~ new mblIcon({icon:"mblDomButtonGreyPlus"},rect.domNode);
+      //~ new mblIcon({icon:"mblDomButtonGreyMinus"},rect.domNode);
+      //~ new mblIcon({icon:"mblDomButtonWhitePlus"},rect.domNode);
+      //~ new mblIcon({icon:"mblDomButtonWhiteMinus"},rect.domNode);
+      //~ new mblIcon({icon:"mblDomButtonSilverCircleGrayButton"},rect.domNode);
+      //~ new mblIcon({icon:"mblDomButtonSilverCircleOrangeButton"},rect.domNode);
+      //~ new mblIcon({icon:"mblDomButtonSilverCircleGreenButton"},rect.domNode);
 //~ 
-      //~ },
+      //~ new mblIcon({icon:"mblDomButtonSilverCircleGreenPlus"},rect.domNode);
+      //~ new mblIcon({icon:"mblDomButtonSilverCircleRedCross"},rect.domNode);
 //~ 
-      //~ updateTotal : function(){
-        //~ var total = 0;
-        //~ for (var i = 0; i < this.listArray.length; i++){
-          //~ var obj = this.listArray[i];
-          //~ line = obj.quant * obj.price;
-          //~ total += line;
-          //~ var dom = query('.cart-price-tot', obj.item.domNode)[0];
-          //~ dom.innerHTML =Number(line).toFixed(2); /*onde insere o valor na lista?*/
-        //~ }
-        //~ this.domTotal.innerHTML = 'R$ '+Number(total).toFixed(2);
-      //~ }
-  //~ });
-  //~ return new myClass(html);
-//~ });
+      //~ new mblIcon({icon:"mblDomButtonGrayKnob"},rect.domNode);
 //~ 
+      //~ new mblIcon({icon:"mblDomButtonBlueCirclePlus"},rect.domNode);
+      //~ new mblIcon({icon:"mblDomButtonBlueCircleMinus"},rect.domNode);
+      //~ 
+      //~ new mblIcon({icon:"mblDomButtonYellowStar"},rect.domNode);
+
+
