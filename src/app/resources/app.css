@@ -251,6 +251,24 @@ div.innerBox{
   background-color: #85BFFE;
 }
 
+
+.hcel-picker{
+
+}
+
+.hcel-picker, .hcel-picker-button-plus{
+}
+
+.hcel-picker, .hcel-picker-button-minus{
+}
+
+.hcel-picker, .hcel-picker-value{
+  font-size: 14px;
+  background-color:#FFFDDF;
+  border: 1px solid #c0c0c0;
+  border-bottom-color: #9b9b9b;
+}
+
 /* Gradient color
   background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#cbcc68), color-stop(0.5, #f5f6cb), to(#cbcc68));
   background-image: linear-gradient(to bottom, #cbcc68 0%, #f5f6cb 50%, #cbcc68 100%);

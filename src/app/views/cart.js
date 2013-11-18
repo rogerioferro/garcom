@@ -62,8 +62,9 @@ function(screenClass, declare, lang, domConstruct, on, query, domClass,
       }));
 
       this.addItem(0);
-      this.addItem(1);
+      this.addItem(1,2);
       this.addItem(2);
+      this.addItem(2,3);
       this.updateTotal();
 
       this.addChild(rect);
@@ -71,7 +72,18 @@ function(screenClass, declare, lang, domConstruct, on, query, domClass,
     addItem : function(code, quant){
       if( !products[code] || !products[code].desc || !products[code].price)
         return;
+        
       quant = Number(quant) || 1;
+
+      for(var i=0; i < this.listArray.length; i++){
+        var obj = this.listArray[i];
+        if (obj.code == code){
+          var q = Number(obj.picker.get('value')) + quant;
+          obj.picker.set('value',q);
+          return;
+        }
+      }
+      
       desc = products[code].desc;
       price = Number(products[code].price);
       /*create a new item*/
@@ -104,15 +116,18 @@ function(screenClass, declare, lang, domConstruct, on, query, domClass,
                              'innerHTML':(price*quant).toFixed(2)},
                             item.containerNode);
 
-      var obj = { quant:quant,
-                  desc:desc,
-                  price:price,
-                  div_price_tot:div_price_tot,
-                  item:item };
-      this.listArray.push(obj);
 
       var picker = new mblValuePickerSlot({value:quant, labelFrom:1, labelTo:MAX_VALUE, readOnly:true});
       picker.placeAt(div_quant);
+
+      var obj = { code:code,
+                  desc:desc,
+                  price:price,
+                  div_price_tot:div_price_tot,
+                  picker:picker,
+                  item:item };
+      this.listArray.push(obj);
+
       on(query('.mblValuePickerSlotPlusButton',picker.domNode)[0],"click",
       lang.hitch(this,function(picker,obj,e){
         var val = Number(picker.get('value'));
@@ -120,7 +135,6 @@ function(screenClass, declare, lang, domConstruct, on, query, domClass,
           val = MAX_VALUE;
           picker.set('value',MAX_VALUE);
         }
-        obj.quant = val;
         this.updateTotal();
       },picker,obj));
       on(query('.mblValuePickerSlotMinusButton',picker.domNode)[0],"click",
@@ -130,7 +144,6 @@ function(screenClass, declare, lang, domConstruct, on, query, domClass,
           val = 1;
           picker.set('value',1);
         }
-        obj.quant = val;
         this.updateTotal();
       },picker,obj));
 
@@ -149,9 +162,9 @@ function(screenClass, declare, lang, domConstruct, on, query, domClass,
       var total = 0;
       for (var i = 0; i < this.listArray.length; i++){
         var obj = this.listArray[i];
-        line = obj.quant * obj.price;
+        var quant = Number(obj.picker.get('value'));
+        var line = quant * obj.price;
         total += line;
-        //var dom = query('.cart-price-tot', obj.item.domNode)[0];
         obj.div_price_tot.innerHTML =Number(line).toFixed(2); 
       }
       this.total.innerHTML = 'R$ '+Number(total).toFixed(2);
@@ -160,6 +173,8 @@ function(screenClass, declare, lang, domConstruct, on, query, domClass,
   });
   return new view();
 });
+
+
 
 
 
