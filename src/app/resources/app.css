@@ -269,6 +269,7 @@ div.innerBox{
   border-bottom-color: #9b9b9b;
 }
 
+
 /* Gradient color
   background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#cbcc68), color-stop(0.5, #f5f6cb), to(#cbcc68));
   background-image: linear-gradient(to bottom, #cbcc68 0%, #f5f6cb 50%, #cbcc68 100%);
