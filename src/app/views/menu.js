@@ -1,5 +1,5 @@
 var menuObj = {'screens': { 'menu':
-                                { 'head': {'label':"Card&aacute;pio"},                                  
+                                { 'head': {'label':"Card&aacute;pio"},
                                   'list': [
                                     {'icon': 'mblDomButtonHcelPizzas', 'label': 'Pizzas', 'moveTo': 'pizzas'},
                                     {'icon': 'mblDomButtonHcelDrinks', 'label': 'Bebidas', 'moveTo': 'drinks'}]
@@ -8,10 +8,10 @@ var menuObj = {'screens': { 'menu':
                                 { 'head' : { 'label':"Pizzas",'back':'Card&aacute;pio', 'moveTo':"menu"},
                                   'select':true,
                                   'list': [
-                                     {'label':'Calabresa',    'cod':1, 'icon': 'mblDomButtonHcelPizzas', 'descr':'Pizza com calabresa e queijo muzzarela'},
-                                     {'label':'Peperoni',     'cod':2, 'icon': 'mblDomButtonHcelPizzas', 'descr':'Pizza com Peperoni (calabresa apimentada) e queijo muzzarela'},
-                                     {'label':'Milho',        'cod':3, 'icon': 'mblDomButtonHcelPizzas', 'descr':'Pizza com milho e queijo muzzarela'},
-                                     {'label':'Moda da Casa', 'cod':4, 'icon': 'mblDomButtonHcelPizzas', 'descr':'Pizza com queijo muzzarela, mignon, cebola, champignon e páprica'}]
+                                     {'label':'Calabresa',    'cod':1, 'icon': 'mblDomButtonHcelPizzas', 'descr':'Pizza com calabresa e queijo muzzarela', 'rightText':'18,00'},
+                                     {'label':'Peperoni',     'cod':2, 'icon': 'mblDomButtonHcelPizzas', 'descr':'Pizza com Peperoni (calabresa apimentada) e queijo muzzarela', 'rightText':'20,00'},
+                                     {'label':'Milho',        'cod':3, 'icon': 'mblDomButtonHcelPizzas', 'descr':'Pizza com milho e queijo muzzarela', 'rightText':'15,00'},
+                                     {'label':'Moda da Casa', 'cod':4, 'icon': 'mblDomButtonHcelPizzas', 'descr':'Pizza com queijo muzzarela, mignon, cebola, champignon e páprica', 'rightText':'18,00'}]
                                 },
                             'drinks':
                                 { 'head': {'label':"Bebidas", 'back':'Card&aacute;pio','moveTo':'menu'},
@@ -24,9 +24,9 @@ var menuObj = {'screens': { 'menu':
                                 { 'head': {'label':"Sucos", 'back':'Bebidas','moveTo':'drinks'},
                                   'select':true,
                                   'list': [
-                                     {'label':'Abacaxi',      'cod':11, 'icon': 'mblDomButtonHcelDrinksJuicesPineapple'},
-                                     {'label':'Laranja',      'cod':12, 'icon': 'mblDomButtonHcelDrinksJuicesOrange'},
-                                     {'label':'Lim&atilde;o', 'cod':13, 'icon': 'mblDomButtonHcelDrinksJuicesLemon'}]
+                                     {'label':'Abacaxi',      'cod':11, 'icon': 'mblDomButtonHcelDrinksJuicesPineapple', 'rightText':'3,50'},
+                                     {'label':'Laranja',      'cod':12, 'icon': 'mblDomButtonHcelDrinksJuicesOrange', 'rightText':'3,50'},
+                                     {'label':'Lim&atilde;o', 'cod':13, 'icon': 'mblDomButtonHcelDrinksJuicesLemon', 'rightText':'3,50'}]
                                 }
               },
               'images': [
@@ -60,6 +60,7 @@ function(screenClass, declare, styles,
       },
       createDom : function(){
 
+        /*Head creation*/
         var head_attr = this.viewData['head'] || {};
         head_attr.label = head_attr.label || "Card&aacute;pio";
         head_attr.fixed = head_attr.fixed || "top";
@@ -67,6 +68,7 @@ function(screenClass, declare, styles,
         this.addFixedBar(head);
         head.startup();
 
+        /*RoundRectList creation*/
         var list_attr = {'class':"center-container"};
         if (this.viewData['select']) list_attr.select = 'multiple';
         var list = new mblRoundRectList(list_attr);
@@ -74,6 +76,7 @@ function(screenClass, declare, styles,
 
         var itemList = this.viewData['list'];
 
+        /*List Item add*/
         for( var i = 0; i < itemList.length; i++){
           itemList[i]['class'] = 'menu-list';
           list.addChild(new mblListItem(itemList[i]));
@@ -91,7 +94,7 @@ function(screenClass, declare, styles,
     var url = img.url;
     var width = img.width || '64px';
     var height = img.height || '64px';
-    
+
     styles.insertCssRule('.'+name,
         'width:'+width+';height:'+height+';background-image:'+url);
   }
