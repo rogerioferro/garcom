@@ -1,22 +1,24 @@
 var menuObj = { 'menu':
                     { 'head': {'label':"Card&aacute;pio"},
                       'list': [
+                        {'icon': '...','label': 'Pizzas', 'moveTo': 'pizzas'},
                         {'icon': 'mblDomButtonHcelImage',
-                          'variableHeight' : true,
-                          'label': 'Pizzas', 'moveTo': 'pizzas'},
-                        {'icon': '...', 'label': 'Bebidas', 'moveTo': 'drinks'} ]
+                          'variableHeight' : true, 'label': 'Bebidas', 'moveTo': 'drinks'} ]
                     },
                 'pizzas':
                     { 'head' : { 'label':"Pizzas",'back':'Card&aacute;pio', 'moveTo':"menu"},
                       'list': [
-                         {'label':'pizzas 1', 'descr':'Descrição da pizza 1'},
-                         {'label':'pizzas 2', 'descr':'Descrição da pizza 2'}]
+                         {'label':'Calabresa', 'descr':'Descrição da pizza 1', 'cod':1},
+                         {'label':'Peperoni', 'descr':'Descrição da pizza 1', 'cod':2},
+                         {'label':'Milho', 'descr':'Descrição da pizza 1', 'cod':3},
+                         {'label':'Moda da Casa', 'descr':'Descrição da pizza 2', 'cod':4}]
                     },
                 'drinks':
                     { 'head': {'label':"Bebidas", 'back':'Card&aacute;pio','moveTo':'menu'},
                       'list': [
-                         {'label':'Sucos', 'descr':'Descrição da bebida 1'},
-                         {'label':'Cervejas', 'descr':'Descrição da bebida 2'}]
+                         {'label':'Sucos', 'descr':'Descrição da bebida 1', 'cod':10},
+                         {'label':'Refrigerantes', 'descr':'Descrição da bebida 1', 'cod':11},
+                         {'label':'Cervejas', 'descr':'Descrição da bebida 2', 'cod':12}]
                     }
               };
 
@@ -42,7 +44,7 @@ function(screenClass, declare, styles,
         var head = new mblHeading(head_attr);
         this.addFixedBar(head);
         head.startup();
-        
+
         var list = new mblRoundRectList({'class':"center-container"});
         this.addChild(list);
 
