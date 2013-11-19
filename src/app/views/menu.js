@@ -75,7 +75,7 @@ function(screenClass, declare, styles,
         var itemList = this.viewData['list'];
 
         for( var i = 0; i < itemList.length; i++){
-          itemList[i].class = 'menu-list';
+          itemList[i]['class'] = 'menu-list';
           list.addChild(new mblListItem(itemList[i]));
         }
       }
