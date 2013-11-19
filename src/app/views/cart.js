@@ -8,7 +8,7 @@ var products = {
 
 define(["app/screenClass",
         "dojo/_base/declare",
-        "dojo/_base/lang",        
+        "dojo/_base/lang",
         "dojo/dom-construct",
         "dojo/on",
         "dojo/query",
@@ -17,13 +17,12 @@ define(["app/screenClass",
         "dojox/mobile/RoundRect",
         "dojox/mobile/RoundRectList",
         "dojox/mobile/ListItem",
+        "app/picker",
         "dojox/mobile/Icon",
-        "dojox/mobile/ValuePickerSlot",
-        "dojox/mobile/TextBox",
         "dojox/mobile/Button"],
 function(screenClass, declare, lang, domConstruct, on, query, domClass,
-         mblHeading, mblRoundRect, mblRoundRectList, mblListItem,
-         mblIcon, mblValuePickerSlot, mblTextBox, mblButton){
+         mblHeading, mblRoundRect, mblRoundRectList, mblListItem, hcelPicker,
+         mblIcon, mblButton){
   var view = declare(screenClass,{
 
     id : "cart",
@@ -36,7 +35,8 @@ function(screenClass, declare, lang, domConstruct, on, query, domClass,
 
       var rect = new mblRoundRect({'class':"center-container"});
 
-      this.list = new mblRoundRectList().placeAt(rect.domNode);
+      this.list = new mblRoundRectList({'class':"center-container"})
+        .placeAt(rect.domNode);
 
       /*Title*/
       this.title = new mblListItem({'class':"cart-title"});
@@ -68,6 +68,7 @@ function(screenClass, declare, lang, domConstruct, on, query, domClass,
       this.updateTotal();
 
       this.addChild(rect);
+
     },
     addItem : function(code, quant){
       if( !products[code] || !products[code].desc || !products[code].price)
@@ -117,8 +118,12 @@ function(screenClass, declare, lang, domConstruct, on, query, domClass,
                             item.containerNode);
 
 
-      var picker = new mblValuePickerSlot({value:quant, labelFrom:1, labelTo:MAX_VALUE, readOnly:true});
+      //var picker = new mblValuePickerSlot({value:quant, labelFrom:1, labelTo:MAX_VALUE, readOnly:true});
+      var picker = new hcelPicker({value:quant, minValue:1, maxValue:99});
       picker.placeAt(div_quant);
+      picker.on("change",lang.hitch(this,function(value){
+        this.updateTotal();
+      }));
 
       var obj = { code:code,
                   desc:desc,
@@ -128,24 +133,24 @@ function(screenClass, declare, lang, domConstruct, on, query, domClass,
                   item:item };
       this.listArray.push(obj);
 
-      on(query('.mblValuePickerSlotPlusButton',picker.domNode)[0],"click",
-      lang.hitch(this,function(picker,obj,e){
-        var val = Number(picker.get('value'));
-        if (val == 1){
-          val = MAX_VALUE;
-          picker.set('value',MAX_VALUE);
-        }
-        this.updateTotal();
-      },picker,obj));
-      on(query('.mblValuePickerSlotMinusButton',picker.domNode)[0],"click",
-      lang.hitch(this,function(picker,e){
-        var val = Number(picker.get('value'));
-        if (val == MAX_VALUE){
-          val = 1;
-          picker.set('value',1);
-        }
-        this.updateTotal();
-      },picker,obj));
+      //~ on(query('.mblValuePickerSlotPlusButton',picker.domNode)[0],"click",
+      //~ lang.hitch(this,function(picker,obj,e){
+        //~ var val = Number(picker.get('value'));
+        //~ if (val == 1){
+          //~ val = MAX_VALUE;
+          //~ picker.set('value',MAX_VALUE);
+        //~ }
+        //~ this.updateTotal();
+      //~ },picker,obj));
+      //~ on(query('.mblValuePickerSlotMinusButton',picker.domNode)[0],"click",
+      //~ lang.hitch(this,function(picker,e){
+        //~ var val = Number(picker.get('value'));
+        //~ if (val == MAX_VALUE){
+          //~ val = 1;
+          //~ picker.set('value',1);
+        //~ }
+        //~ this.updateTotal();
+      //~ },picker,obj));
 
       on(div_icon,"click", lang.hitch(this,function(obj,e){
         var item = obj.item;

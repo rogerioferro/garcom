@@ -13,6 +13,8 @@
 */
 
 @import '../../dojox/mobile/themes/custom/custom.css';
+@import './widget/picker.css';
+
 
 input:focus, input[type="password"]:focus,
 input[type="text"]:focus,
@@ -104,14 +106,6 @@ div.innerBox{
   line-height : 72px;
 }
 
-/*
-.cart-center {
-  margin: auto;
-  max-width: 800px;
-  padding:0;
-}
-*/
-
 .cart-list{
   height:80px;
   line-height:80px;
@@ -120,18 +114,11 @@ div.innerBox{
   font-size: 14px;
 }
 
-.cart-list .mblValuePickerSlotInputArea{
-  height: 20px;
+.cart-list .hcelPickerButton{
+ height : 30px;
 }
-.cart-list .mblValuePickerSlotInput{
-  font-size: 14px;
-  background-color:#FFFDDF;
-}
-.cart-list .mblValuePickerSlotButton{
-  height: 30px;
-}
-.cart-list .mblValuePickerSlotIcon{
- top:2px;
+.cart-list .hcelPickerValue{
+  height: 16px;
 }
 
 .cart-list .mblListItemIcon {
@@ -252,22 +239,6 @@ div.innerBox{
 }
 
 
-.hcel-picker{
-
-}
-
-.hcel-picker, .hcel-picker-button-plus{
-}
-
-.hcel-picker, .hcel-picker-button-minus{
-}
-
-.hcel-picker, .hcel-picker-value{
-  font-size: 14px;
-  background-color:#FFFDDF;
-  border: 1px solid #c0c0c0;
-  border-bottom-color: #9b9b9b;
-}
 
 
 /* Gradient color

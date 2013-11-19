@@ -55,9 +55,6 @@ function(screenClass, declare, styles,
     var view = declare(screenClass,{
 
       viewData: {},
-      _setViewDataAttr: function(viewData){
-        this._set("viewData",viewData);
-      },
       createDom : function(){
 
         /*Head creation*/

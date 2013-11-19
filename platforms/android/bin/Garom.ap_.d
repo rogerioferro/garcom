@@ -40,8 +40,10 @@
 /home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/assets/www/plugins/org.apache.cordova.device/www \
 /home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/assets/www/plugins/org.apache.cordova.device/www/device.js \
 /home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/assets/www/app/resources \
+/home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/assets/www/app/resources/widget \
 /home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/assets/www/app/resources/app.css \
 /home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/assets/www/app/resources/img \
+/home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/assets/www/app/resources/widget/picker.css \
 /home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/assets/www/app/resources/img/juices_64.png \
 /home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/assets/www/app/resources/img/orange_64.png \
 /home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/assets/www/app/resources/img/sodas_64.png \
