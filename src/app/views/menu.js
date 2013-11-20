@@ -8,25 +8,25 @@ var menuObj = {'screens': { 'menu':
                                 { 'head' : { 'label':"Pizzas",'back':'Card&aacute;pio', 'moveTo':"menu"},
                                   'select':true,
                                   'list': [
-                                     {'label':'Calabresa',    'cod':1, 'icon': 'mblDomButtonHcelPizzas', 'descr':'Pizza com calabresa e queijo muzzarela', 'rightText':'18,00'},
-                                     {'label':'Peperoni',     'cod':2, 'icon': 'mblDomButtonHcelPizzas', 'descr':'Pizza com Peperoni (calabresa apimentada) e queijo muzzarela', 'rightText':'20,00'},
-                                     {'label':'Milho',        'cod':3, 'icon': 'mblDomButtonHcelPizzas', 'descr':'Pizza com milho e queijo muzzarela', 'rightText':'15,00'},
-                                     {'label':'Moda da Casa', 'cod':4, 'icon': 'mblDomButtonHcelPizzas', 'descr':'Pizza com queijo muzzarela, mignon, cebola, champignon e páprica', 'rightText':'18,00'}]
+                                     {'cod':1,  'codCli':11,  'label':'Calabresa',     'rightText':'18,00',  'icon': 'mblDomButtonHcelPizzas', 'descr':'Pizza com calabresa e queijo muzzarela'},
+                                     {'cod':2,  'codCli':22,  'label':'Peperoni',      'rightText':'20,00',  'icon': 'mblDomButtonHcelPizzas', 'descr':'Pizza com Peperoni (calabresa apimentada) e queijo muzzarela'},
+                                     {'cod':3,  'codCli':33,  'label':'Milho',         'rightText':'16,00',  'icon': 'mblDomButtonHcelPizzas', 'descr':'Pizza com milho e queijo muzzarela'},
+                                     {'cod':4,  'codCli':44,  'label':'Moda da Casa',  'rightText':'18,00',  'icon': 'mblDomButtonHcelPizzas', 'descr':'Pizza com queijo muzzarela, mignon, cebola, champignon e páprica'}]
                                 },
                             'drinks':
                                 { 'head': {'label':"Bebidas", 'back':'Card&aacute;pio','moveTo':'menu'},
                                   'list': [
-                                     {'label':'Sucos',          'cod':10, 'moveTo': 'juices', 'icon': 'mblDomButtonHcelDrinksJuices'},
-                                     {'label':'Refrigerantes',  'cod':20, 'icon': 'mblDomButtonHcelDrinksSodas'},
-                                     {'label':'Cervejas',       'cod':30, 'icon': 'mblDomButtonHcelDrinksBeers'}]
+                                     {'cod':10, 'label':'Sucos',           'moveTo': 'juices',  'icon': 'mblDomButtonHcelDrinksJuices'},
+                                     {'cod':20, 'label':'Refrigerantes',                        'icon': 'mblDomButtonHcelDrinksSodas'},
+                                     {'cod':30, 'label':'Cervejas',                             'icon': 'mblDomButtonHcelDrinksBeers'}]
                                 },
                             'juices':
                                 { 'head': {'label':"Sucos", 'back':'Bebidas','moveTo':'drinks'},
                                   'select':true,
                                   'list': [
-                                     {'label':'Abacaxi',      'cod':11, 'icon': 'mblDomButtonHcelDrinksJuicesPineapple', 'rightText':'3,50'},
-                                     {'label':'Laranja',      'cod':12, 'icon': 'mblDomButtonHcelDrinksJuicesOrange', 'rightText':'3,50'},
-                                     {'label':'Lim&atilde;o', 'cod':13, 'icon': 'mblDomButtonHcelDrinksJuicesLemon', 'rightText':'3,50'}]
+                                     {'cod':11, 'codCli':77, 'label':'Abacaxi',        'rightText':'3,50',  'icon': 'mblDomButtonHcelDrinksJuicesPineapple'},
+                                     {'cod':12, 'codCli':88, 'label':'Laranja',        'rightText':'3,50',  'icon': 'mblDomButtonHcelDrinksJuicesOrange'},
+                                     {'cod':13, 'codCli':99, 'label':'Lim&atilde;o',   'rightText':'3,50',  'icon': 'mblDomButtonHcelDrinksJuicesLemon'}]
                                 }
               },
               'images': [
