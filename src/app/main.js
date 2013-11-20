@@ -19,13 +19,22 @@
  */
 
 
-define(["app/views/menu", //default view
+define(['dojo/request/xhr',
+        "app/views/menu", //default view
         "app/views/login",
         "app/views/cart",
         "app/views/footer"],
-function(menu,login,cart) {
+function(xhr, menu,login,cart) {
     // Wait for device API libraries to load
     document.addEventListener("deviceready", onDeviceReady, false);
+
+    //~ setInterval(function(){
+      //~ console.log('testing...');
+      //~ xhr("http://www.hcel.com.br").then(function(data){
+        //~ console.log(data);
+      //~ });
+    //~ },10000);
+    
     // device APIs are available
     function onDeviceReady() {
       navigator.splashscreen.hide();
