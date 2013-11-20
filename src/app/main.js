@@ -29,7 +29,20 @@ function(menu,login,cart) {
     // device APIs are available
     function onDeviceReady() {
       navigator.splashscreen.hide();
-      var db = window.openDatabase("test", "1.0", "Test DB", 1000000);
+
+      //~ var msg = window.localStorage.getItem("item-0");
+      //~ alert('[item-0:]'+msg);
+//~ 
+      //~ msg = window.localStorage.getItem("item-1");
+      //~ if (!msg) {
+        //~ alert('writing on storage...');
+        //~ window.localStorage.setItem("item-1", "Storage item-1");
+        //~ msg = window.localStorage.getItem("item-1");
+      //~ }
+//~ 
+//~ 
+      //~ alert(msg);
+      
     }
 });
 
