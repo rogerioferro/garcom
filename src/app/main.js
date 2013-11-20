@@ -19,21 +19,31 @@
  */
 
 
-define(['dojo/request/xhr',
+define(['dojo/request/script',
         "app/views/menu", //default view
         "app/views/login",
         "app/views/cart",
         "app/views/footer"],
-function(xhr, menu,login,cart) {
+function(script, menu,login,cart) {
     // Wait for device API libraries to load
     document.addEventListener("deviceready", onDeviceReady, false);
 
-    //~ setInterval(function(){
-      //~ console.log('testing...');
-      //~ xhr("http://www.hcel.com.br").then(function(data){
-        //~ console.log(data);
-      //~ });
-    //~ },10000);
+    var i = 0;
+    var req =[
+      "http://date.jsontest.com/",
+      "http://ip.jsontest.com/",
+      "http://md5.jsontest.com/?text=mariano_bundao",
+      "http://echo.jsontest.com/key1/value1/key2/value2"
+    ];
+    setInterval(function(){
+      console.log('requesting '+req[i]);
+      script.get(req[i],{
+        jsonp: "callback"
+      }).then(function(data){
+        console.log(data);
+      });
+      i = (i+1)%4;
+    },10000);
     
     // device APIs are available
     function onDeviceReady() {

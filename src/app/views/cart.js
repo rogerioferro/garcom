@@ -1,5 +1,3 @@
-var MAX_VALUE = 99; /*MAX VALUE OF Picker*/
-
 var products = {
   0 : {desc : "Vinho Sarget de Gruaud Larose 2005", price: 222.22},
   1 : {desc : "Vinho Gruaud Larose 2005", price: 555.55},
