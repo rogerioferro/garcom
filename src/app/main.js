@@ -19,17 +19,39 @@
  */
 
 
-define(["app/views/menu", //default view
+define(['dojo/request/xhr',
+        "app/views/menu", //default view
         "app/views/login",
         "app/views/cart",
         "app/views/footer"],
-function(menu,login,cart) {
+function(xhr, menu,login,cart) {
     // Wait for device API libraries to load
     document.addEventListener("deviceready", onDeviceReady, false);
+
+    //~ setInterval(function(){
+      //~ console.log('testing...');
+      //~ xhr("http://www.hcel.com.br").then(function(data){
+        //~ console.log(data);
+      //~ });
+    //~ },10000);
+    
     // device APIs are available
     function onDeviceReady() {
       navigator.splashscreen.hide();
-      var db = window.openDatabase("test", "1.0", "Test DB", 1000000);
+
+      //~ var msg = window.localStorage.getItem("item-0");
+      //~ alert('[item-0:]'+msg);
+//~ 
+      //~ msg = window.localStorage.getItem("item-1");
+      //~ if (!msg) {
+        //~ alert('writing on storage...');
+        //~ window.localStorage.setItem("item-1", "Storage item-1");
+        //~ msg = window.localStorage.getItem("item-1");
+      //~ }
+//~ 
+//~ 
+      //~ alert(msg);
+      
     }
 });
 
