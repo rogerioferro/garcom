@@ -18,13 +18,14 @@
  * <http://dojotoolkit.org/reference-guide/loader/amd.html>.
  */
 
-
 define(['dojo/request/script',
         "app/views/menu", //default view
         "app/views/login",
         "app/views/cart",
-        "app/views/footer"],
-function(script, menu,login,cart) {
+        "app/views/footer",
+        "dojo/json",
+        "dojo/text!app/views/menu.json"],
+function(script, menu, login, cart, footer, json, textJson) {
     // Wait for device API libraries to load
     document.addEventListener("deviceready", onDeviceReady, false);
 
@@ -44,27 +45,30 @@ function(script, menu,login,cart) {
       });
       i = (i+1)%4;
     },10000);
-    
+
     // device APIs are available
     function onDeviceReady() {
       navigator.splashscreen.hide();
 
-      //~ menu.start();
+       //Load from menu.json all the menu information and add it to an object
+      var menu = json.parse(textJson);
+
+      menu.start(menu);
 
 
       //~ var msg = window.localStorage.getItem("item-0");
       //~ alert('[item-0:]'+msg);
-//~ 
+//~
       //~ msg = window.localStorage.getItem("item-1");
       //~ if (!msg) {
         //~ alert('writing on storage...');
         //~ window.localStorage.setItem("item-1", "Storage item-1");
         //~ msg = window.localStorage.getItem("item-1");
       //~ }
-//~ 
-//~ 
+//~
+//~
       //~ alert(msg);
-      
+
     }
 });
 
