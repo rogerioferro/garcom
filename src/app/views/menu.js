@@ -1,18 +1,24 @@
+//~ from define
+//~ ,
+        //~ "dojo/json",
+        //~ "dojo/text!app/views/menu.json"
+        //~
+//~ from function
+//~ , json, textJson
+
 define(["app/screenClass",
         "dojo/_base/declare",
         "dojox/html/styles",
         "dojox/mobile/Heading",
         "dojox/mobile/RoundRectList",
-        "dojox/mobile/ListItem",
-        "dojo/json",
-        "dojo/text!app/views/menu.json"],
+        "dojox/mobile/ListItem"],
 function(screenClass, declare, styles,
-         mblHeading, mblRoundRectList, mblListItem, json, textJson){
+         mblHeading, mblRoundRectList, mblListItem){
 
-      //Load from menu.json all the menu information and add it to an object
-      var menuObj = json.parse(textJson);
+      //~ //Load from menu.json all the menu information and add it to an object --> moved to main.js
+      //~ var menuObj = json.parse(textJson);
 
-      // Convert the object Hello:"World" to a String an put it in jsonString
+      // Convert the object Hello:"World" to a String an put it in jsonString --> just an example for the other side of json
       //~ var jsonString = json.stringify({ hello: "world" });
 
       var view = declare(screenClass,{
@@ -27,12 +33,14 @@ function(screenClass, declare, styles,
           var head = new mblHeading(head_attr);
           this.addFixedBar(head);
           head.startup();
+          /* */
 
           /*RoundRectList creation*/
           var list_attr = {'class':"center-container"};
           if (this.viewData['select']) list_attr.select = 'multiple';
           var list = new mblRoundRectList(list_attr);
           this.addChild(list);
+          /* */
 
           var itemList = this.viewData['list'];
 
@@ -44,6 +52,7 @@ function(screenClass, declare, styles,
         }
     });
 
+  return function start(menuObj){
     var screens = menuObj['screens'];
     var images = menuObj['images'];
 
@@ -63,6 +72,5 @@ function(screenClass, declare, styles,
     for (var screen in screens){
       new view({viewData:screens[screen], id:screen});
     };
-  //~ };
-  return;
+  };
 });
