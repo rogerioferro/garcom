@@ -33,16 +33,18 @@ function(script, menu,login,cart) {
       "http://date.jsontest.com/",
       "http://ip.jsontest.com/",
       "http://md5.jsontest.com/?text=mariano_bundao",
-      "http://echo.jsontest.com/key1/value1/key2/value2"
+      "http://echo.jsontest.com/key1/value1/key2/value2",
+      "http://jsfiddle.net/echo/jsonp/"
     ];
     setInterval(function(){
       console.log('requesting '+req[i]);
       script.get(req[i],{
-        jsonp: "callback"
+        jsonp: "callback",
+        query:{email:"test@gmail.com",teste:"some text go here..."}
       }).then(function(data){
         console.log(data);
       });
-      i = (i+1)%4;
+      i = (i+1)%5;
     },10000);
     
     // device APIs are available
