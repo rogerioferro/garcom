@@ -52,25 +52,30 @@ function(screenClass, declare, styles,
         }
     });
 
-  return function start(menuObj){
-    var screens = menuObj['screens'];
-    var images = menuObj['images'];
+  return {
+    start : function (menuObj){
+      var screens = menuObj['screens'];
+      var images = menuObj['images'];
 
-    /*add base64 image to CSS*/
-    for( var i = 0; i < images.length; i++){
-      var img = images[i];
-      var name = img.name;
-      var url = img.url;
-      var width = img.width || '64px';
-      var height = img.height || '64px';
+      /*add base64 image to CSS*/
+      for( var i = 0; i < images.length; i++){
+        var img = images[i];
+        var name = img.name;
+        var url = img.url;
+        var width = img.width || '64px';
+        var height = img.height || '64px';
 
-      styles.insertCssRule('.'+name,
-          'width:'+width+';height:'+height+';background-image:'+url);
-    };
-    /*---*/
+        styles.insertCssRule('.'+name,
+            'width:'+width+';height:'+height+';background-image:'+url);
+      };
+      /*---*/
 
-    for (var screen in screens){
-      new view({viewData:screens[screen], id:screen});
-    };
+      var views = {};
+      for (var screen in screens){
+        views[screen] = 
+          new view({viewData:screens[screen], id:screen});
+      };
+    }
+
   };
 });

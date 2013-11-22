@@ -6,6 +6,9 @@ var products = {
 
 define(["app/screenClass",
         "dojo/_base/declare",
+        "dojo/request/iframe",
+        'dojo/request/script',
+        "dojo/json",
         "dojo/_base/lang",
         "dojo/dom-construct",
         "dojo/on",
@@ -18,7 +21,7 @@ define(["app/screenClass",
         "app/picker",
         "dojox/mobile/Icon",
         "dojox/mobile/Button"],
-function(screenClass, declare, lang, domConstruct, on, query, domClass,
+function(screenClass, declare, iframe, script, json, lang, domConstruct, on, query, domClass,
          mblHeading, mblRoundRect, mblRoundRectList, mblListItem, hcelPicker,
          mblIcon, mblButton){
   var view = declare(screenClass,{
@@ -65,6 +68,54 @@ function(screenClass, declare, lang, domConstruct, on, query, domClass,
       this.addItem(2,3);
       this.updateTotal();
 
+      var btn = new mblButton({'class':'mblBlueButton mblBigButton',label:'Enviar'});
+      btn.on("click", lang.hitch(this,function(){
+        obj = {};
+        for ( i in this.listArray) {
+          arr = this.listArray[i];
+          obj[i] = json.stringify({
+              code : arr.code,
+              desc : arr.desc,
+              price : arr.price,
+              quant : arr.picker.get('value')
+          });
+        }
+        var promise = iframe("http://www.hcel.com.br/jsonp",{
+          handleAs:"json",
+          //data: {data:json.stringify(obj)},
+          data: obj,
+          timeout: 2000,
+          query: {send:'cart'}
+        });
+
+        //console.log(promise);
+        promise.response.always(function(response){
+          //console.log('finished');
+          promise.cancel();
+          //console.log(response.stack);
+          //console.log(response.message);
+          script.get("http://www.hcel.com.br/jsonp",{
+            jsonp: "callback",
+            preventCache: true,
+            query:{email:"test@gmail.com",teste:"some text go here..."} //data to send
+          }).then(function(data){
+            // handle data
+            //console.log(data);
+            //console.log(obj);
+            //console.log(json.stringify(data));
+            //console.log(json.stringify(obj));
+            //alert(json.stringify(data));
+            console.log( json.stringify(data) == json.stringify(obj) );
+          }, function(err){
+            // handle an error condition
+            console.log(err);
+          });
+        });
+      
+      }));
+
+      rect.addChild(btn);
+      
       this.addChild(rect);
 
     },

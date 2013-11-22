@@ -13,8 +13,9 @@ function(screenClass, declare, lang, domConstruct,
     id : "login",
     
     createDom : function(){
-      this.addFixedBar(
-        new mblHeading({label : "Login", fixed : "top"}));
+      var head = new mblHeading({label : "Login", fixed : "top"});
+      this.addFixedBar(head);
+      head.startup();
         
       var rect = new mblRoundRect({'class':"center-container"});
 
