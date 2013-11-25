@@ -61,14 +61,15 @@ function(script, iframe, menu, login, cart, footer, json, textJson) {
       //~ //i = (i+1)%7;
     //~ },5000);
 
+    var menuObj = json.parse(textJson);
     // device APIs are available
     function onDeviceReady() {
      // navigator.splashscreen.hide();
 
        //Load from menu.json all the menu information and add it to an object
-      var menuObj = json.parse(textJson);
 
-      menu.start(menuObj);
+      //menu.start(menuObj);
+      menu.updateMenu(menuObj);
 
       //login.startup();
       //login.performTransition('menu',-1,"none");
@@ -88,6 +89,12 @@ function(script, iframe, menu, login, cart, footer, json, textJson) {
 
     }
 
+  onDeviceReady();
+
+  setInterval(function(){
+    console.log('update menu...');
+    menu.updateMenu(menuObj);
+  },10000);
 
 });
 

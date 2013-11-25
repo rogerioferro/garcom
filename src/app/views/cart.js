@@ -205,6 +205,7 @@ function(screenClass, declare, iframe, script, json, lang, domConstruct, on, que
         var item = obj.item;
         var i = this.listArray.indexOf(obj);
         this.listArray.splice(i,1);
+        item.destroyDescendants();
         item.destroy();
         this.updateTotal();
       },obj));

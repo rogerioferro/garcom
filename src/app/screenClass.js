@@ -36,6 +36,10 @@ function(view, declare, window, domConstruct){
     },
     addNode : function(node) {
       return domConstruct.place(node, this.containerNode, this.index++);
+    },
+    clearView : function() {
+      this.destroyDescendants();
+      this.index = 0;
     }
   });
 });
