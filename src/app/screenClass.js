@@ -39,7 +39,14 @@ function(view, declare, window, domConstruct){
     },
     clearView : function() {
       this.destroyDescendants();
+    },
+    destroyDescendants : function() {
       this.index = 0;
+      this.inherited(arguments);
+    },
+    destroy : function() {
+      VIEW_POSITION--;
+      this.inherited(arguments);
     }
   });
 });
