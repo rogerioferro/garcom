@@ -1,6 +1,6 @@
 define(["dojox/html/styles"],
 function(styles){
-  return{
+  return {
     styleSheet : "imageStyleSheet",
     images : {},
     removeImage : function(img){

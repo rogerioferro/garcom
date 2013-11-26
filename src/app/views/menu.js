@@ -35,6 +35,9 @@ function(screenClass, declare, styles,
         /*List Item add*/
         for( var i = 0; i < itemList.length; i++){
           itemList[i]['class'] = 'menu-list';
+          if(!('icon' in itemList[i])){
+            itemList[i]['icon'] = 'app/resources/img/pacote_64.png'
+          }
           list.addChild(new mblListItem(itemList[i]));
         }
       }

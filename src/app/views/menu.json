@@ -2,7 +2,7 @@
   "screens": {  "menu":
                       { "head": {"label":"Card&aacute;pio"},
                         "list": [
-                          {"icon": "mblDomButtonHcelPizzas", "label": "Pizzas",   "moveTo": "pizzas"},
+                          { "label": "Pizzas",   "moveTo": "pizzas"},
                           {"icon": "mblDomButtonHcelDrinks", "label": "Bebidas",  "moveTo": "drinks"}]
                       },
                 "pizzas":
