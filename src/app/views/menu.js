@@ -1,11 +1,3 @@
-//~ from define
-//~ ,
-        //~ "dojo/json",
-        //~ "dojo/text!app/views/menu.json"
-        //~
-//~ from function
-//~ , json, textJson
-
 define(["app/screenClass",
         "dojo/_base/declare",
         "dojox/html/styles",
@@ -18,6 +10,7 @@ function(screenClass, declare, styles,
   var view = declare(screenClass,{
       
       createDom : function(){
+        //console.log('create Dom:'+this.id);
         /*Head creation*/
         var data = this.viewData || {head:{}};
         var head_attr = data['head'] || {};
@@ -59,8 +52,7 @@ function(screenClass, declare, styles,
         if(screen.isVisible()){
           this.show();
         }
-        screen.clearView();
-        screen.destroy();
+        screen.destroyRecursive();
       }
       
       this.clearView();

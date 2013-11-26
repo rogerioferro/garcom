@@ -12,7 +12,6 @@ define(["app/screenClass",
         "dojo/_base/lang",
         "dojo/dom-construct",
         "dojo/on",
-        "dojo/query",
         "dojo/dom-class",
         "dojox/mobile/Heading",
         "dojox/mobile/RoundRect",
@@ -21,7 +20,7 @@ define(["app/screenClass",
         "app/picker",
         "dojox/mobile/Icon",
         "dojox/mobile/Button"],
-function(screenClass, declare, iframe, script, json, lang, domConstruct, on, query, domClass,
+function(screenClass, declare, iframe, script, json, lang, domConstruct, on, domClass,
          mblHeading, mblRoundRect, mblRoundRectList, mblListItem, hcelPicker,
          mblIcon, mblButton){
   var view = declare(screenClass,{
@@ -52,7 +51,7 @@ function(screenClass, declare, iframe, script, json, lang, domConstruct, on, que
       this.total = domConstruct.create('div',{'class':'cart-total','innerHTML':'R$'},this.footer.domNode);
       this.list.addChild(this.footer);
 
-      btn.on("click", lang.hitch(this,function(){
+      btn.on("click", lang.hitch(this,function(btn){
         domClass.toggle(this.list.domNode,'cart-edit');
         if(domClass.contains(this.list.domNode,'cart-edit')){
           btn.set('label',"Ok");
@@ -60,7 +59,7 @@ function(screenClass, declare, iframe, script, json, lang, domConstruct, on, que
         else{
           btn.set('label', "Remover");
         }
-      }));
+      },btn));
 
       this.addItem(0);
       this.addItem(1,2);
@@ -182,31 +181,13 @@ function(screenClass, declare, iframe, script, json, lang, domConstruct, on, que
                   item:item };
       this.listArray.push(obj);
 
-      //~ on(query('.mblValuePickerSlotPlusButton',picker.domNode)[0],"click",
-      //~ lang.hitch(this,function(picker,obj,e){
-        //~ var val = Number(picker.get('value'));
-        //~ if (val == 1){
-          //~ val = MAX_VALUE;
-          //~ picker.set('value',MAX_VALUE);
-        //~ }
-        //~ this.updateTotal();
-      //~ },picker,obj));
-      //~ on(query('.mblValuePickerSlotMinusButton',picker.domNode)[0],"click",
-      //~ lang.hitch(this,function(picker,e){
-        //~ var val = Number(picker.get('value'));
-        //~ if (val == MAX_VALUE){
-          //~ val = 1;
-          //~ picker.set('value',1);
-        //~ }
-        //~ this.updateTotal();
-      //~ },picker,obj));
-
       on(div_icon,"click", lang.hitch(this,function(obj,e){
         var item = obj.item;
+        var picker = obj.picker;
         var i = this.listArray.indexOf(obj);
         this.listArray.splice(i,1);
-        item.destroyDescendants();
-        item.destroy();
+        picker.destroyRecursive();
+        item.destroyRecursive();
         this.updateTotal();
       },obj));
 

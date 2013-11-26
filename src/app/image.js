@@ -1,4 +1,12 @@
-
+define(["dojox/html/styles"],
+function(styles){
+  return{
+    images : [],
+    updateImages : function(images){
+      
+    }
+  };
+});
 
 
 

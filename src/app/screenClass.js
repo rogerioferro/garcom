@@ -14,9 +14,12 @@ function(view, declare, window, domConstruct){
       domConstruct.create('div',{style:"height:32px"},this.domNode);
       /*place view on body*/
       this.placeAt(window.body(), VIEW_POSITION++);
-      /*Create Dom on First View*/
-      this.on("StartView", this._createDom);
-      this.on("BeforeTransitionIn", this._createDom);
+      /*register handles to disconect on destroy*/
+      this.own(
+        /*Create Dom on First View*/
+        this.on("StartView", this._createDom),
+        this.on("BeforeTransitionIn", this._createDom)
+      );
       /*start view*/
       this.startup();
 
