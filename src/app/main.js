@@ -24,9 +24,10 @@ define(['dojo/request/script',
         "app/views/login",
         "app/views/cart",
         "app/views/footer",
+        "app/image",
         "dojo/json",
         "dojo/text!app/views/menu.json"],
-function(script, iframe, menu, login, cart, footer, json, textJson) {
+function(script, iframe, menu, login, cart, footer, image, json, textJson) {
     // Wait for device API libraries to load
     document.addEventListener("deviceready", onDeviceReady, false);
     
@@ -71,6 +72,12 @@ function(script, iframe, menu, login, cart, footer, json, textJson) {
       //menu.start(menuObj);
       menu.updateMenu(menuObj);
 
+      var images = menuObj['images'];
+      for (i in images){
+        img = images[i];
+        image.addImage(img);
+      }
+
       //login.startup();
       //login.performTransition('menu',-1,"none");
 
@@ -94,7 +101,12 @@ function(script, iframe, menu, login, cart, footer, json, textJson) {
   setInterval(function(){
     console.log('update menu...');
     menu.updateMenu(menuObj);
-  },10000);
+      var images = menuObj['images'];
+      for (i in images){
+        img = images[i];
+        image.addImage(img);
+      }
+  },30000);
 
 });
 

@@ -1,10 +1,12 @@
 
 define(["dijit/_WidgetBase",
+        "dojo/on",
+        "dojo/_base/lang",
         "dojo/_base/declare",
         "dojo/dom-construct",
         "dojo/dom-class",
         "dojox/mobile/Icon"],
-function(_WidgetBase, declare, domConstruct, domClass, mblIcon){
+function(_WidgetBase, on, lang, declare, domConstruct, domClass, mblIcon){
   return declare('hcel_picker',_WidgetBase, {
     minValue:0,
     _setMinValueAttr: function(value){
@@ -45,8 +47,10 @@ function(_WidgetBase, declare, domConstruct, domClass, mblIcon){
     },
     postCreate: function(){
       this.inherited(arguments);
-      this.connect(this.plusBtnNode,"onclick", "_onClick");
-      this.connect(this.minusBtnNode,"onclick", "_onClick");
+      this.own(
+        on(this.plusBtnNode,"click", lang.hitch(this,"_onClick")),
+        on(this.minusBtnNode,"click", lang.hitch(this,"_onClick"))
+      );
     },
     _onClick: function(e){
       var node = e.currentTarget;

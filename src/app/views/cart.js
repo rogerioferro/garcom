@@ -10,8 +10,8 @@ define(["app/screenClass",
         'dojo/request/script',
         "dojo/json",
         "dojo/_base/lang",
-        "dojo/dom-construct",
         "dojo/on",
+        "dojo/dom-construct",
         "dojo/dom-class",
         "dojox/mobile/Heading",
         "dojox/mobile/RoundRect",
@@ -20,7 +20,8 @@ define(["app/screenClass",
         "app/picker",
         "dojox/mobile/Icon",
         "dojox/mobile/Button"],
-function(screenClass, declare, iframe, script, json, lang, domConstruct, on, domClass,
+function(screenClass, declare, iframe, script, json, lang, on,
+         domConstruct, domClass,
          mblHeading, mblRoundRect, mblRoundRectList, mblListItem, hcelPicker,
          mblIcon, mblButton){
   var view = declare(screenClass,{
@@ -124,7 +125,7 @@ function(screenClass, declare, iframe, script, json, lang, domConstruct, on, dom
         
       quant = Number(quant) || 1;
 
-      for(var i=0; i < this.listArray.length; i++){
+      for (var i in this.listArray){
         var obj = this.listArray[i];
         if (obj.code == code){
           var q = Number(obj.picker.get('value')) + quant;
@@ -165,8 +166,6 @@ function(screenClass, declare, iframe, script, json, lang, domConstruct, on, dom
                              'innerHTML':(price*quant).toFixed(2)},
                             item.containerNode);
 
-
-      //var picker = new mblValuePickerSlot({value:quant, labelFrom:1, labelTo:MAX_VALUE, readOnly:true});
       var picker = new hcelPicker({value:quant, minValue:1, maxValue:99});
       picker.placeAt(div_quant);
       picker.on("change",lang.hitch(this,function(value){
@@ -181,7 +180,7 @@ function(screenClass, declare, iframe, script, json, lang, domConstruct, on, dom
                   item:item };
       this.listArray.push(obj);
 
-      on(div_icon,"click", lang.hitch(this,function(obj,e){
+      item.own(on.once(div_icon,"click", lang.hitch(this,function(obj,e){
         var item = obj.item;
         var picker = obj.picker;
         var i = this.listArray.indexOf(obj);
@@ -189,14 +188,14 @@ function(screenClass, declare, iframe, script, json, lang, domConstruct, on, dom
         picker.destroyRecursive();
         item.destroyRecursive();
         this.updateTotal();
-      },obj));
+      },obj)));
 
       item.placeAt(this.footer.domNode,"before");
 
     },
     updateTotal : function(){
       var total = 0;
-      for (var i = 0; i < this.listArray.length; i++){
+      for (var i in this.listArray){
         var obj = this.listArray[i];
         var quant = Number(obj.picker.get('value'));
         var line = quant * obj.price;
@@ -205,7 +204,6 @@ function(screenClass, declare, iframe, script, json, lang, domConstruct, on, dom
       }
       this.total.innerHTML = 'R$ '+Number(total).toFixed(2);
     }
-    
   });
   return new view();
 });
