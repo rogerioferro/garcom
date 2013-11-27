@@ -42,7 +42,12 @@ function(screenClass, declare, domConstruct, win, lang, menuDlg,
         /*List Item add*/
         for(var i in itemList){
           var attr = itemList[i];
-          var item_attr = {label:attr['label']};
+          var item_attr = {
+            innerHTML : '<div class = "menu-title">' +
+              attr['label']+
+              (showDlg?('<span class = "menu-price"> R$ '+attr['price']+'</span>'):'')+ 
+              '</div>'
+          };
           item_attr['class'] = 'menu-list';
           if('icon' in attr){
             item_attr['icon'] = 'mblDomButtonHcel' + attr['icon'];
@@ -50,19 +55,24 @@ function(screenClass, declare, domConstruct, win, lang, menuDlg,
           else{
             item_attr['icon'] = 'app/resources/img/pacote_64.png';
           }
+
           if (showDlg){
             item_attr['clickable'] = true;
             item_attr['noArrow'] = true;
-            item_attr['rightText'] = attr['price'];
-            item_attr['onClick'] = lang.hitch(this, function(attr){
-              menuDlg.setAttr(attr);
-              menuDlg.show();
-            },attr);
+            item_attr['rightIcon'] = 'mblDomButtonGrayPlus';
           }else{
             item_attr['moveTo'] = attr['moveTo'];
           }
-          var listItem = new mblListItem(item_attr);
-          list.addChild(listItem);
+          var item = new mblListItem(item_attr);
+          if (showDlg){
+            item.on('click',lang.hitch(this, function(attr, item){
+                menuDlg.setAttr(attr);
+                menuDlg.show();
+                item.set('rightIcon','mblDomButtonCheck');
+              }, attr, item));
+          }
+          
+          list.addChild(item);
         }
       }
   });

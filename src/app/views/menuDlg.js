@@ -18,6 +18,7 @@ function(domConstruct, win, lang,
         this.descr = domConstruct.create('div',
               { 'class': 'mblSimpleDialogText'},
                 this.dlg.containerNode);
+          
         new mblButton({'class':'mblSimpleDialogButton', innerHTML: 'OK'})
           .placeAt(this.dlg.containerNode)
           .on('click',lang.hitch(this,function(){

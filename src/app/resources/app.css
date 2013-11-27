@@ -101,11 +101,6 @@ div.innerBox{
   margin-left:5px;
 }
 
-.menu-list {
-  height : 72px;
-  line-height : 72px;
-}
-
 .cart-list{
   height:80px;
   line-height:80px;
@@ -238,6 +233,28 @@ div.innerBox{
   background-color: #85BFFE;
 }
 
+
+.menu-list {
+  height : 72px;
+  line-height : 72px;
+  background-color:#FDFCF8;
+}
+
+.menu-title {
+  color : #909285;
+  font-weight: bold;
+}
+
+.menu-price {
+ color : #FFCD6B;
+ font-weight: bold;
+ padding-right: 5px;
+ float: right;
+}
+
+.menu-list .mblListItemRightIcon{
+  margin-top : 21px;
+}
 
 
 
