@@ -61,15 +61,15 @@ function(script, iframe, menu, login, cart, footer, image, json, textJson) {
       //~ });
       //~ //i = (i+1)%7;
     //~ },5000);
-
+    //console.log(textJson);
     var menuObj = json.parse(textJson);
+    //console.log(json.stringify(menuObj));
     // device APIs are available
     function onDeviceReady() {
      // navigator.splashscreen.hide();
 
-       //Load from menu.json all the menu information and add it to an object
+      //Load from menu.json all the menu information and add it to an object
 
-      //menu.start(menuObj);
       menu.updateMenu(menuObj);
 
       var images = menuObj['images'];
@@ -78,8 +78,6 @@ function(script, iframe, menu, login, cart, footer, image, json, textJson) {
         image.addImage(img);
       }
 
-      //login.startup();
-      //login.performTransition('menu',-1,"none");
 
       //~ var msg = window.localStorage.getItem("item-0");
       //~ alert('[item-0:]'+msg);
@@ -98,15 +96,15 @@ function(script, iframe, menu, login, cart, footer, image, json, textJson) {
 
   onDeviceReady();
 
-  setInterval(function(){
-    console.log('update menu...');
-    menu.updateMenu(menuObj);
-      var images = menuObj['images'];
-      for (i in images){
-        img = images[i];
-        image.addImage(img);
-      }
-  },30000);
+  //~ setInterval(function(){
+    //~ console.log('update menu...');
+    //~ //menu.updateMenu(menuObj);
+      //~ var images = menuObj['images'];
+      //~ for (i in images){
+        //~ img = images[i];
+        //~ image.addImage(img);
+      //~ }
+  //~ },30000);
 
 });
 

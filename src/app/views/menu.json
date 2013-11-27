@@ -1,33 +1,33 @@
 {
   "screens": {  "menu":
-                      { "head": {"label":"Card&aacute;pio"},
-                        "list": [
-                          { "label": "Pizzas",   "moveTo": "pizzas"},
-                          {"icon": "mblDomButtonHcelDrinks", "label": "Bebidas",  "moveTo": "drinks"}]
-                      },
-                "pizzas":
-                    { "head" : { "label":"Pizzas","back":"Card&aacute;pio", "moveTo":"menu"},
-                      "select":true,
+                    { "head": {"label":"Card&aacute;pio"},
+                      "type": "group",
                       "list": [
-                         {"cod":1,  "codCli":22,  "label":"Calabresa",     "rightText":"18,00",  "icon": "mblDomButtonHcelPizzas", "descr":"Pizza com calabresa e queijo muzzarela"},
-                         {"cod":2,  "codCli":33,  "label":"Peperoni",      "rightText":"20,00",  "icon": "mblDomButtonHcelPizzas", "descr":"Pizza com Peperoni (calabresa apimentada) e queijo muzzarela"},
-                         {"cod":3,  "codCli":44,  "label":"Milho",         "rightText":"16,00",  "icon": "mblDomButtonHcelPizzas", "descr":"Pizza com milho e queijo muzzarela"},
-                         {"cod":4,  "codCli":55,  "label":"Moda da Casa",  "rightText":"18,00",  "icon": "mblDomButtonHcelPizzas", "descr":"Pizza com queijo muzzarela, mignon, cebola, champignon e páprica"}]
+                        {"label": "Pizzas","moveTo":"pizzas"},
+                        {"icon": "Drinks","label":"Bebidas","moveTo":"drinks"}]
+                    },
+              "pizzas":
+                    { "head" : {"label":"Pizzas","back":"Card&aacute;pio","moveTo":"menu"},
+                      "list": [
+                         {"cod":1,  "codCli":22,  "label":"Calabresa",     "price":"18,00",  "icon": "Pizzas", "descr":"Pizza com calabresa e queijo muzzarela"},
+                         {"cod":2,  "codCli":33,  "label":"Peperoni",      "price":"20,00",  "icon": "Pizzas", "descr":"Pizza com Peperoni (calabresa apimentada) e queijo muzzarela"},
+                         {"cod":3,  "codCli":44,  "label":"Milho",         "price":"16,00",  "icon": "Pizzas", "descr":"Pizza com milho e queijo muzzarela"},
+                         {"cod":4,  "codCli":55,  "label":"Moda da Casa",  "price":"18,00",  "icon": "Pizzas", "descr":"Pizza com queijo muzzarela, mignon, cebola, champignon e páprica"}]
                     },
                 "drinks":
                     { "head": {"label":"Bebidas", "back":"Card&aacute;pio","moveTo":"menu"},
+                      "type": "group",
                       "list": [
-                         {"label":"Sucos",           "moveTo": "juices",  "icon": "mblDomButtonHcelDrinksJuices"},
-                         {"label":"Refrigerantes",                        "icon": "mblDomButtonHcelDrinksSodas"},
-                         {"label":"Cervejas",                             "icon": "mblDomButtonHcelDrinksBeers"}]
+                         {"label":"Sucos",           "moveTo": "juices",  "icon": "DrinksJuices"},
+                         {"label":"Refrigerantes",                        "icon": "DrinksSodas"},
+                         {"label":"Cervejas",                             "icon": "DrinksBeers"}]
                     },
                 "juices":
                     { "head": {"label":"Sucos", "back":"Bebidas","moveTo":"drinks"},
-                      "select":true,
                       "list": [
-                         {"cod":11, "codCli":77, "label":"Abacaxi",        "rightText":"3,50",  "icon": "mblDomButtonHcelDrinksJuicesPineapple"},
-                         {"cod":12, "codCli":88, "label":"Laranja",        "rightText":"3,50",  "icon": "mblDomButtonHcelDrinksJuicesOrange"},
-                         {"cod":13, "codCli":99, "label":"Lim&atilde;o",   "rightText":"3,50",  "icon": "mblDomButtonHcelDrinksJuicesLemon"}]
+                         {"cod":11, "codCli":77, "label":"Abacaxi",        "price":"3,50",  "icon": "DrinksJuicesPineapple"},
+                         {"cod":12, "codCli":88, "label":"Laranja",        "price":"3,50",  "icon": "DrinksJuicesOrange"},
+                         {"cod":13, "codCli":99, "label":"Lim&atilde;o",   "price":"3,50",  "icon": "DrinksJuicesLemon"}]
                     }
   },
   "images": [

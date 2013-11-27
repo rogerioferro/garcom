@@ -10,6 +10,9 @@ function(view, declare, window, domConstruct){
     index : 0,
     postCreate: function(){
       this.inherited(arguments);
+
+      this.win = window;
+      
       /*create space to footer*/
       domConstruct.create('div',{style:"height:32px"},this.domNode);
       /*place view on body*/

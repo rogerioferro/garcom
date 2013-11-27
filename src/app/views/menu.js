@@ -1,11 +1,16 @@
 define(["app/screenClass",
         "dojo/_base/declare",
-        "dojox/html/styles",
+        "dojo/dom-construct",
+        "dojo/_base/window",
+        "dojo/_base/lang",
+        "app/views/menuDlg",
         "dojox/mobile/Heading",
-        "dojox/mobile/RoundRectList",
-        "dojox/mobile/ListItem"],
-function(screenClass, declare, styles,
-         mblHeading, mblRoundRectList, mblListItem){
+        "dojox/mobile/EdgeToEdgeList",
+        "dojox/mobile/ListItem",
+        "dojox/mobile/SimpleDialog",
+        "dojox/mobile/Button"],
+function(screenClass, declare, domConstruct, win, lang, menuDlg,
+         mblHeading, mblRoundRectList, mblListItem, mblSimpleDialog, mblButton){
 
   var view = declare(screenClass,{
       
@@ -25,20 +30,39 @@ function(screenClass, declare, styles,
 
         /*RoundRectList creation*/
         var list_attr = {'class':"center-container"};
-        if (this.viewData['select']) list_attr.select = 'multiple';
+
         var list = new mblRoundRectList(list_attr);
         this.addChild(list);
         /* */
 
         var itemList = this.viewData['list'];
 
+        var showDlg = this.viewData['type'] != 'group';
+        
         /*List Item add*/
-        for( var i = 0; i < itemList.length; i++){
-          itemList[i]['class'] = 'menu-list';
-          if(!('icon' in itemList[i])){
-            itemList[i]['icon'] = 'app/resources/img/pacote_64.png'
+        for(var i in itemList){
+          var attr = itemList[i];
+          var item_attr = {label:attr['label']};
+          item_attr['class'] = 'menu-list';
+          if('icon' in attr){
+            item_attr['icon'] = 'mblDomButtonHcel' + attr['icon'];
           }
-          list.addChild(new mblListItem(itemList[i]));
+          else{
+            item_attr['icon'] = 'app/resources/img/pacote_64.png';
+          }
+          if (showDlg){
+            item_attr['clickable'] = true;
+            item_attr['noArrow'] = true;
+            item_attr['rightText'] = attr['price'];
+            item_attr['onClick'] = lang.hitch(this, function(attr){
+              menuDlg.setAttr(attr);
+              menuDlg.show();
+            },attr);
+          }else{
+            item_attr['moveTo'] = attr['moveTo'];
+          }
+          var listItem = new mblListItem(item_attr);
+          list.addChild(listItem);
         }
       }
   });
@@ -50,7 +74,7 @@ function(screenClass, declare, styles,
       var screens = obj['screens'];
 
       //clear old screens
-      while (this.subScreens.length > 0) {
+      while (this.subScreens.length > 0){
         var screen = this.subScreens.pop();
         if(screen.isVisible()){
           this.show();
