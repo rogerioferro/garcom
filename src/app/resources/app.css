@@ -233,6 +233,9 @@ div.innerBox{
   background-color: #85BFFE;
 }
 
+/*
+ * Menu CSS
+ * */
 
 .menu-list {
   height : 72px;
@@ -256,9 +259,23 @@ div.innerBox{
   margin-top : 21px;
 }
 
+.menu-dlg {
+  border : none;
+  background-color:#FDFCF8;
+}
 
-
-/* Gradient color
-  background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#cbcc68), color-stop(0.5, #f5f6cb), to(#cbcc68));
-  background-image: linear-gradient(to bottom, #cbcc68 0%, #f5f6cb 50%, #cbcc68 100%);
-*/
+.menu-dlg .mblSimpleDialogTitle{
+ display : inline-block;
+ margin:2px;
+ padding:0;
+ border:none;
+}
+.menu-icon {
+ float:left;
+}
+.menu-label {
+  float:left;
+  color : #909285;
+  line-height : 72px;
+  margin-left : 5px;
+}

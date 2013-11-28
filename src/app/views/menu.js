@@ -55,6 +55,7 @@ function(screenClass, declare, domConstruct, win, lang, menuDlg,
           else{
             item_attr['icon'] = 'app/resources/img/pacote_64.png';
           }
+          attr['icon'] = item_attr['icon'];
 
           if (showDlg){
             item_attr['clickable'] = true;
