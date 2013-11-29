@@ -44,6 +44,7 @@
 /home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/assets/www/app/resources/app.css \
 /home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/assets/www/app/resources/img \
 /home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/assets/www/app/resources/widget/picker.css \
+/home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/assets/www/app/resources/widget/button.css \
 /home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/assets/www/app/resources/img/pacote_64.png \
 /home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/assets/www/dojo/dojo.js \
 /home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/assets/www/dojo/nls \

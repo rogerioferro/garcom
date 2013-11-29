@@ -1,12 +1,13 @@
 
 define(["dijit/_WidgetBase",
         "dojo/on",
+        "dojo/touch",
         "dojo/_base/lang",
         "dojo/_base/declare",
         "dojo/dom-construct",
         "dojo/dom-class",
         "dojox/mobile/Icon"],
-function(_WidgetBase, on, lang, declare, domConstruct, domClass, mblIcon){
+function(_WidgetBase, on, touch, lang, declare, domConstruct, domClass, mblIcon){
   return declare('hcel_picker',_WidgetBase, {
     minValue:0,
     _setMinValueAttr: function(value){
@@ -28,16 +29,16 @@ function(_WidgetBase, on, lang, declare, domConstruct, domClass, mblIcon){
 
       this.domNode = domConstruct.create('div',{'class':'hcelPicker'});
 
-      this.plusBtnNode = domConstruct.create('div', {
-        className:'hcelPickerButton hcelPickerButtonPlus',
-        title: '+'
+      this.minusBtnNode = domConstruct.create('div', {
+        className:'hcelPickerButton hcelPickerButtonMinus',
+        title: '-'
       }, this.domNode);
       this.valueNode = domConstruct.create('div',{
           className:'hcelPickerValue'
       }, this.domNode);
-      this.minusBtnNode = domConstruct.create('div', {
-        className:'hcelPickerButton hcelPickerButtonMinus',
-        title: '-'
+      this.plusBtnNode = domConstruct.create('div', {
+        className:'hcelPickerButton hcelPickerButtonPlus',
+        title: '+'
       }, this.domNode);
 
       new mblIcon({icon:"mblDomButtonGrayPlus"},this.plusBtnNode);
@@ -48,17 +49,25 @@ function(_WidgetBase, on, lang, declare, domConstruct, domClass, mblIcon){
     postCreate: function(){
       this.inherited(arguments);
       this.own(
-        on(this.plusBtnNode,"click", lang.hitch(this,"_onClick")),
-        on(this.minusBtnNode,"click", lang.hitch(this,"_onClick"))
+        on(this.plusBtnNode, touch.leave, lang.hitch(this,"_onLeave")),
+        on(this.plusBtnNode, touch.press, lang.hitch(this,"_onPress")),
+        on(this.plusBtnNode, touch.release, lang.hitch(this,"_onRelease")),
+        on(this.minusBtnNode, touch.leave, lang.hitch(this,"_onLeave")),
+        on(this.minusBtnNode, touch.press, lang.hitch(this,"_onPress")),
+        on(this.minusBtnNode, touch.release, lang.hitch(this,"_onRelease"))
       );
     },
-    _onClick: function(e){
+    _onLeave: function(e){
+      var node = e.currentTarget;
+      domClass.remove(node, "hcelPickerButtonSelected");
+    },
+    _onPress: function(e){
       var node = e.currentTarget;
       domClass.add(node, "hcelPickerButtonSelected");
-      this.defer(function(){
-        domClass.remove(node, "hcelPickerButtonSelected");
-      }, 500);
-
+      return false;
+    },
+    _onRelease: function(e){
+      var node = e.currentTarget;
       if(node == this.plusBtnNode){
         if (this.value < this.maxValue)
           this.value++;
@@ -68,6 +77,8 @@ function(_WidgetBase, on, lang, declare, domConstruct, domClass, mblIcon){
           this.value--;
       }
       this.updateValue();
+      this._onLeave(e);
+      return false;
     },
     updateValue: function(){
       if (this.value != this.lastValue){
