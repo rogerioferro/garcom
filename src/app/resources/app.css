@@ -15,6 +15,7 @@
 @import '../../dojox/mobile/themes/custom/custom.css';
 @import './widget/button.css';
 @import './widget/picker.css';
+@import './widget/DomButtonTrash.css';
 
 *{
   -webkit-user-select:none;
@@ -249,22 +250,26 @@ div.innerBox{
   border:none;
   background-color:#FDFCF8;
   cursor: default;
+  padding:0;
 }
 
 .menu-dlg .mblSimpleDialogTitle{
- display:inline-block;
  margin:0;
  padding:0;
  border:none;
+ overflow:hidden; 
 }
 
 .menu-dlg .menu-icon {
- float:left;
+  display:inline-block;
+  margin-left:5px;
+  margin-top:5px;
+  float:left;
 }
 
 .menu-dlg .menu-title {
   float:left;
-  line-height:72px;
+  line-height:69px;
   margin-left:5px;
   font-size:18px;
 }
@@ -274,7 +279,8 @@ div.innerBox{
   font-weight:bold;
   font-size:13px;
   text-align:left;
-  padding: 2px;
+  margin-left:10px;
+  margin-bottom:3px;  
 }
 
 .menu-dlg .menu-descr {
@@ -289,6 +295,24 @@ div.innerBox{
   margin-bottom:5px;
 }
 
-.menu-dlg button {
-  margin: 10px;
+.menu-edit{
+  display:inline-block;
+  width:100%;
+  margin-bottom:5px;
 }
+
+.menu-dlg .hcelPicker {
+  margin-left:5px;
+}
+
+.menu-trash-button{
+  height:40px;
+  border-radius:7px;
+  float: right;
+  margin-right:5px;
+}
+
+.menu-trash-button .mblDomButton{
+  margin: 5px auto;
+}
+

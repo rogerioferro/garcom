@@ -9,6 +9,7 @@ define(["dijit/_WidgetBase",
         "dojox/mobile/Icon"],
 function(_WidgetBase, on, touch, lang, declare, domConstruct, domClass, mblIcon){
   return declare('hcel_picker',_WidgetBase, {
+    baseClass: "hcelPicker",
     minValue:0,
     _setMinValueAttr: function(value){
       this._set("minValue",value);
@@ -27,7 +28,7 @@ function(_WidgetBase, on, touch, lang, declare, domConstruct, domClass, mblIcon)
     buildRendering: function() {
       this.inherited(arguments);
 
-      this.domNode = domConstruct.create('div',{'class':'hcelPicker'});
+      this.domNode = domConstruct.create('div',{'class':this.baseClass});
 
       this.minusBtnNode = domConstruct.create('div', {
         className:'hcelPickerButton hcelPickerButtonMinus',

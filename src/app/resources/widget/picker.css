@@ -2,12 +2,9 @@
   margin:0;
   padding:0;
   border:0;
-  clear:both;
-  overflow:hidden;
 }
 
 .hcelPickerButton{
-  display:inline-block;
   color:#9B998D;
   background-color:#FDFCF8;
   border:1px solid #D9D7D0;
@@ -49,3 +46,4 @@
 .hcelPicker .mblDomButton{
   margin: 5px auto;
 }
+

@@ -6,9 +6,10 @@ define(["dojo/dom-construct",
         "dojox/mobile/SimpleDialog",
         "dojox/mobile/iconUtils",
         "app/picker",
+        "app/flatButton",
         "dojox/mobile/Button"],
 function(domConstruct, win, lang,
-         mblSimpleDialog, mblIconUtils, hcelPicker, mblButton){
+         mblSimpleDialog, mblIconUtils, hcelPicker, hcelFlatButton, mblButton){
   return {
     _create : function(){
       if (!this.dlg){
@@ -31,20 +32,28 @@ function(domConstruct, win, lang,
                         
         this.descr = domConstruct.create('div',
                       { 'class': 'menu-descr'}, this.dlg.containerNode);
+                      
 
+        var div_edit = domConstruct.create('div',
+                      {'class':'menu-edit'}, this.dlg.containerNode);
+        
         domConstruct.create('div',
                       { 'class': 'menu-label',
-                        innerHTML: 'Quantidade:'},this.dlg.containerNode);
+                        innerHTML: 'Quantidade:'},div_edit);
         var picker = new hcelPicker({value:1, minValue:1, maxValue:99});
-        picker.placeAt(this.dlg.containerNode);
-                      
+        picker.placeAt(div_edit);
+
+        var btnTrash = new hcelFlatButton({'class':'mblFlatButton menu-trash-button'})
+          .placeAt(div_edit);
+
+        mblIconUtils.createIcon('mblDomButtonTrash',null, null, null, btnTrash.domNode);
           
-        new mblButton({'class':'mblSimpleDialogButton', innerHTML: 'OK'})
+        new hcelFlatButton({'class':'mblFlatButton', innerHTML: 'OK'})
           .placeAt(this.dlg.containerNode)
           .on('click',lang.hitch(this,function(){
             this.dlg.hide();
           }));
-            
+
       }
     },
     setAttr : function(attr){
