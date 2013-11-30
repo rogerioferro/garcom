@@ -30,7 +30,7 @@ define(['dojo/request/script',
 function(script, iframe, menu, login, cart, footer, image, json, textJson) {
     // Wait for device API libraries to load
     document.addEventListener("deviceready", onDeviceReady, false);
-    
+
     //~ var i = 0;
     //~ var urls =[
       //~ "http://validate.jsontest.com/",
@@ -42,10 +42,10 @@ function(script, iframe, menu, login, cart, footer, image, json, textJson) {
       //~ "http://echo.jsontest.com/key1/value1/key2/value2",
     //~ ];
     //~ setInterval(function(){
-      //~ 
+      //~
       //~ //console.log('requesting '+urls[i]);
       //~ //alert("hello");
-     //~ 
+     //~
       //~ //script.get(urls[i],{
       //~ script.get("http://www.hcel.com.br/jsonp",{
         //~ jsonp: "callback",
@@ -94,7 +94,7 @@ function(script, iframe, menu, login, cart, footer, image, json, textJson) {
 
     }
 
-//  onDeviceReady();
+  onDeviceReady();
 
   //~ setInterval(function(){
     //~ console.log('update menu...');
