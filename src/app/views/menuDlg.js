@@ -1,5 +1,3 @@
-
-
 define(["dojo/dom-construct",
         "dojo/_base/window",
         "dojo/_base/lang",

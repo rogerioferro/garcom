@@ -94,7 +94,7 @@ function(script, iframe, menu, login, cart, footer, image, json, textJson) {
 
     }
 
-  onDeviceReady();
+//  onDeviceReady();
 
   //~ setInterval(function(){
     //~ console.log('update menu...');
