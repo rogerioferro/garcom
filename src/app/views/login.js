@@ -8,9 +8,10 @@ define(["app/screenClass",
         "dojox/mobile/Button"],
 function(screenClass, declare, lang, domConstruct,
          mblHeading, mblRoundRect, mblTextBox, mblButton){
-  var view = declare(screenClass,{
+           
+  var loginView = declare(screenClass,{
     
-    id : "login",
+    id : "loginView",
     
     createDom : function(){
       var head = new mblHeading({label : "Login", fixed : "top"});
@@ -57,8 +58,7 @@ function(screenClass, declare, lang, domConstruct,
       
       this.addChild(rect);
     }
-
-    
   });
-  return new view();
+  
+  return loginView;
 });

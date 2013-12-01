@@ -24,9 +24,10 @@ function(screenClass, declare, iframe, script, json, lang, on,
          domConstruct, domClass,
          mblHeading, mblRoundRect, mblRoundRectList, mblListItem, hcelPicker,
          mblIcon, mblButton){
-  var view = declare(screenClass,{
+           
+  var cartView = declare(screenClass,{
 
-    id : "cart",
+    id : "cartView",
 
     listArray : [],
     
@@ -88,30 +89,20 @@ function(screenClass, declare, iframe, script, json, lang, on,
           query: {send:'cart'}
         });
 
-        //console.log(promise);
         promise.response.always(function(response){
-          //console.log('finished');
           promise.cancel();
-          //console.log(response.stack);
-          //console.log(response.message);
           script.get("http://www.hcel.com.br/jsonp",{
             jsonp: "callback",
             preventCache: true,
             query:{email:"test@gmail.com",teste:"some text go here..."} //data to send
           }).then(function(data){
             // handle data
-            //console.log(data);
-            //console.log(obj);
-            //console.log(json.stringify(data));
-            //console.log(json.stringify(obj));
-            //alert(json.stringify(data));
             console.log( json.stringify(data) == json.stringify(obj) );
           }, function(err){
             // handle an error condition
             console.log(err);
           });
         });
-      
       }));
 
       rect.addChild(btn);
@@ -205,46 +196,6 @@ function(screenClass, declare, iframe, script, json, lang, on,
       this.total.innerHTML = 'R$ '+Number(total).toFixed(2);
     }
   });
-  return new view();
+  
+  return cartView;
 });
-
-
-
-
-
-      //~ var bt = new mblButton({'class':'mblIconButton', duration:200}).placeAt(rect.domNode);
-      //~ new mblIcon({icon:"mblDomButtonGrayPlus"},bt.domNode);
-//~ 
-      //~ new mblIcon({icon:"mblDomButtonTransparent19"},rect.domNode);
-      //~ 
-      //~ 
-      //~ var bt = new mblButton({'class':'mblIconButton', duration:200}).placeAt(rect.domNode);
-      //~ new mblIcon({icon:"mblDomButtonGrayMinus"},bt.domNode);
-//~ 
-      //~ new mblValuePickerSlot().placeAt(rect.domNode);
-//~ 
-      //~ new mblIcon({icon:"mblDomButtonBluePlus"},rect.domNode);
-      //~ new mblIcon({icon:"mblDomButtonBlueMinus"},rect.domNode);
-      //~ new mblIcon({icon:"mblDomButtonDarkBluePlus"},rect.domNode);
-      //~ new mblIcon({icon:"mblDomButtonDarkBlueMinus"},rect.domNode);
-      //~ new mblIcon({icon:"mblDomButtonRedPlus"},rect.domNode);
-      //~ new mblIcon({icon:"mblDomButtonRedMinus"},rect.domNode);
-      //~ new mblIcon({icon:"mblDomButtonGreyPlus"},rect.domNode);
-      //~ new mblIcon({icon:"mblDomButtonGreyMinus"},rect.domNode);
-      //~ new mblIcon({icon:"mblDomButtonWhitePlus"},rect.domNode);
-      //~ new mblIcon({icon:"mblDomButtonWhiteMinus"},rect.domNode);
-      //~ new mblIcon({icon:"mblDomButtonSilverCircleGrayButton"},rect.domNode);
-      //~ new mblIcon({icon:"mblDomButtonSilverCircleOrangeButton"},rect.domNode);
-      //~ new mblIcon({icon:"mblDomButtonSilverCircleGreenButton"},rect.domNode);
-//~ 
-      //~ new mblIcon({icon:"mblDomButtonSilverCircleGreenPlus"},rect.domNode);
-      //~ new mblIcon({icon:"mblDomButtonSilverCircleRedCross"},rect.domNode);
-//~ 
-      //~ new mblIcon({icon:"mblDomButtonGrayKnob"},rect.domNode);
-//~ 
-      //~ new mblIcon({icon:"mblDomButtonBlueCirclePlus"},rect.domNode);
-      //~ new mblIcon({icon:"mblDomButtonBlueCircleMinus"},rect.domNode);
-      //~ 
-      //~ new mblIcon({icon:"mblDomButtonYellowStar"},rect.domNode);
-
-

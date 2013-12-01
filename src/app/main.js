@@ -18,93 +18,52 @@
  * <http://dojotoolkit.org/reference-guide/loader/amd.html>.
  */
 
-define(['dojo/request/script',
-        "dojo/request/iframe",
-        "app/views/menu", //default view
+define(["app/views/menu", //default view
         "app/views/login",
         "app/views/cart",
+        "app/views/item",
         "app/views/footer",
         "app/image",
         "dojo/json",
         "dojo/text!app/views/menu.json"],
-function(script, iframe, menu, login, cart, footer, image, json, textJson) {
+function(menuView, loginView, cartView, itemView,
+         footer, image, json, textJson) {
+
+    app = {};
+
+    app.menuView = new menuView({app:app});
+
     // Wait for device API libraries to load
     document.addEventListener("deviceready", onDeviceReady, false);
 
-    //~ var i = 0;
-    //~ var urls =[
-      //~ "http://validate.jsontest.com/",
-      //~ "http://localhost:8080/jsonp",
-      //~ "http://jsfiddle.net/echo/jsonp/",
-      //~ "http://date.jsontest.com/",
-      //~ "http://ip.jsontest.com/",
-      //~ "http://md5.jsontest.com/?text=mariano_bundao",
-      //~ "http://echo.jsontest.com/key1/value1/key2/value2",
-    //~ ];
-    //~ setInterval(function(){
-      //~
-      //~ //console.log('requesting '+urls[i]);
-      //~ //alert("hello");
-     //~
-      //~ //script.get(urls[i],{
-      //~ script.get("http://www.hcel.com.br/jsonp",{
-        //~ jsonp: "callback",
-        //~ preventCache: true,
-        //~ query:{email:"test@gmail.com",teste:"some text go here..."} //data to send
-      //~ }).then(function(data){
-        //~ // handle data
-        //~ console.log(data);
-        //~ //alert(json.stringify(data));
-      //~ }, function(err){
-        //~ // handle an error condition
-        //~ console.log(err);
-      //~ });
-      //~ //i = (i+1)%7;
-    //~ },5000);
-    //console.log(textJson);
-    var menuObj = json.parse(textJson);
-    //console.log(json.stringify(menuObj));
-    // device APIs are available
+    app.cartView = new cartView({app:app});
+    app.loginView = new loginView({app:app});
+    app.itemView = new itemView({app:app});
+
+
     function onDeviceReady() {
-     // navigator.splashscreen.hide();
 
-      //Load from menu.json all the menu information and add it to an object
 
-      menu.updateMenu(menuObj);
+      //Get data from memory
+      app.menuData = json.parse(textJson);
 
-      var images = menuObj['images'];
+      //upload images
+      var images = app.menuData['images'];
       for (i in images){
         img = images[i];
         image.addImage(img);
       }
 
 
-      //~ var msg = window.localStorage.getItem("item-0");
-      //~ alert('[item-0:]'+msg);
-//~
-      //~ msg = window.localStorage.getItem("item-1");
-      //~ if (!msg) {
-        //~ alert('writing on storage...');
-        //~ window.localStorage.setItem("item-1", "Storage item-1");
-        //~ msg = window.localStorage.getItem("item-1");
-      //~ }
-//~
-//~
-      //~ alert(msg);
+      app.menuView.updateMenu(app.menuData);
+
+      //uncoment it to mobile version
+      //navigator.splashscreen.hide();
 
     }
 
+  //Coment it to mobile version
   onDeviceReady();
-
-  //~ setInterval(function(){
-    //~ console.log('update menu...');
-    //~ //menu.updateMenu(menuObj);
-      //~ var images = menuObj['images'];
-      //~ for (i in images){
-        //~ img = images[i];
-        //~ image.addImage(img);
-      //~ }
-  //~ },30000);
 
 });
 

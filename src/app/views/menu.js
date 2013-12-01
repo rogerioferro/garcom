@@ -3,19 +3,19 @@ define(["app/screenClass",
         "dojo/dom-construct",
         "dojo/_base/window",
         "dojo/_base/lang",
-        "app/views/menuDlg",
+        "app/views/item",
         "dojox/mobile/Heading",
         "dojox/mobile/EdgeToEdgeList",
         "dojox/mobile/ListItem",
         "dojox/mobile/SimpleDialog",
         "dojox/mobile/Button"],
-function(screenClass, declare, domConstruct, win, lang, menuDlg,
+function(screenClass, declare, domConstruct, win, lang, itemView,
          mblHeading, mblRoundRectList, mblListItem, mblSimpleDialog, mblButton){
 
-  var view = declare(screenClass,{
+  var subView = declare(screenClass,{
       
       createDom : function(){
-        //console.log('create Dom:'+this.id);
+
         /*Head creation*/
         var data = this.viewData || {head:{}};
         var head_attr = data['head'] || {};
@@ -37,7 +37,7 @@ function(screenClass, declare, domConstruct, win, lang, menuDlg,
 
         var itemList = this.viewData['list'];
 
-        var showDlg = this.viewData['type'] != 'group';
+        var showItem = this.viewData['type'] != 'group';
         
         /*List Item add*/
         for(var i in itemList){
@@ -45,7 +45,7 @@ function(screenClass, declare, domConstruct, win, lang, menuDlg,
           var item_attr = {
             innerHTML : '<div class = "menu-title">' +
               attr['label']+
-              (showDlg?('<span class = "menu-price"> R$ '+attr['price']+'</span>'):'')+ 
+              (showItem?('<span class = "menu-price"> R$ '+attr['price']+'</span>'):'')+ 
               '</div>'
           };
           item_attr['class'] = 'menu-list';
@@ -57,7 +57,7 @@ function(screenClass, declare, domConstruct, win, lang, menuDlg,
           }
           attr['icon'] = item_attr['icon'];
 
-          if (showDlg){
+          if (showItem){
             item_attr['clickable'] = true;
             item_attr['noArrow'] = true;
             item_attr['rightIcon'] = 'mblDomButtonGrayPlus';
@@ -65,10 +65,12 @@ function(screenClass, declare, domConstruct, win, lang, menuDlg,
             item_attr['moveTo'] = attr['moveTo'];
           }
           var item = new mblListItem(item_attr);
-          if (showDlg){
+          if (showItem){
             item.on('click',lang.hitch(this, function(attr, item){
-                menuDlg.setAttr(attr);
-                menuDlg.show();
+                //menuDlg.setAttr(attr);
+                //menuDlg.show();
+                //this.app.itemView.show(this, attr);
+                this.app.itemView.start(this, attr);
                 item.set('rightIcon','mblDomButtonCheck');
               }, attr, item));
           }
@@ -78,11 +80,12 @@ function(screenClass, declare, domConstruct, win, lang, menuDlg,
       }
   });
 
-  return new view({
-    id:'menu',
+  var menuView = declare(subView, {
+    id:'menuView',
     subScreens:[],
     updateMenu: function(obj){
-      var screens = obj['screens'];
+
+      var screens = this.app.menuData['screens'];
 
       //clear old screens
       while (this.subScreens.length > 0){
@@ -96,7 +99,7 @@ function(screenClass, declare, domConstruct, win, lang, menuDlg,
       this.clearView();
       
       for (var screen in screens){
-        if (screen == 'menu'){
+        if (screen == 'menuView'){
           this.viewData = screens[screen];
           if (this.isVisible() && this.firstView){
             this.createDom();
@@ -106,9 +109,16 @@ function(screenClass, declare, domConstruct, win, lang, menuDlg,
           }
         }
         else{
-          this.subScreens.push(new view({viewData:screens[screen], id:screen}));
+          this.subScreens.push(new subView(
+            {viewData:screens[screen],
+             id:screen,
+             app: this.app}));
         }
       }
     }
   });
-});
+
+
+  return menuView;
+})
+;

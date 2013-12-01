@@ -1,29 +1,29 @@
 {
-  "screens": {  "menu":
+  "screens": {  "menuView":
                     { "head": {"label":"Card&aacute;pio"},
                       "type": "group",
                       "list": [
-                        {"label": "Pizzas","moveTo":"pizzas"},
-                        {"icon": "Drinks","label":"Bebidas","moveTo":"drinks"}]
+                        {"label": "Pizzas","moveTo":"pizzasView"},
+                        {"icon": "Drinks","label":"Bebidas","moveTo":"drinksView"}]
                     },
-              "pizzas":
-                    { "head" : {"label":"Pizzas","back":"Card&aacute;pio","moveTo":"menu"},
+              "pizzasView":
+                    { "head" : {"label":"Pizzas","back":"Card&aacute;pio","moveTo":"menuView"},
                       "list": [
                          {"cod":1,  "codCli":22,  "label":"Calabresa",     "price":"18,00",  "icon": "Pizzas", "descr":"Pizza com calabresa e queijo muzzarela"},
                          {"cod":2,  "codCli":33,  "label":"Peperoni",      "price":"20,00",  "icon": "Pizzas", "descr":"Pizza com Peperoni (calabresa apimentada) e queijo muzzarela"},
                          {"cod":3,  "codCli":44,  "label":"Milho",         "price":"16,00",  "icon": "Pizzas", "descr":"Pizza com milho e queijo muzzarela"},
                          {"cod":4,  "codCli":55,  "label":"Moda da Casa",  "price":"18,00",  "descr":"Pizza com queijo muzzarela, mignon, cebola, champignon e páprica"}]
                     },
-                "drinks":
-                    { "head": {"label":"Bebidas", "back":"Card&aacute;pio","moveTo":"menu"},
+                "drinksView":
+                    { "head": {"label":"Bebidas", "back":"Card&aacute;pio","moveTo":"menuView"},
                       "type": "group",
                       "list": [
-                         {"label":"Sucos",           "moveTo": "juices",  "icon": "DrinksJuices"},
+                         {"label":"Sucos",           "moveTo": "juicesView",  "icon": "DrinksJuices"},
                          {"label":"Refrigerantes",                        "icon": "DrinksSodas"},
                          {"label":"Cervejas",                             "icon": "DrinksBeers"}]
                     },
-                "juices":
-                    { "head": {"label":"Sucos", "back":"Bebidas","moveTo":"drinks"},
+                "juicesView":
+                    { "head": {"label":"Sucos", "back":"Bebidas","moveTo":"drinksView"},
                       "list": [
                          {"cod":11, "codCli":77, "label":"Abacaxi",        "price":"3,50",  "icon": "DrinksJuicesPineapple"},
                          {"cod":12, "codCli":88, "label":"Laranja",        "price":"3,50",  "icon": "DrinksJuicesOrange"},

@@ -1,0 +1,131 @@
+.cart-list{
+  height:80px;
+  line-height:80px;
+  font-weight:normal;
+  background-color:#FFFDDF;
+  font-size: 14px;
+}
+
+.cart-list .hcelPickerButton{
+ height : 30px;
+}
+.cart-list .hcelPickerValue{
+  height: 16px;
+}
+
+.cart-list .mblListItemIcon {
+  display:none;
+}
+
+.cart-edit .mblListItemIcon{
+  display: inline-block;
+  line-height:normal;
+  position:absolute;
+  padding:0;
+  margin:0;
+  top:25px;
+  left:3px;
+  cursor:pointer;
+}
+
+/*
+ Button " + " and " - " table of cart
+*/
+.cart-quant{
+  position:absolute;
+  left:0px;
+  width:35px;
+}
+.cart-edit .cart-quant{
+  left:30px;
+  display:none;
+}
+
+/*
+ Description table of cart
+*/
+.cart-desc{
+  position:absolute;
+  right:111px;
+  left:35px;
+  top:0px;
+  bottom:0px;
+  padding-left:5px;
+  padding-right:5px;
+  border-left: 1px solid #c0c0c0;
+}
+
+/*
+ Description table of cart
+*/
+.cart-desc span {
+  display: inline-block;
+  line-height:normal;
+}
+
+/*
+ Unity Price table of cart
+*/
+.cart-price-un{
+  position:absolute;
+
+  right:56px;
+  width:50px;
+  padding-right: 5px; /*width total = 55px*/
+
+  text-align: right;
+  border-left: 1px solid #c0c0c0;
+}
+
+/*
+ Total Value table of cart
+*/
+.cart-price-tot {
+  position:absolute;
+  right:0px;
+
+  width:50px;
+  padding-right: 5px; /*width total = 55px*/
+
+  text-align: right;
+  border-left: 1px solid #c0c0c0;
+}
+
+
+.cart-title>div{
+  text-align: center;
+}
+
+.cart-title .cart-price-un,
+.cart-title .cart-price-tot{
+  line-height: normal;
+}
+
+.cart-button{
+  position:absolute;
+  left:0px;
+  width:80px;
+}
+
+.cart-footer>.cart-desc{
+  text-align:right;
+  left:80px;
+  border-left:0;
+  padding-right:5px;
+}
+
+/*
+ Total cart value table of cart
+*/
+.cart-total{
+  position:absolute;
+  right:0px;
+  width:111px;
+  border-left: 1px solid #c0c0c0;
+  text-align:center;
+}
+
+.cart-footer, .cart-title{
+  background-color: #85BFFE;
+}
+

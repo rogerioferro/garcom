@@ -1,0 +1,74 @@
+
+.itemHead{
+}
+
+.itemTitleContainer{
+  font-size: 16px;
+  font-weight: bold;
+  text-align: left;
+  border-bottom: 1px solid #D9D7D0;
+  overflow:hidden;
+  line-height:69px;
+}
+
+.itemIcon{
+  display:inline-block;
+  margin-left:5px;
+  margin-top:5px;
+  float:left;
+}
+
+.itemTitle{
+  color:#909285;
+  float:left;
+  margin-left:5px;
+}
+  
+.itemPrice{
+ color:#FFC244;
+ font-weight:bold;
+ padding-right:5px;
+ float:right;
+}
+
+.itemLabel{
+  color:#C1BEAB;
+  font-weight:bold;
+  font-size:13px;
+  text-align:left;
+  margin-left:10px;
+  margin-bottom:3px;
+}
+
+.itemDescr{
+  color:#808275;
+  font-size:15px;
+  text-align:justify;
+  background-color:#FFFFFF;
+  border-color:#D9D7D0;
+  border-style:solid;
+  border-width: 1px 0px;
+  padding:5px;
+  margin-bottom:5px;
+}
+
+.itemEdit{
+  display:inline-block;
+  width:100%;
+  margin-bottom:5px;
+}
+
+.itemEdit .hcelPicker{
+  margin-left:5px;
+}
+
+.itemTrashButton{
+  height:40px;
+  border-radius:7px;
+  float: right;
+  margin-right:5px;
+}
+
+.itemTrashButton .mblDomButton{
+  margin: 5px auto;
+}

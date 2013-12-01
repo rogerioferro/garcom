@@ -3,16 +3,17 @@ var VIEW_POSITION = 1; /*position of view on body*/
 define(["dojox/mobile/ScrollableView",
         "dojo/_base/declare",
         "dojo/_base/window",
+        "dojo/dom-class",        
         "dojo/dom-construct"],
-function(view, declare, window, domConstruct){
+function(view, declare, window, domClass, domConstruct){
   return declare(view, {
     /*index to insert child*/
     index : 0,
     postCreate: function(){
       this.inherited(arguments);
 
-      this.win = window;
-      
+      domClass.add(this.domNode, "center-container");
+  
       /*create space to footer*/
       domConstruct.create('div',{style:"height:32px"},this.domNode);
       /*place view on body*/
