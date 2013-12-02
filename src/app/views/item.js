@@ -50,20 +50,40 @@ function(screenClass, declare, domConstruct, win, lang,
         this.descr = domConstruct.create('div',
                                          {'class': 'itemDescr'});
         this.addNode(this.descr);
-
-
-        var editDomNode = domConstruct.create('div',
+        
+        this.editDomNode = domConstruct.create('div',
                                            {'class':'itemEdit'});        
         domConstruct.create('div',
                       { 'class': 'itemLabel',
-                        innerHTML: 'Quantidade:'},editDomNode);
+                        innerHTML: 'Quantidade:'},this.editDomNode);
         var picker = new hcelPicker({value:1, minValue:1, maxValue:99});
-        picker.placeAt(editDomNode);
+        picker.placeAt(this.editDomNode);
         var btnTrash = new hcelFlatButton({'class':'mblFlatButton itemTrashButton'})
-          .placeAt(editDomNode);
+          .placeAt(this.editDomNode);
         mblIconUtils.createIcon('mblDomButtonTrash',null, null, null, btnTrash.domNode);
-        this.addNode(editDomNode);
+        this.addNode(this.editDomNode);
 
+        this.resizeDescr();
+
+      },
+      resizeDescr : function(){
+        if (!this.descr) return;
+        var top = this.descr.offsetTop;
+        var height = this.containerNode.offsetHeight;
+        var edit_height = this.editDomNode.offsetHeight;
+        var other = 22; // border + padding + margin
+        this.descr.style.height = (height - top - other - edit_height) + 'px';
+        
+      },
+      resize : function(){
+        this.inherited(arguments);
+        this.resizeDescr();
+        //~ console.log('domNode:');
+        //~ console.log(this.containerNode.offsetHeight);
+        //~ if (this.descr){
+          //~ console.log('descr top:');
+          //~ console.log(this.descr.offsetTop);
+        //~ }
       },
       start : function(view, attr){
         view.performTransition(this.id);

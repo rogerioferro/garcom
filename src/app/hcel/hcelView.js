@@ -44,7 +44,6 @@ function(mblView, _hcelView, declare, window, domClass, domConstruct){
       }
       this.resize();
     },
-    
     resize : function(){
       this.domNode.style.height = this.getScreenSize().h + 'px';
       if (this.isLocalHeader){
@@ -54,6 +53,7 @@ function(mblView, _hcelView, declare, window, domClass, domConstruct){
         this.containerNode.style.bottom = this.fixedFooterHeight + "px";
         console.log('footer:'+this.fixedFooterHeight);
       }
+      this.inherited(arguments);      
     } 
   });
 });
