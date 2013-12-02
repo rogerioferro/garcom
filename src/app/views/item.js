@@ -1,15 +1,16 @@
-define(["app/screenClass",
+define(["app/hcel/hcelView",
         "dojo/_base/declare",
         "dojo/dom-construct",
         "dojo/_base/window",
         "dojo/_base/lang",
         "dojox/mobile/Heading",
         "dojox/mobile/iconUtils",
-        "app/picker",
-        "app/flatButton",
+        "app/hcel/hcelPicker",
+        "app/hcel/hcelButton",
+        "dojox/mobile/Pane",
         "dojox/mobile/Button"],
 function(screenClass, declare, domConstruct, win, lang,
-         mblHeading, mblIconUtils, hcelPicker, hcelFlatButton, mblButton){
+         mblHeading, mblIconUtils, hcelPicker, hcelFlatButton, mblPane, mblButton){
 
   var itemView = declare(screenClass, {
       id : 'itemView',
@@ -20,6 +21,15 @@ function(screenClass, declare, domConstruct, win, lang,
                                     transition:'none'});
         this.addFixedBar(this.head);
         this.head.startup();
+
+        this.foot = new mblHeading({'class':'itemFoot',
+                                    fixed:'bottom'});
+        this.addFixedBar(this.foot);
+        this.foot.startup();
+
+        var btn = new hcelFlatButton({innerHTML:'Test...'});
+        this.foot.addChild(btn);
+
 
         //Title
         var titleContainer = domConstruct.create('div',
@@ -43,20 +53,16 @@ function(screenClass, declare, domConstruct, win, lang,
 
 
         var editDomNode = domConstruct.create('div',
-                                           {'class':'itemEdit'});
-        this.addNode(editDomNode);
-        
+                                           {'class':'itemEdit'});        
         domConstruct.create('div',
                       { 'class': 'itemLabel',
                         innerHTML: 'Quantidade:'},editDomNode);
         var picker = new hcelPicker({value:1, minValue:1, maxValue:99});
         picker.placeAt(editDomNode);
-
         var btnTrash = new hcelFlatButton({'class':'mblFlatButton itemTrashButton'})
           .placeAt(editDomNode);
-
         mblIconUtils.createIcon('mblDomButtonTrash',null, null, null, btnTrash.domNode);
-
+        this.addNode(editDomNode);
 
       },
       start : function(view, attr){

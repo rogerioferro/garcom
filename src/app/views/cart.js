@@ -4,7 +4,7 @@ var products = {
   2 : {desc : "Pão com banha", price: 1.25}
 };
 
-define(["app/screenClass",
+define(["app/hcel/hcelScrollableView",
         "dojo/_base/declare",
         "dojo/request/iframe",
         'dojo/request/script',
@@ -17,7 +17,7 @@ define(["app/screenClass",
         "dojox/mobile/RoundRect",
         "dojox/mobile/RoundRectList",
         "dojox/mobile/ListItem",
-        "app/picker",
+        "app/hcel/hcelPicker",
         "dojox/mobile/Icon",
         "dojox/mobile/Button"],
 function(screenClass, declare, iframe, script, json, lang, on,

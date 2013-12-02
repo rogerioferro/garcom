@@ -1,5 +1,5 @@
 
-.hcelFlatButton{
+.hcelButton{
   display:inline-block;
   padding: 0 10px;
   height: 29px;  
@@ -10,7 +10,7 @@
   background-color:#FDFCF8;
   border:1px solid #D9D7D0;
 }
-.hcelFlatButtonSelected{
+.hcelButtonSelected{
   display:inline-block;
   padding: 0 10px;
   height: 29px;  

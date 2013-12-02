@@ -1,4 +1,4 @@
-define(["app/screenClass",
+define(["app/hcel/hcelScrollableView",
         "dojo/_base/declare",
         "dojo/dom-construct",
         "dojo/_base/window",

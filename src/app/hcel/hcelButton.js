@@ -8,12 +8,12 @@ define(["dijit/_WidgetBase",
         "dojo/dom-construct",
         "dojo/dom-class"],
 function(_WidgetBase, on, touch, lang, declare, array, domConstruct, domClass){
-  return declare('hcel_flat_button',_WidgetBase, {
-    baseClass:'hcelFlatButton',
+  return declare('hcel_button',_WidgetBase, {
+    baseClass:'hcelButton',
     buildRendering: function() {
       this.inherited(arguments);
 
-      this.domNode = domConstruct.create('div',{'class':'hcelFlatButton'});
+      this.domNode = domConstruct.create('div',{'class':this.baseClass});
     },
     postCreate: function(){
       this.inherited(arguments);

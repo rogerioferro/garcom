@@ -22,12 +22,11 @@ define(["app/views/menu", //default view
         "app/views/login",
         "app/views/cart",
         "app/views/item",
-        "app/views/footer",
         "app/image",
         "dojo/json",
         "dojo/text!app/views/menu.json"],
 function(menuView, loginView, cartView, itemView,
-         footer, image, json, textJson) {
+         image, json, textJson) {
 
     app = {};
 
@@ -58,7 +57,7 @@ function(menuView, loginView, cartView, itemView,
       app.menuView.updateMenu(app.menuData);
 
       //uncoment it to mobile version
-      //navigator.splashscreen.hide();
+      navigator.splashscreen.hide();
 
     }
 

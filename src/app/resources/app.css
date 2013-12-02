@@ -15,14 +15,16 @@
 @import '../../dojox/mobile/themes/custom/custom.css';
 
 /* Widgets CSS*/
-@import '../theme/button.css';
-@import '../theme/picker.css';
-@import '../theme/DomButtonTrash.css';
+@import '../hcel/theme/hcelView.css';
+@import '../hcel/theme/hcelScrollableView.css';
+@import '../hcel/theme/hcelButton.css';
+@import '../hcel/theme/hcelPicker.css';
+@import '../hcel/theme/domButtons/DomButtonTrash.css';
 
 /* Views CSS*/
 @import '../theme/menuView.css';
 @import '../theme/cartView.css';
-@import '../theme/listView.css';
+@import '../theme/itemView.css';
 
 *{
   -webkit-user-select:none;
@@ -44,12 +46,14 @@ textarea:focus, select:focus{
 .mblHeading{
   background-image:none;
   color:#ecf0f1;
-  background-color:#2980B9; /*#3498DB*/
+  background-color:rgba(41, 128, 185, 0.9); /*#2980B9;*/ /*#3498DB*/
 }
 
+/*
 .mblView{
-  background-color:#FDFCF8;
+  background-color: #FDFCF8;
 }
+*/
 
 div.innerBox{
   border: 1px solid #c0c0c0;
