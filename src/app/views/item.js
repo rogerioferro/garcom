@@ -28,20 +28,15 @@ function(screenClass, declare, domConstruct, win, lang,
         this.foot = new mblContainer({'class':'itemFoot',
                                       fixed:'bottom'});
         var btn0 = new hcelFlatButton({'class':'itemButton itemAddButton'});
-        //mblIconUtils.createIcon('mblDomButtonGrayPlus',null, null, null, btn.domNode);
-        mblIconUtils.createIcon('mblDomButtonTrash',null, null, null, btn0.domNode);
+        mblIconUtils.createIcon('mblDomButtonGrayPlus',null, null, null, btn0.domNode);
+        //mblIconUtils.createIcon('mblDomButtonTrash',null, null, null, btn0.domNode);
         this.foot.addChild(btn0);
         var btn1 = new hcelFlatButton({'class':'itemButton itemFavButton'});
-        //mblIconUtils.createIcon('mblDomButtonYellowStar',null, null, null, btn1.domNode);
-        mblIconUtils.createIcon('mblDomButtonGrayStar',null, null, null, btn1.domNode);
+        mblIconUtils.createIcon('mblDomButtonYellowStar',null, null, null, btn1.domNode);
+        //mblIconUtils.createIcon('mblDomButtonGrayStar',null, null, null, btn1.domNode);
         this.foot.addChild(btn1);
         this.addFixedBar(this.foot);
         //---
-
-        //~ var btnTrash = new hcelFlatButton({'class':'mblFlatButton itemTrashButton'})
-          //~ .placeAt(this.editDomNode);
-        //~ mblIconUtils.createIcon('mblDomButtonTrash',null, null, null, btnTrash.domNode);
-
 
 
         //Title
