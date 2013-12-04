@@ -45,13 +45,13 @@ function(mblView, _hcelView, declare, window, domClass, domConstruct){
       this.resize();
     },
     resize : function(){
-      this.domNode.style.height = this.getScreenSize().h + 'px';
+      var height = this.getScreenSize().h; 
+      this.domNode.style.height = ((height > 350)?height:350) + 'px';
       if (this.isLocalHeader){
         this.containerNode.style.top = this.fixedHeaderHeight + 'px';
       }
       if (this.isLocalFooter){
         this.containerNode.style.bottom = this.fixedFooterHeight + "px";
-        console.log('footer:'+this.fixedFooterHeight);
       }
       this.inherited(arguments);      
     } 

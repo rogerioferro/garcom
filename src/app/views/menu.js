@@ -21,6 +21,7 @@ function(screenClass, declare, domConstruct, win, lang, itemView,
         var head_attr = data['head'] || {};
         head_attr.label = head_attr.label || "Card&aacute;pio";
         head_attr.fixed = head_attr.fixed || "top";
+        head_attr.transition = 'none';
         var head = new mblHeading(head_attr);
         this.addFixedBar(head);
         head.startup();
@@ -46,7 +47,8 @@ function(screenClass, declare, domConstruct, win, lang, itemView,
             innerHTML : '<div class = "menu-title">' +
               attr['label']+
               (showItem?('<span class = "menu-price"> R$ '+attr['price']+'</span>'):'')+ 
-              '</div>'
+              '</div>',
+            transition : 'none'
           };
           item_attr['class'] = 'menu-list';
           if('icon' in attr){

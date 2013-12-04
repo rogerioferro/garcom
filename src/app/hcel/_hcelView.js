@@ -28,15 +28,15 @@ function(declare, win, domConstruct){
     },
     clearView : function() {
       this.destroyDescendants();
-    },
-    getScreenSize: function(){
-      // summary:
-      //		Returns the dimensions of the browser window.
-      return {
-        h: win.global.innerHeight||win.doc.documentElement.clientHeight||win.doc.documentElement.offsetHeight,
-        w: win.global.innerWidth||win.doc.documentElement.clientWidth||win.doc.documentElement.offsetWidth
-      };
-    }
+    }//,
+    //~ getScreenSize: function(){
+      //~ // summary:
+      //~ //		Returns the dimensions of the browser window.
+      //~ return {
+        //~ h: win.global.innerHeight||win.doc.documentElement.clientHeight||win.doc.documentElement.offsetHeight,
+        //~ w: win.global.innerWidth||win.doc.documentElement.clientWidth||win.doc.documentElement.offsetWidth
+      //~ };
+    //~ }
     
   });
 });

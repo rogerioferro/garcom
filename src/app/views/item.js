@@ -1,4 +1,4 @@
-define(["app/hcel/hcelView",
+define(["app/hcel/hcelScrollableView",
         "dojo/_base/declare",
         "dojo/dom-construct",
         "dojo/_base/window",
@@ -86,11 +86,22 @@ function(screenClass, declare, domConstruct, win, lang,
         this.descrDomNode.style.height = (editTop - descrTop - 15) + 'px';
       },
       resize : function(){
+        var minSize = 300;
         this.inherited(arguments);
+        var height = this.containerNode.offsetHeight;
+        if (height > minSize){
+          this.scroll = false;
+        }
+        else{
+          this.scroll = true;
+          height = minSize;
+          this.containerNode.style.height = height + 'px';
+        }
         this.resizeDescr();
       },
       start : function(view, attr){
         view.performTransition(this.id);
+        this.resizeDescr();
         
         this.head.set('moveTo',view.id);
         this.head.set('label','Detalhes');
