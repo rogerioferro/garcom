@@ -1,7 +1,5 @@
 .hcelPicker{
-  margin:0;
-  padding:0;
-  border:0;
+  display:inline-block;
 }
 
 .hcelPickerButton{
