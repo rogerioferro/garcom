@@ -87,6 +87,8 @@ function(screenClass, declare, domConstruct, win, lang,
       },
       resize : function(){
         var minSize = 300;
+        if (this.descrDomNode)
+          this.descrDomNode.style.height = 0;
         this.inherited(arguments);
         var height = this.containerNode.offsetHeight;
         if (height > minSize){
