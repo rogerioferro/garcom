@@ -13,6 +13,7 @@ function(mblScrollableView, _hcelView, declare, window, domClass){
       this.startup();
     },
     resize : function (){
+      this.containerNode.style.height = 'auto';
       this.inherited(arguments);
       var height = this.getScreenSize().h;
       if (this.isLocalHeader){
@@ -21,7 +22,9 @@ function(mblScrollableView, _hcelView, declare, window, domClass){
       if (this.isLocalFooter){
         height -= this.fixedFooterHeight;
       }
-      this.containerNode.style.height = height + 'px';
+      if (height > this.containerNode.offsetHeight){
+        this.containerNode.style.height = height + 'px';
+      }
     },
     onTouchStart : function(e){
       if (this.scroll){
@@ -30,3 +33,4 @@ function(mblScrollableView, _hcelView, declare, window, domClass){
     }
   });
 });
+;
