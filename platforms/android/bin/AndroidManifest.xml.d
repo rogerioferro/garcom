@@ -1,2 +1,2 @@
-/home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/bin/AndroidManifest.xml : \
-/home/rogerioferro/Documentos/projects/cordova/garcom-git/platforms/android/AndroidManifest.xml \
+/home/gauderio/projects/garcom/platforms/android/bin/AndroidManifest.xml : \
+/home/gauderio/projects/garcom/platforms/android/AndroidManifest.xml \
