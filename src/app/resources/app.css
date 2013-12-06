@@ -15,11 +15,14 @@
 @import '../../dojox/mobile/themes/custom/custom.css';
 
 /* Widgets CSS*/
+@import '../hcel/theme/hcelHeading.css';
 @import '../hcel/theme/hcelView.css';
 @import '../hcel/theme/hcelScrollableView.css';
 @import '../hcel/theme/hcelButton.css';
 @import '../hcel/theme/hcelPicker.css';
 @import '../hcel/theme/domButtons/DomButtonTrash.css';
+@import '../hcel/theme/domButtons/DomButtonWhiteLeftArrow.css';
+@import '../hcel/theme/domButtons/DomButtonGrayLeftArrow.css';
 
 /* Views CSS*/
 @import '../theme/menuView.css';
@@ -32,8 +35,6 @@
   outline:none;
   -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
-
-
 input:focus, input[type="password"]:focus,
 input[type="text"]:focus,
 textarea:focus, select:focus{
@@ -42,19 +43,6 @@ textarea:focus, select:focus{
  -webkit-user-modify: read-write-plaintext-only;
 }
 
-
-.mblHeading{
-  background-image:none;
-  color:#ecf0f1;
-  background-color:rgba(41, 128, 185, 0.9); /*#2980B9;*/ /*#3498DB*/
-  border:none;
-}
-
-/*
-.mblView{
-  background-color: #FDFCF8;
-}
-*/
 
 div.innerBox{
   border: 1px solid #c0c0c0;

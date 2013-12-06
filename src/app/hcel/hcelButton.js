@@ -5,14 +5,41 @@ define(["dijit/_WidgetBase",
         "dojo/_base/lang",
         "dojo/_base/declare",
         "dojo/_base/array",
+        "dojox/mobile/iconUtils",
         "dojo/dom-construct",
         "dojo/dom-class"],
-function(_WidgetBase, on, touch, lang, declare, array, domConstruct, domClass){
+function(_WidgetBase, on, touch, lang, declare, array,
+         mblIconUtils, domConstruct, domClass){
   return declare('hcel_button',_WidgetBase, {
     baseClass:'hcelButton',
+    selected:false,
+    _setSelectedAttr : function(selected){
+      this._set('selected',selected);
+      this._updateSelected();
+    },
+    _updateSelected : function(){
+      if (this.IconDomNode){
+        this.IconDomNode.style.display =
+            (!this.IconSelectedDomNode || !this.selected)?'block':'none';
+      }
+      if (this.IconSelectedDomNode){
+        this.IconSelectedDomNode.style.display = (this.selected)?'block':'none';
+      }
+    },
+    _setIconAttr : function(icon){
+      this._set('icon',icon);
+      this.IconDomNode = mblIconUtils.createIcon(this.icon,
+                    null, this.iconDomNode, null, this.domNode);
+      this._updateSelected();      
+    },
+    _setIconSelectedAttr : function(icon){
+      this._set('icon',icon);
+      this.IconSelectedDomNode = mblIconUtils.createIcon(this.icon,
+                    null, this.IconSelectedDomNode, null, this.domNode);
+      this._updateSelected();
+    },
     buildRendering: function() {
       this.inherited(arguments);
-
       this.domNode = domConstruct.create('div',{'class':this.baseClass});
     },
     postCreate: function(){
@@ -27,11 +54,12 @@ function(_WidgetBase, on, touch, lang, declare, array, domConstruct, domClass){
       if (this.newStateClasses){
         domClass.remove(this.domNode, this.newStateClasses);
       }
+      this.set('selected', false);
     },
     _onPress: function(e){
       var newStateClasses = (this.baseClass+' '+this["class"]).split(" ");
       this.newStateClasses = array.map(newStateClasses, function(c){ return c+"Selected"; });
-      
+      this.set('selected', true);
       domClass.add(this.domNode, this.newStateClasses);
       return false;
     },

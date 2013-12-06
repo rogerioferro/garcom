@@ -1,0 +1,25 @@
+.hcelHeading{
+  height:40px;
+  line-height:40px;
+  background-image:none;
+  color:#ecf0f1;
+  background-color:rgba(41, 128, 185, 0.9);
+  border:none;
+  text-shadow:none;
+}
+
+.hcelHeadingButtonBack{
+  position:absolute;
+  border:none;
+  left:0;
+  top:0;
+  bottom:0;
+}
+.hcelHeadingButtonBack .mblDomButton{
+  position:absolute;
+  left:5px;
+  top:0;
+  bottom:0;
+  margin:auto;
+}
+

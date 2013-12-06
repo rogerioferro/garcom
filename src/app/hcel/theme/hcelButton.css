@@ -11,17 +11,18 @@
   border:1px solid #D9D7D0;
 }
 .hcelButtonSelected{
-/*
-  display:inline-block;
-  padding: 0 10px;
-  height: 29px;  
-  line-height: 29px;
-  text-align: center;
-  margin:auto;
-  color:#848684;
-*/
   background-color: #EFECE2;
   border: 1px solid #9B998D;
+}
+
+
+.hcelButton .mblDomButton{
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  margin:auto;
 }
 
 .mblFlatButton{

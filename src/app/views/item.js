@@ -3,21 +3,21 @@ define(["app/hcel/hcelScrollableView",
         "dojo/dom-construct",
         "dojo/_base/window",
         "dojo/_base/lang",
-        "dojox/mobile/Heading",
+        "app/hcel/hcelHeading",
         "dojox/mobile/iconUtils",
         "app/hcel/hcelPicker",
         "app/hcel/hcelButton",
         "dojox/mobile/Container",
         "dojox/mobile/Button"],
 function(screenClass, declare, domConstruct, win, lang,
-         mblHeading, mblIconUtils, hcelPicker, hcelFlatButton, mblContainer, mblButton){
+         mblHeading, mblIconUtils, hcelPicker, hcelButton, mblContainer, mblButton){
 
   var itemView = declare(screenClass, {
       id : 'itemView',
       createDom : function(){
         //Head
         this.head = new mblHeading({'class':'itemHead',
-                                    back:'Voltar',
+                                    label:'Detalhes',
                                     fixed:'top',
                                     transition:'none'});
         this.addFixedBar(this.head);
@@ -27,13 +27,12 @@ function(screenClass, declare, domConstruct, win, lang,
         //Foot
         this.foot = new mblContainer({'class':'itemFoot',
                                       fixed:'bottom'});
-        var btn0 = new hcelFlatButton({'class':'itemButton itemAddButton'});
-        mblIconUtils.createIcon('mblDomButtonGrayPlus',null, null, null, btn0.domNode);
-        //mblIconUtils.createIcon('mblDomButtonTrash',null, null, null, btn0.domNode);
+        var btn0 = new hcelButton({'class':'itemButton itemAddButton',
+                                   icon:'mblDomButtonGrayPlus'});
         this.foot.addChild(btn0);
-        var btn1 = new hcelFlatButton({'class':'itemButton itemFavButton'});
-        mblIconUtils.createIcon('mblDomButtonYellowStar',null, null, null, btn1.domNode);
-        //mblIconUtils.createIcon('mblDomButtonGrayStar',null, null, null, btn1.domNode);
+        var btn1 = new hcelButton({'class':'itemButton itemFavButton',
+                                   icon:'mblDomButtonGrayStar',
+                                   iconSelected:'mblDomButtonYellowStar'});
         this.foot.addChild(btn1);
         this.addFixedBar(this.foot);
         //---

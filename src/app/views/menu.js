@@ -4,40 +4,39 @@ define(["app/hcel/hcelScrollableView",
         "dojo/_base/window",
         "dojo/_base/lang",
         "app/views/item",
-        "dojox/mobile/Heading",
+        "app/hcel/hcelHeading",
         "dojox/mobile/EdgeToEdgeList",
         "dojox/mobile/ListItem",
-        "dojox/mobile/SimpleDialog",
         "dojox/mobile/Button"],
 function(screenClass, declare, domConstruct, win, lang, itemView,
-         mblHeading, mblRoundRectList, mblListItem, mblSimpleDialog, mblButton){
+         hcelHeading, mblList, mblListItem, mblButton){
 
   var subView = declare(screenClass,{
       
       createDom : function(){
 
         /*Head creation*/
-        var data = this.viewData || {head:{}};
-        var head_attr = data['head'] || {};
-        head_attr.label = head_attr.label || "Card&aacute;pio";
-        head_attr.fixed = head_attr.fixed || "top";
+        var data = this.viewData['head'];
+        var head_attr = {};
+        head_attr.label = data.label || "Card&aacute;pio";
+        head_attr.fixed = "top";
         head_attr.transition = 'none';
-        var head = new mblHeading(head_attr);
+        if ('moveTo' in data){
+          head_attr.moveTo = data.moveTo;
+        }
+        var head = new hcelHeading(head_attr);
+
         this.addFixedBar(head);
         head.startup();
         /* */
 
         if(!this.viewData) return;
 
-        /*RoundRectList creation*/
-        var list_attr = {'class':"center-container"};
-
-        var list = new mblRoundRectList(list_attr);
-        this.addChild(list);
+        /*List creation*/
+        var list = new mblList();
         /* */
 
         var itemList = this.viewData['list'];
-
         var showItem = this.viewData['type'] != 'group';
         
         /*List Item add*/
@@ -69,9 +68,6 @@ function(screenClass, declare, domConstruct, win, lang, itemView,
           var item = new mblListItem(item_attr);
           if (showItem){
             item.on('click',lang.hitch(this, function(attr, item){
-                //menuDlg.setAttr(attr);
-                //menuDlg.show();
-                //this.app.itemView.show(this, attr);
                 this.app.itemView.start(this, attr);
                 item.set('rightIcon','mblDomButtonCheck');
               }, attr, item));
@@ -79,6 +75,8 @@ function(screenClass, declare, domConstruct, win, lang, itemView,
           
           list.addChild(item);
         }
+
+        this.addChild(list);
       }
   });
 
