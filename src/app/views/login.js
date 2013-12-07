@@ -1,4 +1,4 @@
-define(["app/hcel/hcelScrollableView",
+define(["app/hcel/hcelView",
         "dojo/_base/declare",
         "dojo/_base/lang",
         "dojo/dom-construct",

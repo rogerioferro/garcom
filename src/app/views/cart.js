@@ -4,7 +4,7 @@ var products = {
   2 : {desc : "Pão com banha", price: 1.25}
 };
 
-define(["app/hcel/hcelScrollableView",
+define(["app/hcel/hcelView",
         "dojo/_base/declare",
         "dojo/request/iframe",
         'dojo/request/script',
