@@ -8,18 +8,19 @@
 .mblDomButtonWhiteLeftArrow > div {
   position: absolute;
   top: 12px;
-  left: 0px;
-  width: 25px;
+  left: 4px;
+  width: 22px;
   height: 4px;
   margin: 0px;
   font-size: 1px;
   background-color: #ffffff;
-  border-radius: 2px;
+  border-radius: 0 4px 4px 0;
 }
+
 .mblDomButtonWhiteLeftArrow > div > div{
   position: absolute;
   top: 4px;
-  left: -2px;
+  left: -4px;
   width: 15px;
   height: 4px;
   margin: 0px;
@@ -28,7 +29,7 @@
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
   -moz-transform: rotate(45deg);
-  border-radius: 2px;
+  border-radius: 4px;
 }
 .mblDomButtonWhiteLeftArrow > div > div > div{
   position: absolute;
@@ -39,5 +40,5 @@
   margin: 0px;
   font-size: 1px;
   background-color: #ffffff;
-  border-radius: 2px;
+  border-radius: 4px;
 }
