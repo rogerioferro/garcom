@@ -46,6 +46,9 @@ function(menuView, loginView, cartView, itemView,
       //Get data from memory
       app.menuData = json.parse(textJson);
 
+      app.products = app.menuData['products'];
+      app.cart = {"1":{quant:2}}; //"cod" is the key
+      
       //upload images
       var images = app.menuData['images'];
       for (i in images){

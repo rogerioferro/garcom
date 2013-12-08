@@ -8,19 +8,20 @@ define(["app/hcel/hcelView",
         "dojox/mobile/EdgeToEdgeList",
         "dojox/mobile/ListItem",
         "dojox/mobile/Button"],
-function(screenClass, declare, domConstruct, win, lang, itemView,
+function(hcelView, declare, domConstruct, win, lang, itemView,
          hcelHeading, mblList, mblListItem, mblButton){
 
-  var subView = declare(screenClass,{
-      
+  var subView = declare(hcelView,{
       createDom : function(){
-
         /*Head creation*/
         var data = this.viewData['head'];
         var head_attr = {};
         head_attr.label = data.label || "Card&aacute;pio";
         head_attr.fixed = "top";
         head_attr.transition = 'none';
+        if (this.id == 'menuView'){
+          data.moveTo = 'cartView';
+        }
         if ('moveTo' in data){
           head_attr.moveTo = data.moveTo;
         }
@@ -36,20 +37,24 @@ function(screenClass, declare, domConstruct, win, lang, itemView,
         var list = new mblList();
         /* */
 
-        var itemList = this.viewData['list'];
         var showItem = this.viewData['type'] != 'group';
+        
+        var itemList = this.viewData['list'] || this.viewData['codes'];
         
         /*List Item add*/
         for(var i in itemList){
           var attr = itemList[i];
+          if (typeof attr != 'object'){
+            attr = app.products[attr];
+          }
           var item_attr = {
-            innerHTML : '<div class = "menu-title">' +
+            'class' : 'menuList',
+            innerHTML : '<div class = "menuTitle">' +
               attr['label']+
-              (showItem?('<span class = "menu-price"> R$ '+attr['price']+'</span>'):'')+ 
+              (showItem?('<span class = "menuPrice"> R$ '+attr['price']+'</span>'):'')+ 
               '</div>',
             transition : 'none'
           };
-          item_attr['class'] = 'menu-list';
           if('icon' in attr){
             item_attr['icon'] = 'mblDomButtonHcel' + attr['icon'];
           }

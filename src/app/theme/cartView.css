@@ -1,3 +1,50 @@
+
+.cartList {
+  height:70px;
+  line-height:70px;
+  background-color:#FDFCF8;
+  font-size: 16px;
+}
+
+.cartList .mblListItemIcon{
+  margin: 3px 11px 3px 0;
+}
+
+.cartItemTitle {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  float:left;
+}
+.cartItemTitle1{
+  color:#909285;
+  font-weight:bold;
+  height:35px;
+  line-height:35px;
+}
+.cartItemTitle2{
+  color:#b0b2a5;
+  font-size: 14px;
+  height:35px;
+  line-height:35px;
+}
+.cartItemPriceTot{
+ color:#FFC244;
+ font-weight:bold;
+ padding-right:5px;
+ float:right;
+}
+
+.cartItemPriceUni {
+ color:#FFC244;
+ font-weight:bold;
+ font-size: 16px;
+}
+
+
+
+
+/*
 .cart-list{
   height:80px;
   line-height:80px;
@@ -28,9 +75,6 @@
   cursor:pointer;
 }
 
-/*
- Button " + " and " - " table of cart
-*/
 .cart-quant{
   position:absolute;
   left:0px;
@@ -41,9 +85,6 @@
   display:none;
 }
 
-/*
- Description table of cart
-*/
 .cart-desc{
   position:absolute;
   right:111px;
@@ -55,37 +96,28 @@
   border-left: 1px solid #c0c0c0;
 }
 
-/*
- Description table of cart
-*/
 .cart-desc span {
   display: inline-block;
   line-height:normal;
 }
 
-/*
- Unity Price table of cart
-*/
 .cart-price-un{
   position:absolute;
 
   right:56px;
   width:50px;
-  padding-right: 5px; /*width total = 55px*/
+  padding-right: 5px; 
 
   text-align: right;
   border-left: 1px solid #c0c0c0;
 }
 
-/*
- Total Value table of cart
-*/
 .cart-price-tot {
   position:absolute;
   right:0px;
 
   width:50px;
-  padding-right: 5px; /*width total = 55px*/
+  padding-right: 5px; 
 
   text-align: right;
   border-left: 1px solid #c0c0c0;
@@ -114,9 +146,6 @@
   padding-right:5px;
 }
 
-/*
- Total cart value table of cart
-*/
 .cart-total{
   position:absolute;
   right:0px;
@@ -129,3 +158,4 @@
   background-color: #85BFFE;
 }
 
+*/

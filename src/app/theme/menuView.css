@@ -2,96 +2,29 @@
  * Menu CSS
  * */
 
-.menu-list {
-  height:72px;
-  line-height:72px;
+.menuList {
+  height:70px;
+  line-height:70px;
   background-color:#FDFCF8;
   font-size: 16px;
 }
 
-.menu-title {
+.menuList .mblListItemIcon{
+  margin: 3px 11px 3px 0;
+}
+
+.menuTitle {
   color:#909285;
   font-weight:bold;
 }
 
-.menu-price {
+.menuPrice {
  color:#FFC244;
  font-weight:bold;
  padding-right:5px;
  float:right;
 }
 
-.menu-list .mblListItemRightIcon{
-  margin-top:21px;
+.menuList .mblListItemRightIcon{
+  margin-top: 20px;
 }
-
-.menu-dlg {
-  border:none;
-  background-color:#FDFCF8;
-  cursor: default;
-  padding:0;
-}
-
-.menu-dlg .mblSimpleDialogTitle{
- margin:0;
- padding:0;
- border:none;
- overflow:hidden; 
-}
-
-.item-icon {
-  display:inline-block;
-  margin-left:5px;
-  margin-top:5px;
-  float:left;
-}
-
-.item-title {
-  float:left;
-  line-height:69px;
-  margin-left:5px;
-  font-size:18px;
-}
-
-.menu-dlg .menu-label {
-  color:#C1BEAB;
-  font-weight:bold;
-  font-size:13px;
-  text-align:left;
-  margin-left:10px;
-  margin-bottom:3px;  
-}
-
-.menu-dlg .menu-descr {
-  color:#808275;
-  font-size:15px;
-  text-align:justify;
-  background-color:#FFFFFF;
-  border-color:#D9D7D0;
-  border-style:solid;
-  border-width: 1px 0px;
-  padding:5px;
-  margin-bottom:5px;
-}
-
-.menu-edit{
-  display:inline-block;
-  width:100%;
-  margin-bottom:5px;
-}
-
-.menu-dlg .hcelPicker {
-  margin-left:5px;
-}
-
-.menu-trash-button{
-  height:40px;
-  border-radius:7px;
-  float: right;
-  margin-right:5px;
-}
-
-.menu-trash-button .mblDomButton{
-  margin: 5px auto;
-}
-
