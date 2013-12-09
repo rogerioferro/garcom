@@ -37,17 +37,11 @@ function(screenClass, declare, iframe, script, json, lang, on,
           moveTo : attr['moveTo'],
           innerHTML : ""
         };
-        if('icon' in attr){
-          item_attr['icon'] = 'mblDomButtonHcel' + attr['icon'];
-        }
-        else{
-          item_attr['icon'] = 'app/resources/img/pacote_64.png';
-        }
-        attr['icon'] = item_attr['icon'];
+        item_attr['icon'] = app.getIcon(attr);
         var item = new mblListItem(item_attr);
-        item.on('click',lang.hitch(this, function(attr, cart){
-            this.app.itemView.start(this, attr);
-        }, attr, app.cart));
+        item.on('click',lang.hitch(this, function(cod){
+            this.app.itemView.start(this, cod);
+        }, attr['cod']));
 
         var content = domConstruct.create('div',
           {'class':'cartItemTitle'}, item.domNode);

@@ -14,15 +14,24 @@
 }
 
 .menuTitle {
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:83px;
+  right:120px;
   color:#909285;
   font-weight:bold;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  overflow:hidden;
 }
 
 .menuPrice {
+ position:absolute;
+ top:0;
+ right:40px;
  color:#FFC244;
  font-weight:bold;
- padding-right:5px;
- float:right;
 }
 
 .menuList .mblListItemRightIcon{

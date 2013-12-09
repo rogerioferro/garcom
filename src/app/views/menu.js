@@ -37,45 +37,42 @@ function(hcelView, declare, domConstruct, win, lang, itemView,
         var list = new mblList();
         /* */
 
-        var showItem = this.viewData['type'] != 'group';
+        //var showItem = this.viewData['type'] != 'group';
         
         var itemList = this.viewData['list'] || this.viewData['codes'];
         
         /*List Item add*/
         for(var i in itemList){
+          var showItem = false;
           var attr = itemList[i];
           if (typeof attr != 'object'){
             attr = app.products[attr];
+            showItem = true;
           }
           var item_attr = {
             'class' : 'menuList',
             innerHTML : '<div class = "menuTitle">' +
-              attr['label']+
-              (showItem?('<span class = "menuPrice"> R$ '+attr['price']+'</span>'):'')+ 
-              '</div>',
-            transition : 'none'
+              attr['label']+'</div>'+
+              (showItem?('<span class = "menuPrice"> R$ '+attr['price']+'</span>'):'')
+              ,
+            transition : 'none',
+            icon: app.getIcon(attr)
           };
-          if('icon' in attr){
-            item_attr['icon'] = 'mblDomButtonHcel' + attr['icon'];
-          }
-          else{
-            item_attr['icon'] = 'app/resources/img/pacote_64.png';
-          }
-          attr['icon'] = item_attr['icon'];
 
           if (showItem){
+            var onCart = attr['cod'] in app.cart;
+            item_attr['rightIcon'] =  onCart?'mblDomButtonCheck':'mblDomButtonGrayPlus';
             item_attr['clickable'] = true;
             item_attr['noArrow'] = true;
-            item_attr['rightIcon'] = 'mblDomButtonGrayPlus';
           }else{
             item_attr['moveTo'] = attr['moveTo'];
           }
           var item = new mblListItem(item_attr);
+          attr['item'] = item;
           if (showItem){
-            item.on('click',lang.hitch(this, function(attr, item){
-                this.app.itemView.start(this, attr);
-                item.set('rightIcon','mblDomButtonCheck');
-              }, attr, item));
+            item.on('click',lang.hitch(this, function(cod){
+                this.app.itemView.start(this, cod);
+              }, attr['cod']));
           }
           
           list.addChild(item);

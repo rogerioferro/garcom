@@ -43,8 +43,9 @@ function(screenClass, declare, domConstruct, win, lang,
                       {'class':'itemTitleContainer'});
         this.iconDomNode = domConstruct.create('div',
                       {'class':'itemIcon'}, titleContainer);
-        this.titleDomNode = domConstruct.create('div',
+        var title = domConstruct.create('div',
                       {'class':'itemTitle'}, titleContainer);
+        this.titleDomNode = domConstruct.create('span',null,title);
         this.priceDomNode = domConstruct.create('span',
                       {'class':'itemPrice'}, titleContainer);
         this.addNode(titleContainer);
@@ -100,14 +101,17 @@ function(screenClass, declare, domConstruct, win, lang,
         }
         this.resizeDescr();
       },
-      start : function(view, attr){
+      start : function(view, cod){
+        var onCart = cod in app.cart;
+        var attr = app.products[cod];
         view.performTransition(this.id);
         this.resizeDescr();
         
         this.head.set('moveTo',view.id);
-        this.head.set('label','Detalhes');
+        var label = onCart?'Editar':'Detalhes';
+        this.head.set('label', label);
         
-        this.icon = mblIconUtils.setIcon(attr['icon'],
+        this.icon = mblIconUtils.setIcon(app.getIcon(attr),
                       null, this.icon, null, this.iconDomNode);
         this.titleDomNode.innerHTML = attr['label'];
         this.priceDomNode.innerHTML = 'R$ '+ Number(attr['price']).toFixed(2);

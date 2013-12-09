@@ -18,6 +18,8 @@
  * <http://dojotoolkit.org/reference-guide/loader/amd.html>.
  */
 
+app = {};
+
 define(["app/views/menu", //default view
         "app/views/login",
         "app/views/cart",
@@ -28,7 +30,6 @@ define(["app/views/menu", //default view
 function(menuView, loginView, cartView, itemView,
          image, json, textJson) {
 
-    app = {};
 
     app.menuView = new menuView({app:app});
 
@@ -47,7 +48,9 @@ function(menuView, loginView, cartView, itemView,
       app.menuData = json.parse(textJson);
 
       app.products = app.menuData['products'];
-      app.cart = {"1":{quant:2}}; //"cod" is the key
+      app.cart = {"1":{quant:2},
+                  "11":{quant:1}
+                  }; //"cod" is the key
       
       //upload images
       var images = app.menuData['images'];
@@ -58,6 +61,7 @@ function(menuView, loginView, cartView, itemView,
 
 
       app.menuView.updateMenu(app.menuData);
+
 
       //uncoment it to mobile version
       navigator.splashscreen.hide();
@@ -71,3 +75,14 @@ function(menuView, loginView, cartView, itemView,
 
 
 
+app.getIcon = function (obj){
+  if (!('hcelIcon' in obj)){
+    if('icon' in obj){
+      obj['hcelIcon'] = 'mblDomButtonHcel' + obj['icon'];
+    }
+    else{
+      obj['hcelIcon'] = 'app/resources/img/pacote_64.png';
+    }
+  }
+  return obj['hcelIcon'];
+};

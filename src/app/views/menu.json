@@ -28,7 +28,7 @@
       "2":  {"cod":2,  "codCli":33, "label":"Peperoni",      "price":"20.00", "icon": "Pizzas", "descr":"Pizza com Peperoni (calabresa apimentada) e queijo muzzarela"},
       "3":  {"cod":3,  "codCli":44, "label":"Milho",         "price":"16.00", "icon": "Pizzas", "descr":"Pizza com milho e queijo muzzarela"},
       "4":  {"cod":4,  "codCli":55, "label":"Moda da Casa",  "price":"18.00", "descr":"Pizza com queijo muzzarela, mignon, cebola, champignon e páprica"},
-      "11": {"cod":11, "codCli":77, "label":"Abacaxi",       "price":"3.50",  "icon": "DrinksJuicesPineapple"},
+      "11": {"cod":11, "codCli":77, "label":"Sudo de Abacaxi Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod",       "price":"3.50",  "icon": "DrinksJuicesPineapple"},
       "12": {"cod":12, "codCli":88, "label":"Laranja",       "price":"3.50",  "icon": "DrinksJuicesOrange"},
       "13": {"cod":13, "codCli":99, "label":"Lim&atilde;o",  "price":"3.50",  "icon": "DrinksJuicesLemon"}
   },

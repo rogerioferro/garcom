@@ -18,25 +18,33 @@
   line-height:64px;
   height:64px;
   border-bottom: 1px solid #EDECE8;
+  overflow:hidden;
 }
 
 .itemIcon{
+  position:absolute;
+  left:5px;
   display:inline-block;
-  margin-left:5px;
-  float:left;
 }
 
 .itemTitle{
+  position:absolute;
+  height:64px;
+  left:74px;
+  right : 100px;
   color:#909285;
-  float:left;
-  margin-left:5px;
+}
+
+.itemTitle span {
+  display: inline-block;
+  line-height:normal;
 }
   
 .itemPrice{
+ position:absolute;
+ right:5px;
  color:#FFC244;
  font-weight:bold;
- padding:0 5px;
- float:right;
 }
 
 .itemLabel{
