@@ -31,13 +31,15 @@
   position:absolute;
   height:64px;
   left:74px;
-  right : 100px;
+  right:85px;
   color:#909285;
 }
 
 .itemTitle span {
   display: inline-block;
   line-height:normal;
+  max-height:64px;
+  overflow:hidden;
 }
   
 .itemPrice{
@@ -53,10 +55,6 @@
   font-size:13px;
   text-align:left;
   margin: 3px 10px;
-/*
-  margin-left:10px;
-  margin-bottom:3px;
-*/
 }
 
 .itemDescr{
