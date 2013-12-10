@@ -50,7 +50,7 @@ function(hcelView, declare, domConstruct, win, lang, itemView,
             showItem = true;
           }
           var item_attr = {
-            'class' : 'menuList',
+            'class' : 'menuList'+(showItem?'':' menuGroupList'),
             innerHTML : '<div class = "menuTitle">' +
               attr['label']+'</div>'+
               (showItem?('<span class = "menuPrice"> R$ '+attr['price']+'</span>'):'')

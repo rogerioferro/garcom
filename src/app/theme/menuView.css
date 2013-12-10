@@ -26,6 +26,10 @@
   overflow:hidden;
 }
 
+.menuGroupList .menuTitle{
+  right:30px;
+}
+
 .menuPrice {
  position:absolute;
  top:0;
