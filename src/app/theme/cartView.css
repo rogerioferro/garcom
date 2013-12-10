@@ -48,3 +48,44 @@
  font-weight:bold;
  font-size: 16px;
 }
+
+.cartFoot {
+  height:40px;
+  line-height:40px;
+  font-weight:bold;
+  font-size: 20px;
+  color:#909285;
+  background-color: #EFECE2;
+  border-top: 1px solid #EDECE8;
+}
+
+.cartTotalLabel{
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:50px;
+  right:0;
+  padding:0 5px;
+}
+
+.cartPrice {
+ color:#FFC244;
+ float:right;
+ padding: 0 5px;
+}
+
+.cartAddButton{
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:50px;
+  padding:0;
+  height:40px;
+  line-height:40px;
+  background-color: #EFECE2;
+  border-width: 0;
+}
+.cartAddButtonSelected{
+  background-color: #cFcCc2;
+  border-width: 0;
+}

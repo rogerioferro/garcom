@@ -7,9 +7,10 @@ define(["dijit/_WidgetBase",
         "dojo/_base/array",
         "dojox/mobile/iconUtils",
         "dojo/dom-construct",
-        "dojo/dom-class"],
+        "dojo/dom-class",
+        "dojox/mobile/TransitionEvent"],
 function(_WidgetBase, on, touch, lang, declare, array,
-         mblIconUtils, domConstruct, domClass){
+         mblIconUtils, domConstruct, domClass, mblTransitionEvent){
   return declare('hcel_button',_WidgetBase, {
     baseClass:'hcelButton',
     selected:false,
@@ -65,6 +66,10 @@ function(_WidgetBase, on, touch, lang, declare, array,
     },
     _onRelease: function(e){
       this._onLeave(e);
+      if (this.moveTo){
+        var opts ={moveTo:this.moveTo};
+        new mblTransitionEvent(this.domNode,opts,e).dispatch();
+      }
       this.onClick(e);
       return false;
     },

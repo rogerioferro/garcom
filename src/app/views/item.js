@@ -14,6 +14,9 @@ function(hcelView, declare, domConstruct, domClass, lang,
   var itemView = declare(hcelView, {
       id : 'itemView',
       createDom : function(){
+
+        this.on("BeforeTransitionOut", this.goOut);
+
         //Head
         this.head = new hcelHeading({'class':'itemHead',
                                     label:'Detalhes',
@@ -114,7 +117,7 @@ function(hcelView, declare, domConstruct, domClass, lang,
         this.cod = cod;
         this.onCart = cod in this.app.cart;
         domClass[this.onCart?'add':'remove'](this.domNode,'itemEdit');
-        this.attr = app.products[cod];
+        this.attr = this.app.products[this.cod];
         view.performTransition(this.id);
         
         this.head.set('moveTo',view.id);
@@ -138,6 +141,9 @@ function(hcelView, declare, domConstruct, domClass, lang,
       updateTotalValue : function(quant){
           this.totalPriceDomNode.innerHTML = 'R$ ' +
             (Number(this.attr['price']) * quant).toFixed(2);
+      },
+      goOut : function(){
+        console.log('go out:'+this.cod);
       }
   });
 

@@ -10,25 +10,41 @@ define(["app/hcel/hcelView",
         "app/hcel/hcelHeading",
         "dojox/mobile/EdgeToEdgeList",
         "dojox/mobile/ListItem",
-        "app/hcel/hcelPicker",
-        "dojox/mobile/Icon",
-        "dojox/mobile/Button"],
+        "app/hcel/hcelButton",
+        "dojox/mobile/Container"],
 function(screenClass, declare, iframe, script, json, lang, on,
          domConstruct, domClass,
-         hcelHeading,  mblList, mblListItem, hcelPicker,
-         mblIcon, mblButton){
+         hcelHeading,  mblList, mblListItem,
+         hcelButton, mblContainer){
            
   var cartView = declare(screenClass,{
     id : "cartView",
     createDom : function(){
       this.addFixedBar(
         new hcelHeading({label : "Pedido", fixed : "top"}));
+
+        var foot = new mblContainer({'class':'cartFoot',
+                                      fixed:'bottom'});
+
+        var totalLabel = domConstruct.create('div',
+                            {'class':'cartTotalLabel',
+                             innerHTML:'Valor Total:'}, foot.domNode);
+        this.totalPriceDomNode = domConstruct.create('span',
+                            {'class':'cartPrice'}, totalLabel);
+        this.totalPriceDomNode.innerHTML = "R$ 0.00";
+        this.addFixedBar(foot);
+
+        var btn0 = new hcelButton({'class':'cartAddButton',
+                                   moveTo:'menuView',
+                                   icon:'mblDomButtonGrayPlus'});
+        foot.addChild(btn0);
         
       var list = new mblList();
 
       for (cod in app.cart){
-        var quant = Number(app.cart[cod].quant);
-        var attr = app.products[cod];
+        var cartItem = this.app.cart[cod];
+        var quant = Number(cartItem.quant);
+        var attr = this.app.products[cod];
         var item_attr = {
           'class' : 'cartList',
           transition : 'none',
@@ -60,6 +76,9 @@ function(screenClass, declare, iframe, script, json, lang, on,
         this.quantDomNode.innerHTML = quant + ' un.';
         this.priceUniDomNode.innerHTML = 'R$ '+ Number(attr['price']).toFixed(2);
         this.priceTotDomNode.innerHTML = 'R$ '+ (quant * Number(attr['price'])).toFixed(2);
+        if (!('item' in cartItem)){
+          cartItem['item'] = item;
+        }
         list.addChild(item);
       }
 

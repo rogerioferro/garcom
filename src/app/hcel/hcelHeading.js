@@ -52,12 +52,9 @@ function(_WidgetBase, lang, declare, hcelButton, domClass, domConstruct, mblTran
                                           icon:'mblDomButtonWhiteLeftArrow',
                                           iconSelected:'mblDomButtonGrayLeftArrow'});
         this.backIconButton.placeAt(this.domNode);
-        this.backIconButton.on('click',lang.hitch(this, function(e){
-          var opts ={moveTo:this.moveTo, transition:this.transition};
-          new mblTransitionEvent(this.domNode,opts,e).dispatch();
-        }));
         this.resize();
       }
+      this.backIconButton.set('moveTo',this.moveTo);
     }
   });
 });
