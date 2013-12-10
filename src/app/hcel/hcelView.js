@@ -47,6 +47,7 @@ function(mblScrollableView, declare, win, domConstruct, domClass){
       if (height > this.containerNode.offsetHeight){
         this.containerNode.style.height = height + 'px';
       }
+      this.viewHeight = height;
     },
     onTouchStart : function(e){
       if (this.scroll){

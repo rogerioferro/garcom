@@ -57,7 +57,7 @@ function(screenClass, declare, iframe, script, json, lang, on,
           {'class':'cartItemPriceTot'},item.domNode);
 
         this.title1DomNode.innerHTML = attr['label'];
-        this.quantDomNode.innerHTML = quant + ' un. de ';
+        this.quantDomNode.innerHTML = quant + ' un.';
         this.priceUniDomNode.innerHTML = 'R$ '+ Number(attr['price']).toFixed(2);
         this.priceTotDomNode.innerHTML = 'R$ '+ (quant * Number(attr['price'])).toFixed(2);
         list.addChild(item);

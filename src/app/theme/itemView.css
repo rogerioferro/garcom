@@ -8,13 +8,16 @@
   width:100%;
   height:40px;
 }
-  
+
+.itemEdit .itemFoot{
+  height:65px;
+}
 
 .itemTitleContainer{
-  font-size: 16px;
-  font-weight: bold;
-  text-align: left;
-  margin-top:5px;
+  font-size:16px;
+  font-weight:bold;
+  text-align:left;
+  margin-top:3px;
   line-height:64px;
   height:64px;
   border-bottom: 1px solid #EDECE8;
@@ -31,7 +34,7 @@
   position:absolute;
   height:64px;
   left:74px;
-  right:85px;
+  right:5px;
   color:#909285;
 }
 
@@ -43,10 +46,9 @@
 }
   
 .itemPrice{
- position:absolute;
- right:5px;
  color:#FFC244;
  font-weight:bold;
+ float:right;
 }
 
 .itemLabel{
@@ -68,29 +70,42 @@
   padding:5px;
 }
 
-.itemEdit{
-  display:inline-block;
-  position:absolute;
-  bottom:0;
-  width:100%;
-}
-
-.itemEdit .hcelPicker{
-  margin-left:5px;
-}
-
-.itemEdit .itemTotal{
+.itemBigLabel{
   color:#909285;
   font-size: 16px;
   font-weight: bold;
   text-align:left;
-  padding: 10px 0;
+}
+
+.itemPriceLabel {
+  overflow:hidden;
+  margin:2px 5px;
+}
+
+.itemQuant{
+  display:none;
+  overflow:hidden;
+  margin:2px 5px;
+  line-height:42px;
+}
+.itemEdit .itemQuant{
+  display:block;
+}
+.itemQuantLabel{
+  float:left;
+}
+#itemView .hcelPicker{
+  float:right;
+}
+
+.itemTotal{
+  display:none;
+  padding: 2px 0;
   margin: 0 5px;
   border-top: 1px solid #EDECE8;
 }
-
-.itemEdit .itemPrice{
-  padding-right:0;
+.itemEdit .itemTotal{
+  display:block;
 }
 
 .itemButton{
@@ -107,20 +122,14 @@
 
 .itemAddButton{
   position:absolute;
-  left:0;
+  left:0;  
   right:50%;
+  bottom:0;
 }
 
 .itemFavButton{
   position:absolute;
   left:50%;
   right:0;
+  bottom:0;
 }
-
-
-/*
-.itemFoot .mblDomButton{
- margin: 5px auto;
-}
-*/
-
