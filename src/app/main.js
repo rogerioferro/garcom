@@ -31,12 +31,12 @@ function(menuView, loginView, cartView, itemView,
          image, json, textJson) {
 
 
-    app.menuView = new menuView({app:app});
+    app.cartView = new cartView({app:app});
 
     // Wait for device API libraries to load
     document.addEventListener("deviceready", onDeviceReady, false);
 
-    app.cartView = new cartView({app:app});
+    app.menuView = new menuView({app:app});
     app.loginView = new loginView({app:app});
     app.itemView = new itemView({app:app});
 
