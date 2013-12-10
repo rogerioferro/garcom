@@ -84,7 +84,13 @@ function(hcelView, declare, domConstruct, domClass, lang,
                       { 'class': 'itemQuantLabel itemBigLabel',
                         innerHTML: 'Quantidade:'}, quantDomNode);
         this.picker = new hcelPicker({value:1, minValue:1, maxValue:99});
-        this.picker.placeAt(quantDomNode);        
+        this.picker.placeAt(quantDomNode);
+        this.picker.on('change', lang.hitch(this,function(value){
+          if (this.onCart){
+            this.app.cart[this.cod].quant = value;
+            this.updateTotalValue(value);
+          }
+        }));
         //--
 
         this.addNode(this.itemContainerNode);
@@ -105,25 +111,33 @@ function(hcelView, declare, domConstruct, domClass, lang,
         this.resizeDescr();
       },
       start : function(view, cod){
-        this.onCart = cod in app.cart;
+        this.cod = cod;
+        this.onCart = cod in this.app.cart;
         domClass[this.onCart?'add':'remove'](this.domNode,'itemEdit');
-        var attr = app.products[cod];
+        this.attr = app.products[cod];
         view.performTransition(this.id);
         
         this.head.set('moveTo',view.id);
         var label = this.onCart?'Editar':'Detalhes';
         this.head.set('label', label);
         
-        this.icon = mblIconUtils.setIcon(app.getIcon(attr),
+        this.icon = mblIconUtils.setIcon(app.getIcon(this.attr),
                       null, this.icon, null, this.iconDomNode);
-        this.titleDomNode.innerHTML = attr['label'];
-        this.priceDomNode.innerHTML = 'R$ '+ Number(attr['price']).toFixed(2);
-        this.descrDomNode.innerHTML = attr['descr'] || attr['label'];
-        this.totalPriceDomNode.innerHTML = 'R$ ' +
-          (Number(attr['price']) * this.picker.get('value')).toFixed(2);
+        this.titleDomNode.innerHTML = this.attr['label'];
+        this.priceDomNode.innerHTML = 'R$ '+ Number(this.attr['price']).toFixed(2);
+        this.descrDomNode.innerHTML = this.attr['descr'] || this.attr['label'];
+        if (this.onCart){
+          var quant = Number(this.app.cart[this.cod].quant);
+          this.picker.set('value',quant)
+          this.updateTotalValue(quant);
+        }
         
         this.inherited(arguments);
         this.resize();
+      },
+      updateTotalValue : function(quant){
+          this.totalPriceDomNode.innerHTML = 'R$ ' +
+            (Number(this.attr['price']) * quant).toFixed(2);
       }
   });
 
