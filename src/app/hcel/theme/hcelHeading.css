@@ -25,7 +25,7 @@
 }
 .hcelHeadingLeftButton .mblDomButton{
   position:absolute;
-  left:5px;
+  left:10px;
   top:0;
   bottom:0;
   margin:auto;
@@ -40,7 +40,7 @@
   font-size: 16px;
   font-weight: normal;
   text-align: right;
-  padding-right: 5px;
+  padding-right: 10px;
   color:#ffffff;
 }
 .hcelHeadingRightButtonSelected{

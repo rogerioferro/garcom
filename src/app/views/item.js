@@ -41,7 +41,7 @@ function(hcelView, declare, domConstruct, domClass, lang,
         this.addButton.on('click',lang.hitch(this, function(){
           if (this.onCart){
             this.app.cartView.removeItem(this.cod);
-            this.performTransition(this.head.get('moveTo'));
+            this.performTransition(this.moveTo);
           }
           else{
             this.app.cartView.addItem(this.cod);
@@ -134,9 +134,10 @@ function(hcelView, declare, domConstruct, domClass, lang,
       start : function(view, cod){
         this.cod = cod;
         this.attr = this.app.products[this.cod];
-        view.performTransition(this.id);        
-        
-        this.head.set('rightMoveTo',view.id);
+        view.performTransition(this.id);
+
+        this.moveTo = view.id;
+        this.head.set('rightMoveTo',this.moveTo);
         var label = this.onCart?'Editar':'Detalhes';
         this.head.set('label', label);
         
