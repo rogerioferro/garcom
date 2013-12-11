@@ -3,12 +3,13 @@ define(["app/hcel/hcelView",
         "dojo/dom-construct",
         "dojo/dom-class",
         "dojo/_base/lang",
+        "dojo/on",
         "app/hcel/hcelHeading",
         "dojox/mobile/iconUtils",
         "app/hcel/hcelPicker",
         "app/hcel/hcelButton",
         "dojox/mobile/Container"],
-function(hcelView, declare, domConstruct, domClass, lang,
+function(hcelView, declare, domConstruct, domClass, lang, on,
          hcelHeading, mblIconUtils, hcelPicker, hcelButton, mblContainer){
 
   var itemView = declare(hcelView, {
@@ -16,6 +17,12 @@ function(hcelView, declare, domConstruct, domClass, lang,
       createDom : function(){
 
         this.on("BeforeTransitionOut", this.goOut);
+
+        this.own(
+          on(this.domNode,'dblclick', lang.hitch(this,function(){
+            this.performTransition(this.head.get('moveTo'));
+          }))
+        );
 
         //Head
         this.head = new hcelHeading({'class':'itemHead',
