@@ -23,67 +23,98 @@ function(screenClass, declare, iframe, script, json, lang, on,
       this.addFixedBar(
         new hcelHeading({label : "Pedido", fixed : "top"}));
 
-        var foot = new mblContainer({'class':'cartFoot',
-                                      fixed:'bottom'});
-
-        var totalLabel = domConstruct.create('div',
-                            {'class':'cartTotalLabel',
-                             innerHTML:'Valor Total:'}, foot.domNode);
-        this.totalPriceDomNode = domConstruct.create('span',
-                            {'class':'cartPrice'}, totalLabel);
-        this.totalPriceDomNode.innerHTML = "R$ 9999.99";
-        this.addFixedBar(foot);
-
-        var btn0 = new hcelButton({'class':'cartAddButton',
-                                   moveTo:'menuView',
-                                   icon:'mblDomButtonWhitePlus'});
-        foot.addChild(btn0);
+      //Foot
+      var foot = new mblContainer({'class':'cartFoot',
+                                    fixed:'bottom'});
+      var btn0 = new hcelButton({'class':'cartAddButton',
+                                 moveTo:'menuView',
+                                 icon:'mblDomButtonWhitePlus'});
+      foot.addChild(btn0);
+      var totalLabel = domConstruct.create('div',
+                          {'class':'cartTotalLabel',
+                           innerHTML:'Valor Total:'}, foot.domNode);
+      this.totalPriceDomNode = domConstruct.create('span',
+                          {'class':'cartPrice'}, totalLabel);
+      this.updateTotal();
+      this.addFixedBar(foot);
+      //---
         
-      var list = new mblList();
+      this.list = new mblList();
+      for (cod in this.app.cart){
+        this._createDomItem(cod);
+      }
+      this.addChild(this.list);
 
-      for (cod in app.cart){
-        var cartItem = this.app.cart[cod];
-        var quant = Number(cartItem.quant);
-        var attr = this.app.products[cod];
-        var item_attr = {
-          'class' : 'cartList',
-          transition : 'none',
-          clickable : true,
-          noArrow : true,
-          moveTo : attr['moveTo'],
-          innerHTML : ""
-        };
-        item_attr['icon'] = app.getIcon(attr);
-        var item = new mblListItem(item_attr);
-        item.on('click',lang.hitch(this, function(cod){
-            this.app.itemView.start(this, cod);
-        }, attr['cod']));
+    },
+    _createDomItem : function(cod){
+      var cartItem = this.app.cart[cod];
+      var quant = Number(cartItem.quant);
+      var attr = this.app.products[cod];
+      var item_attr = {
+        'class' : 'cartList',
+        transition : 'none',
+        clickable : true,
+        noArrow : true,
+        moveTo : attr['moveTo'],
+        innerHTML : ""
+      };
+      item_attr['icon'] = this.app.getIcon(attr);
+      var item = new mblListItem(item_attr);
+      item.cod = cod;
+      item.app = this.app;
+      item.on('click',lang.hitch(this, function(cod){
+          this.app.itemView.start(this, cod);
+      }, cod));
+      
+      var content = domConstruct.create('div',
+        {'class':'cartItemTitle'}, item.domNode);
+      item.title1DomNode = domConstruct.create('div',
+        {'class':'cartItemTitle1'},content);
+      item.title2DomNode = domConstruct.create('div',
+        {'class':'cartItemTitle2'},content);
+      item.quantDomNode = domConstruct.create('span',
+        null,item.title2DomNode);
+      item.priceUniDomNode = domConstruct.create('span',
+        {'class':'cartItemPriceUni'},item.title2DomNode);
+      item.priceTotDomNode = domConstruct.create('div',
+        {'class':'cartItemPriceTot'},item.domNode);
 
-        var content = domConstruct.create('div',
-          {'class':'cartItemTitle'}, item.domNode);
-        this.title1DomNode = domConstruct.create('div',
-          {'class':'cartItemTitle1'},content);
-        this.title2DomNode = domConstruct.create('div',
-          {'class':'cartItemTitle2'},content);
-        this.quantDomNode = domConstruct.create('span',
-          null,this.title2DomNode);
-        this.priceUniDomNode = domConstruct.create('span',
-          {'class':'cartItemPriceUni'},this.title2DomNode);
-        this.priceTotDomNode = domConstruct.create('div',
-          {'class':'cartItemPriceTot'},item.domNode);
-
+      item.updateDom = function(){
+        var quant = Number(this.app.cart[this.cod].quant);          
+        var attr = this.app.products[this.cod];
         this.title1DomNode.innerHTML = attr['label'];
         this.quantDomNode.innerHTML = quant + ' un.';
         this.priceUniDomNode.innerHTML = 'R$ '+ Number(attr['price']).toFixed(2);
         this.priceTotDomNode.innerHTML = 'R$ '+ (quant * Number(attr['price'])).toFixed(2);
-        if (!('item' in cartItem)){
-          cartItem['item'] = item;
-        }
-        list.addChild(item);
+      };
+      item.update = function(){
+        this.updateDom();
+        this.app.cartView.updateTotal();
       }
 
-      this.addChild(list);
+      if (!('item' in cartItem)){
+        cartItem['item'] = item;
+      }
+      item.updateDom();
 
+      this.list.addChild(item);
+    },
+    addItem : function(cod){
+      var cart = this.app.cart;
+      if (!(cod in cart)){
+        cart[cod] = {quant:1};
+        this._createDomItem(cod);
+        this.updateTotal();
+      }
+    },
+    updateTotal : function(){
+      var total = 0;
+      for (cod in this.app.cart){
+        var quant = Number(this.app.cart[cod].quant);          
+        var attr = this.app.products[cod];
+        total += (quant * Number(attr['price']));
+      }
+      this.totalPriceDomNode.innerHTML = "R$ "+total.toFixed(2);
     }
   });
   

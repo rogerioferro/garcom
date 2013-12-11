@@ -38,6 +38,9 @@ function(hcelView, declare, domConstruct, domClass, lang,
 
         var btn0 = new hcelButton({'class':'itemButton itemAddButton',
                                    icon:'mblDomButtonGrayPlus'});
+        btn0.on('click',lang.hitch(this, function(){
+          this.app.cartView.addItem(this.cod);
+        }));
         this.foot.addChild(btn0);
         var btn1 = new hcelButton({'class':'itemButton itemFavButton',
                                    icon:'mblDomButtonGrayStar',
@@ -143,7 +146,10 @@ function(hcelView, declare, domConstruct, domClass, lang,
             (Number(this.attr['price']) * quant).toFixed(2);
       },
       goOut : function(){
-        console.log('go out:'+this.cod);
+        var itemCart = this.app.cart[this.cod];
+        if ('item' in itemCart){
+          itemCart['item'].update();
+        }
       }
   });
 
