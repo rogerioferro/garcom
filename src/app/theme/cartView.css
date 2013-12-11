@@ -63,7 +63,7 @@
   position:absolute;
   top:0;
   bottom:0;
-  left:50px;
+  left:25%;
   right:0;
   padding:0 5px;
 }
@@ -78,14 +78,14 @@
   position:absolute;
   left:0;
   bottom:0;
-  width:50px;
+  width:25%;
   padding:0;
   height:40px;
   line-height:40px;
-  background-color: #EFECE2;
+  background-color: #2ecc71;
   border-width: 0;
 }
 .cartAddButtonSelected{
-  background-color: #cFcCc2;
+  background-color: #16a085;
   border-width: 0;
 }

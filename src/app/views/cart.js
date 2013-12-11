@@ -31,12 +31,12 @@ function(screenClass, declare, iframe, script, json, lang, on,
                              innerHTML:'Valor Total:'}, foot.domNode);
         this.totalPriceDomNode = domConstruct.create('span',
                             {'class':'cartPrice'}, totalLabel);
-        this.totalPriceDomNode.innerHTML = "R$ 0.00";
+        this.totalPriceDomNode.innerHTML = "R$ 9999.99";
         this.addFixedBar(foot);
 
         var btn0 = new hcelButton({'class':'cartAddButton',
                                    moveTo:'menuView',
-                                   icon:'mblDomButtonGrayPlus'});
+                                   icon:'mblDomButtonWhitePlus'});
         foot.addChild(btn0);
         
       var list = new mblList();
