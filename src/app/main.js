@@ -70,7 +70,7 @@ function(menuView, loginView, cartView, itemView,
     }
 
   //Coment it to mobile version
-  onDeviceReady();
+  //onDeviceReady();
 
 });
 

@@ -20,6 +20,9 @@ function(screenClass, declare, iframe, script, json, lang, on,
   var cartView = declare(screenClass,{
     id : "cartView",
     createDom : function(){
+
+      this.on("AfterTransitionIn", this.resize);
+      
       this.addFixedBar(
         new hcelHeading({label : "Pedido", fixed : "top"}));
 
@@ -105,7 +108,6 @@ function(screenClass, declare, iframe, script, json, lang, on,
         cart[cod] = {quant:1};
         this._createDomItem(cod);
         this.updateTotal();
-        this.resize();
         prod = this.app.products[cod];
         if ('item' in prod){
           prod['item'].set('rightIcon','mblDomButtonCheck');
@@ -121,7 +123,6 @@ function(screenClass, declare, iframe, script, json, lang, on,
         }
         delete this.app.cart[cod];
         this.updateTotal();
-        this.resize();
         prod = this.app.products[cod];
         if ('item' in prod){
           prod['item'].set('rightIcon','mblDomButtonGrayPlus');
