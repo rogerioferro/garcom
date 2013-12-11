@@ -31,14 +31,10 @@ function(menuView, loginView, cartView, itemView,
          image, json, textJson) {
 
 
-    app.cartView = new cartView({app:app});
 
     // Wait for device API libraries to load
     document.addEventListener("deviceready", onDeviceReady, false);
 
-    app.menuView = new menuView({app:app});
-    app.loginView = new loginView({app:app});
-    app.itemView = new itemView({app:app});
 
 
     function onDeviceReady() {
@@ -60,6 +56,11 @@ function(menuView, loginView, cartView, itemView,
       }
 
 
+      app.cartView = new cartView({app:app});
+      app.menuView = new menuView({app:app});
+      app.loginView = new loginView({app:app});
+      app.itemView = new itemView({app:app});
+
       app.menuView.updateMenu(app.menuData);
 
 
@@ -69,7 +70,7 @@ function(menuView, loginView, cartView, itemView,
     }
 
   //Coment it to mobile version
-  onDeviceReady();
+  //onDeviceReady();
 
 });
 
