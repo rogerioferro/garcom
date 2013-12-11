@@ -19,24 +19,24 @@ function(_WidgetBase, on, touch, lang, declare, array,
       this._updateSelected();
     },
     _updateSelected : function(){
-      if (this.IconDomNode){
-        this.IconDomNode.style.display =
-            (!this.IconSelectedDomNode || !this.selected)?'block':'none';
+      if (this.iconDomNode){
+        this.iconDomNode.style.display =
+            (!this.iconSelectedDomNode || !this.selected)?'block':'none';
       }
-      if (this.IconSelectedDomNode){
-        this.IconSelectedDomNode.style.display = (this.selected)?'block':'none';
+      if (this.iconSelectedDomNode){
+        this.iconSelectedDomNode.style.display = (this.selected)?'block':'none';
       }
     },
     _setIconAttr : function(icon){
       this._set('icon',icon);
-      this.IconDomNode = mblIconUtils.createIcon(this.icon,
+      this.iconDomNode = mblIconUtils.setIcon(this.icon,
                     null, this.iconDomNode, null, this.domNode);
       this._updateSelected();      
     },
     _setIconSelectedAttr : function(icon){
-      this._set('icon',icon);
-      this.IconSelectedDomNode = mblIconUtils.createIcon(this.icon,
-                    null, this.IconSelectedDomNode, null, this.domNode);
+      this._set('iconSelected',icon);
+      this.iconSelectedDomNode = mblIconUtils.setIcon(this.iconSelected,
+                    null, this.iconSelectedDomNode, null, this.domNode);
       this._updateSelected();
     },
     buildRendering: function() {

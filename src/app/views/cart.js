@@ -105,9 +105,26 @@ function(screenClass, declare, iframe, script, json, lang, on,
         cart[cod] = {quant:1};
         this._createDomItem(cod);
         this.updateTotal();
+        this.resize();
         prod = this.app.products[cod];
         if ('item' in prod){
           prod['item'].set('rightIcon','mblDomButtonCheck');
+        }
+      }
+    },
+    removeItem : function(cod){
+      var cart = this.app.cart;
+      if (cod in cart){
+        var itemCart = cart[cod];
+        if ('item' in itemCart){
+          itemCart['item'].destroyRecursive();
+        }
+        delete this.app.cart[cod];
+        this.updateTotal();
+        this.resize();
+        prod = this.app.products[cod];
+        if ('item' in prod){
+          prod['item'].set('rightIcon','mblDomButtonGrayPlus');
         }
       }
     },

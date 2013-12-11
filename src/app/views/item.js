@@ -36,18 +36,21 @@ function(hcelView, declare, domConstruct, domClass, lang,
         this.totalPriceDomNode = domConstruct.create('span',
                             {'class':'itemPrice'}, totalLabel);
 
-        var btn0 = new hcelButton({'class':'itemButton itemAddButton',
-                                   icon:'mblDomButtonGrayPlus'});
-        btn0.on('click',lang.hitch(this, function(){
-          this.app.cartView.addItem(this.cod);
+        this.addButton = new hcelButton({'class':'itemButton itemAddButton'});
+        this.addButton.on('click',lang.hitch(this, function(){
+          if (this.onCart){
+            this.app.cartView.removeItem(this.cod);
+            this.performTransition(this.head.get('moveTo'));
+          }
+          else{
+            this.app.cartView.addItem(this.cod);
+          }
+          this.updateState();
         }));
-        this.foot.addChild(btn0);
+        this.foot.addChild(this.addButton);
         var btn1 = new hcelButton({'class':'itemButton itemFavButton',
                                    icon:'mblDomButtonGrayStar',
                                    iconSelected:'mblDomButtonYellowStar'});
-
-
-
         this.foot.addChild(btn1);
         this.addFixedBar(this.foot);
         //---
@@ -105,23 +108,32 @@ function(hcelView, declare, domConstruct, domClass, lang,
         if (!this.descrDomNode) return;
         var h0 = this.descrDomNode.offsetHeight
         var h1 = this.containerNode.offsetHeight - this.itemContainerNode.offsetHeight;
-        //if (!this.onCart) h1 += 25; //total value space
         this.descrDomNode.style.height = (h0 + h1 - 19) + 'px';
       },
       resize : function(){
         if (this.descrDomNode){
           this.descrDomNode.style.height = 'auto';
         }
+        this.fixedFooterHeight = this.onCart?65:40;
         this.inherited(arguments);
         this.scroll = this.containerNode.offsetHeight > this.viewHeight;
         this.resizeDescr();
       },
+      updateState : function(){
+        this.onCart = this.cod in this.app.cart;
+        domClass[this.onCart?'add':'remove'](this.domNode,'itemEdit');
+        this.addButton.set('icon',(this.onCart?'mblDomButtonTrash':'mblDomButtonGrayPlus'));
+        if (this.onCart){
+          var quant = Number(this.app.cart[this.cod].quant);
+          this.picker.set('value',quant)
+          this.updateTotalValue(quant);
+        }
+        this.resize();
+      },
       start : function(view, cod){
         this.cod = cod;
-        this.onCart = cod in this.app.cart;
-        domClass[this.onCart?'add':'remove'](this.domNode,'itemEdit');
         this.attr = this.app.products[this.cod];
-        view.performTransition(this.id);
+        view.performTransition(this.id);        
         
         this.head.set('moveTo',view.id);
         var label = this.onCart?'Editar':'Detalhes';
@@ -132,14 +144,7 @@ function(hcelView, declare, domConstruct, domClass, lang,
         this.titleDomNode.innerHTML = this.attr['label'];
         this.priceDomNode.innerHTML = 'R$ '+ Number(this.attr['price']).toFixed(2);
         this.descrDomNode.innerHTML = this.attr['descr'] || this.attr['label'];
-        if (this.onCart){
-          var quant = Number(this.app.cart[this.cod].quant);
-          this.picker.set('value',quant)
-          this.updateTotalValue(quant);
-        }
-        
-        this.fixedFooterHeight = this.onCart?65:40;
-        this.resize();
+        this.updateState();
       },
       updateTotalValue : function(quant){
           this.totalPriceDomNode.innerHTML = 'R$ ' +
