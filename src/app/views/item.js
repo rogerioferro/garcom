@@ -105,7 +105,7 @@ function(hcelView, declare, domConstruct, domClass, lang,
         if (!this.descrDomNode) return;
         var h0 = this.descrDomNode.offsetHeight
         var h1 = this.containerNode.offsetHeight - this.itemContainerNode.offsetHeight;
-        if (!this.onCart) h1 += 25; //total value space
+        //if (!this.onCart) h1 += 25; //total value space
         this.descrDomNode.style.height = (h0 + h1 - 19) + 'px';
       },
       resize : function(){
@@ -138,7 +138,7 @@ function(hcelView, declare, domConstruct, domClass, lang,
           this.updateTotalValue(quant);
         }
         
-        this.inherited(arguments);
+        this.fixedFooterHeight = this.onCart?65:40;
         this.resize();
       },
       updateTotalValue : function(quant){
@@ -146,9 +146,12 @@ function(hcelView, declare, domConstruct, domClass, lang,
             (Number(this.attr['price']) * quant).toFixed(2);
       },
       goOut : function(){
-        var itemCart = this.app.cart[this.cod];
-        if ('item' in itemCart){
-          itemCart['item'].update();
+        var cart = this.app.cart;
+        if (this.cod in cart){
+          var itemCart = cart[this.cod];
+          if ('item' in itemCart){
+            itemCart['item'].update();
+          }
         }
       }
   });

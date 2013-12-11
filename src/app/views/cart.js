@@ -105,6 +105,10 @@ function(screenClass, declare, iframe, script, json, lang, on,
         cart[cod] = {quant:1};
         this._createDomItem(cod);
         this.updateTotal();
+        prod = this.app.products[cod];
+        if ('item' in prod){
+          prod['item'].set('rightIcon','mblDomButtonCheck');
+        }
       }
     },
     updateTotal : function(){
