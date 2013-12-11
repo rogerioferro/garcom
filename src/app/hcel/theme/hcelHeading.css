@@ -16,14 +16,14 @@
 .hcelHeadingSpanTitle{
 
 }
-.hcelHeadingButtonBack{
+.hcelHeadingLeftButton{
   position:absolute;
   border:none;
   left:0;
   top:0;
   bottom:0;
 }
-.hcelHeadingButtonBack .mblDomButton{
+.hcelHeadingLeftButton .mblDomButton{
   position:absolute;
   left:5px;
   top:0;
@@ -31,3 +31,18 @@
   margin:auto;
 }
 
+.hcelHeadingRightButton{
+  position:absolute;
+  border:none;
+  right:0;
+  top:0;
+  bottom:0;
+  font-size: 16px;
+  font-weight: normal;
+  text-align: right;
+  padding-right: 5px;
+  color:#ffffff;
+}
+.hcelHeadingRightButtonSelected{
+  color:#9B998D;
+}

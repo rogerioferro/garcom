@@ -3,13 +3,12 @@ define(["app/hcel/hcelView",
         "dojo/dom-construct",
         "dojo/dom-class",
         "dojo/_base/lang",
-        "dojo/on",
         "app/hcel/hcelHeading",
         "dojox/mobile/iconUtils",
         "app/hcel/hcelPicker",
         "app/hcel/hcelButton",
         "dojox/mobile/Container"],
-function(hcelView, declare, domConstruct, domClass, lang, on,
+function(hcelView, declare, domConstruct, domClass, lang,
          hcelHeading, mblIconUtils, hcelPicker, hcelButton, mblContainer){
 
   var itemView = declare(hcelView, {
@@ -18,16 +17,11 @@ function(hcelView, declare, domConstruct, domClass, lang, on,
 
         this.on("BeforeTransitionOut", this.goOut);
 
-        this.own(
-          on(this.domNode,'dblclick', lang.hitch(this,function(){
-            this.performTransition(this.head.get('moveTo'));
-          }))
-        );
-
         //Head
         this.head = new hcelHeading({'class':'itemHead',
                                     label:'Detalhes',
                                     fixed:'top',
+                                    rightText:'OK',
                                     transition:'none'});
         this.addFixedBar(this.head);
         this.head.startup();
@@ -142,7 +136,7 @@ function(hcelView, declare, domConstruct, domClass, lang, on,
         this.attr = this.app.products[this.cod];
         view.performTransition(this.id);        
         
-        this.head.set('moveTo',view.id);
+        this.head.set('rightMoveTo',view.id);
         var label = this.onCart?'Editar':'Detalhes';
         this.head.set('label', label);
         

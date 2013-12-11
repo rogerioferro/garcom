@@ -7,6 +7,7 @@ define(["dijit/_WidgetBase",
         "dojox/mobile/TransitionEvent"],
 function(_WidgetBase, lang, declare, hcelButton, domClass, domConstruct, mblTransitionEvent){
   return declare("hcel_heading", _WidgetBase, {
+    rightText : '',
     buildRendering: function() {
       this.inherited(arguments);
       this.domNode = domConstruct.create('div',{'class':'hcelHeading'});
@@ -24,15 +25,18 @@ function(_WidgetBase, lang, declare, hcelButton, domClass, domConstruct, mblTran
     //~ },
     resize: function(){
       this.inherited(arguments);
-      if (this.backIconButton){
-        var height;
-        if (this.labelNode) {
-          height = this.labelNode.offsetLeft - 2;
-        }
-        else{
-          height = this.domNode.offsetHeight;
-        }
-        this.backIconButton.domNode.style.width = height + 'px';
+      var width;
+      if (this.labelNode) {
+        width = this.labelNode.offsetLeft - 2;
+      }
+      else{
+        width = this.domNode.offsetWidth/2 - 2;
+      }
+      if (this.leftButton){
+        this.leftButton.domNode.style.width = width + 'px';
+      }
+      if (this.rightButton){
+        this.rightButton.domNode.style.width = width + 'px';
       }
     },
     _setLabelAttr: function(/*String*/label){
@@ -41,20 +45,36 @@ function(_WidgetBase, lang, declare, hcelButton, domClass, domConstruct, mblTran
         this.labelNode = domConstruct.create('span',{'class':'hcelHeadingSpanTitle'}, this.domNode);
       }
       this.labelNode.innerHTML = this.label;
-      if (this.backIconButton){
+      if (this.leftButton){
         this.resize();
       }
     },
     _setMoveToAttr: function(/*String*/moveTo){
       this._set("moveTo", moveTo);
-      if (!this.backIconButton){
-        this.backIconButton = new hcelButton({baseClass:'hcelHeadingButtonBack',
+      if (!this.leftButton){
+        this.leftButton = new hcelButton({baseClass:'hcelHeadingLeftButton',
                                           icon:'mblDomButtonWhiteLeftArrow',
                                           iconSelected:'mblDomButtonGrayLeftArrow'});
-        this.backIconButton.placeAt(this.domNode);
+        this.leftButton.placeAt(this.domNode);
         this.resize();
       }
-      this.backIconButton.set('moveTo',this.moveTo);
+      this.leftButton.set('moveTo',this.moveTo);
+    },
+    _setRightTextAttr : function(rightText){
+      this._set("rightText", rightText);
+      if (this.rightButton){
+        this.rightButton.set('innerHTML',this.rightText);
+      }
+    },
+    _setRightMoveToAttr : function(rightMoveTo){
+      this._set("rightMoveTo", rightMoveTo);
+      if (!this.rightButton){
+        this.rightButton = new hcelButton({baseClass:'hcelHeadingRightButton',
+                                           innerHTML:this.rightText});
+        this.rightButton.placeAt(this.domNode);
+        this.resize();
+      }
+      this.rightButton.set('moveTo',this.rightMoveTo);
     }
   });
 });
