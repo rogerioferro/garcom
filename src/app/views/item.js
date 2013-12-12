@@ -21,7 +21,6 @@ function(hcelView, declare, domConstruct, domClass, lang,
         this.head = new hcelHeading({'class':'itemHead',
                                     label:'Detalhes',
                                     fixed:'top',
-                                    rightText:'OK',
                                     transition:'none'});
         this.addFixedBar(this.head);
         this.head.startup();
@@ -137,7 +136,7 @@ function(hcelView, declare, domConstruct, domClass, lang,
         view.performTransition(this.id);
 
         this.moveTo = view.id;
-        this.head.set('rightMoveTo',this.moveTo);
+        this.head.set('moveTo',this.moveTo);
         var label = this.onCart?'Editar':'Detalhes';
         this.head.set('label', label);
         

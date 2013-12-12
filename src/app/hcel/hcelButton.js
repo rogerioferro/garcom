@@ -18,6 +18,14 @@ function(_WidgetBase, on, touch, lang, declare, array,
       this._set('selected',selected);
       this._updateSelected();
     },
+    _setLabelAttr : function(label){
+      this._set('label',label);
+      if (!this.labelNode){
+       this.labelNode = domConstruct.create('div',
+            {'class':'hcelButtonLabel'}, this.domNode);
+      }
+      this.labelNode.innerHTML = this.label;
+    },
     _updateSelected : function(){
       if (this.iconDomNode){
         this.iconDomNode.style.display =

@@ -25,18 +25,20 @@ function(_WidgetBase, lang, declare, hcelButton, domClass, domConstruct, mblTran
     //~ },
     resize: function(){
       this.inherited(arguments);
-      var width;
+      var left, right;
       if (this.labelNode) {
-        width = this.labelNode.offsetLeft - 2;
+        var w = this.labelNode.offsetWidth;
+        left = this.labelNode.offsetLeft + this.labelNode.offsetWidth + 2;
+        right = this.domNode.offsetWidth - this.labelNode.offsetLeft + 2;
       }
       else{
-        width = this.domNode.offsetWidth/2 - 2;
+        left = right = this.domNode.offsetWidth/2 - 2;
       }
       if (this.leftButton){
-        this.leftButton.domNode.style.width = width + 'px';
+        this.leftButton.domNode.style.right = right + 'px';
       }
       if (this.rightButton){
-        this.rightButton.domNode.style.width = width + 'px';
+        this.rightButton.domNode.style.left = left + 'px';
       }
     },
     _setLabelAttr: function(/*String*/label){
@@ -49,12 +51,19 @@ function(_WidgetBase, lang, declare, hcelButton, domClass, domConstruct, mblTran
         this.resize();
       }
     },
+    _setRightTextAttr : function(leftText){
+      this._set("leftText", leftText);
+      if (this.lefttButton){
+        this.leftButton.set('label',this.leftText);
+      }
+    },
     _setMoveToAttr: function(/*String*/moveTo){
       this._set("moveTo", moveTo);
       if (!this.leftButton){
         this.leftButton = new hcelButton({baseClass:'hcelHeadingLeftButton',
-                                          icon:'mblDomButtonWhiteLeftArrow',
-                                          iconSelected:'mblDomButtonGrayLeftArrow'});
+                                          label:this.leftText,
+                                          icon:'mblDomButtonWhiteLeftCorner',
+                                          iconSelected:'mblDomButtonGrayLeftCorner'});
         this.leftButton.placeAt(this.domNode);
         this.resize();
       }
@@ -63,14 +72,14 @@ function(_WidgetBase, lang, declare, hcelButton, domClass, domConstruct, mblTran
     _setRightTextAttr : function(rightText){
       this._set("rightText", rightText);
       if (this.rightButton){
-        this.rightButton.set('innerHTML',this.rightText);
+        this.rightButton.set('label',this.rightText);
       }
     },
     _setRightMoveToAttr : function(rightMoveTo){
       this._set("rightMoveTo", rightMoveTo);
       if (!this.rightButton){
         this.rightButton = new hcelButton({baseClass:'hcelHeadingRightButton',
-                                           innerHTML:this.rightText});
+                                           label:this.rightText});
         this.rightButton.placeAt(this.domNode);
         this.resize();
       }
