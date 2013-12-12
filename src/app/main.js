@@ -31,10 +31,14 @@ function(menuView, loginView, cartView, itemView,
          image, json, textJson) {
 
 
+    app.menuView = new menuView({app:app});
 
     // Wait for device API libraries to load
     document.addEventListener("deviceready", onDeviceReady, false);
 
+    app.cartView = new cartView({app:app});
+    app.loginView = new loginView({app:app});
+    app.itemView = new itemView({app:app});
 
 
     function onDeviceReady() {
@@ -44,9 +48,7 @@ function(menuView, loginView, cartView, itemView,
       app.menuData = json.parse(textJson);
 
       app.products = app.menuData['products'];
-      app.cart = {"1":{quant:2},
-                  "11":{quant:1}
-                  }; //"cod" is the key
+      app.cart = {}; //"cod" is the key
       
       //upload images
       var images = app.menuData['images'];
@@ -55,14 +57,7 @@ function(menuView, loginView, cartView, itemView,
         image.addImage(img);
       }
 
-
-      app.cartView = new cartView({app:app});
-      app.menuView = new menuView({app:app});
-      app.loginView = new loginView({app:app});
-      app.itemView = new itemView({app:app});
-
       app.menuView.updateMenu(app.menuData);
-
 
       //uncoment it to mobile version
       navigator.splashscreen.hide();

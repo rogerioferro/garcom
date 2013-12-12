@@ -52,39 +52,39 @@ function(_WidgetBase, lang, declare, hcelButton, domClass, domConstruct, mblTran
         this.resize();
       }
     },
-    _setRightTextAttr : function(leftText){
+    _setLeftTextAttr : function(leftText){
       this._set("leftText", leftText);
-      if (this.lefttButton){
-        this.leftButton.set('label',this.leftText);
-      }
-    },
-    _setMoveToAttr: function(/*String*/moveTo){
-      this._set("moveTo", moveTo);
       if (!this.leftButton){
         this.leftButton = new hcelButton({baseClass:'hcelHeadingLeftButton',
-                                          label:this.leftText,
+                                          moveTo:this.moveTo,
                                           icon:'mblDomButtonWhiteLeftCorner',
                                           iconSelected:'mblDomButtonWhiteTransparentLeftCorner'});
         this.leftButton.placeAt(this.domNode);
         this.resize();
       }
-      this.leftButton.set('moveTo',this.moveTo);
+      this.leftButton.set('label',this.leftText);
+    },
+    _setMoveToAttr: function(/*String*/moveTo){
+      this._set("moveTo", moveTo);
+      if (this.leftButton){
+        this.leftButton.set('moveTo',this.moveTo);
+      }
     },
     _setRightTextAttr : function(rightText){
       this._set("rightText", rightText);
-      if (this.rightButton){
-        this.rightButton.set('label',this.rightText);
-      }
-    },
-    _setRightMoveToAttr : function(rightMoveTo){
-      this._set("rightMoveTo", rightMoveTo);
       if (!this.rightButton){
         this.rightButton = new hcelButton({baseClass:'hcelHeadingRightButton',
-                                           label:this.rightText});
+                                           moveTo:this.rightMoveTo});
         this.rightButton.placeAt(this.domNode);
         this.resize();
       }
-      this.rightButton.set('moveTo',this.rightMoveTo);
+      this.rightButton.set('label',this.rightText);
+    },
+    _setRightMoveToAttr : function(rightMoveTo){
+      this._set("rightMoveTo", rightMoveTo);
+      if (this.rightButton){
+        this.rightButton.set('moveTo',this.rightMoveTo);
+      }
     }
   });
 });

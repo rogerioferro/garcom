@@ -63,7 +63,7 @@
   position:absolute;
   top:0;
   bottom:0;
-  left:25%;
+  left:0;
   right:0;
   padding:0 5px;
 }
@@ -74,6 +74,7 @@
  padding: 0 5px;
 }
 
+/*
 .cartAddButton{
   position:absolute;
   left:0;
@@ -89,3 +90,4 @@
   background-color: #16a085;
   border-width: 0;
 }
+*/

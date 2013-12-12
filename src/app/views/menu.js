@@ -19,13 +19,10 @@ function(hcelView, declare, domConstruct, win, lang, itemView,
         head_attr.label = data.label || "Card&aacute;pio";
         head_attr.fixed = "top";
         head_attr.transition = 'none';
-        head_attr.leftText = 'Voltar';
         head_attr.rightText = 'Concluir';
         head_attr.rightMoveTo = 'cartView';
-        //~ if (this.id == 'menuView'){
-          //~ data.moveTo = 'cartView';
-        //~ }
         if ('moveTo' in data){
+          head_attr.leftText = 'Voltar';
           head_attr.moveTo = data.moveTo;
         }
         var head = new hcelHeading(head_attr);

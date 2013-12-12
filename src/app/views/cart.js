@@ -24,15 +24,15 @@ function(screenClass, declare, iframe, script, json, lang, on,
       this.on("AfterTransitionIn", this.resize);
       
       this.addFixedBar(
-        new hcelHeading({label : "Pedido", fixed : "top"}));
+        new hcelHeading({label : "Pedido",
+                         leftText : "Card&aacute;pio",
+                         moveTo : "menuView",
+                         rightText : "Enviar",
+                         fixed : "top"}));
 
       //Foot
       var foot = new mblContainer({'class':'cartFoot',
                                     fixed:'bottom'});
-      var btn0 = new hcelButton({'class':'cartAddButton',
-                                 moveTo:'menuView',
-                                 icon:'mblDomButtonWhitePlus'});
-      foot.addChild(btn0);
       var totalLabel = domConstruct.create('div',
                           {'class':'cartTotalLabel',
                            innerHTML:'Valor Total:'}, foot.domNode);
