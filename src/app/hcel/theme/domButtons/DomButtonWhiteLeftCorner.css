@@ -1,0 +1,61 @@
+/* === BlackLeftArrow16 ==*/
+.mblDomButtonWhiteLeftCorner {
+  position: relative;
+  width: 20px;
+  height: 29px;
+}
+
+.mblDomButtonWhiteLeftCorner > div {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 14px;
+  height: 14px;
+  font-size: 1px;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  border-width: 0px 0px 3px 3px;
+  border-style: solid;
+  border-color: #ffffff;
+}
+
+/*
+
+.mblDomButtonWhiteLeftArrow > div {
+  position: absolute;
+  top: 12px;
+  left: 4px;
+  width: 22px;
+  height: 4px;
+  margin: 0px;
+  font-size: 1px;
+  background-color: #ffffff;
+  border-radius: 0 4px 4px 0;
+}
+
+.mblDomButtonWhiteLeftArrow > div > div{
+  position: absolute;
+  top: 4px;
+  left: -4px;
+  width: 15px;
+  height: 4px;
+  margin: 0px;
+  font-size: 1px;
+  background-color: #ffffff;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  border-radius: 4px;
+}
+.mblDomButtonWhiteLeftArrow > div > div > div{
+  position: absolute;
+  top: -11px;
+  left: 0px;
+  width: 4px;
+  height: 15px;
+  margin: 0px;
+  font-size: 1px;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+*/

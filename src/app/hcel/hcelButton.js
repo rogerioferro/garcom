@@ -12,6 +12,7 @@ define(["dijit/_WidgetBase",
 function(_WidgetBase, on, touch, lang, declare, array,
          mblIconUtils, domConstruct, domClass, mblTransitionEvent){
   return declare('hcel_button',_WidgetBase, {
+    label : '',
     baseClass:'hcelButton',
     selected:false,
     _setSelectedAttr : function(selected){

@@ -7,6 +7,7 @@ define(["dijit/_WidgetBase",
         "dojox/mobile/TransitionEvent"],
 function(_WidgetBase, lang, declare, hcelButton, domClass, domConstruct, mblTransitionEvent){
   return declare("hcel_heading", _WidgetBase, {
+    leftText : '',
     rightText : '',
     buildRendering: function() {
       this.inherited(arguments);

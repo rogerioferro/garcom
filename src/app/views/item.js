@@ -20,6 +20,7 @@ function(hcelView, declare, domConstruct, domClass, lang,
         //Head
         this.head = new hcelHeading({'class':'itemHead',
                                     label:'Detalhes',
+                                    leftText:'Voltar',
                                     fixed:'top',
                                     transition:'none'});
         this.addFixedBar(this.head);
