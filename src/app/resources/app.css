@@ -24,7 +24,7 @@
 @import '../hcel/theme/domButtons/DomButtonWhiteLeftArrow.css';
 @import '../hcel/theme/domButtons/DomButtonGrayLeftArrow.css';
 @import '../hcel/theme/domButtons/DomButtonWhiteLeftCorner.css';
-@import '../hcel/theme/domButtons/DomButtonGrayLeftCorner.css';
+@import '../hcel/theme/domButtons/DomButtonWhiteTransparentLeftCorner.css';
 
 /* Views CSS*/
 @import '../theme/menuView.css';

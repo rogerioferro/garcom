@@ -29,7 +29,7 @@
   color:#ffffff;
 }
 .hcelHeadingLeftButtonSelected{
-  color:#9B998D;
+  color:rgba(255,255,255,0.3);
 }
 .hcelHeadingLeftButton .mblDomButton{
   position:absolute;
@@ -52,5 +52,5 @@
   color:#ffffff;
 }
 .hcelHeadingRightButtonSelected{
-  color:#9B998D;
+  color:rgba(255,255,255,0.3);
 }

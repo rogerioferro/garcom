@@ -64,7 +64,7 @@ function(_WidgetBase, lang, declare, hcelButton, domClass, domConstruct, mblTran
         this.leftButton = new hcelButton({baseClass:'hcelHeadingLeftButton',
                                           label:this.leftText,
                                           icon:'mblDomButtonWhiteLeftCorner',
-                                          iconSelected:'mblDomButtonGrayLeftCorner'});
+                                          iconSelected:'mblDomButtonWhiteTransparentLeftCorner'});
         this.leftButton.placeAt(this.domNode);
         this.resize();
       }
