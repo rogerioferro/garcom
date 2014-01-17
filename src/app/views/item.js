@@ -21,8 +21,7 @@ function(hcelView, declare, domConstruct, domClass, lang,
         //Head
         this.head = new hcelHeading({'class':'itemHead',
                                     label:'Detalhes',
-                                    leftText:'Voltar',
-                                    rightText:'OK',
+                                    rigthText:'OK',
                                     fixed:'top',
                                     transition:'none'});
         this.addFixedBar(this.head);
@@ -130,8 +129,10 @@ function(hcelView, declare, domConstruct, domClass, lang,
       updateState : function(){
         this.onCart = this.cod in this.app.cart;
         domClass[this.onCart?'add':'remove'](this.domNode,'itemEdit');
-        //this.removeButton.set('icon',(this.onCart?'mblDomButtonTrash':'mblDomButtonGrayPlus'));
         this.head.set('enableRightButton',!this.onCart);
+
+        this.head.set('leftText',this.onCart?'Voltar':'Cancelar');
+
         var quant = this.onCart?Number(this.app.cart[this.cod].quant):1;
         this.picker.set('value',quant)
         this.updateTotalValue(quant);
@@ -147,7 +148,7 @@ function(hcelView, declare, domConstruct, domClass, lang,
         this.head.set('rightMoveTo',this.moveTo);
         var label = this.onCart?'Editar':'Detalhes';
         this.head.set('label', label);
-        
+
         this.icon = mblIconUtils.setIcon(app.getIcon(this.attr),
                       null, this.icon, null, this.iconDomNode);
         this.titleDomNode.innerHTML = this.attr['label'];
