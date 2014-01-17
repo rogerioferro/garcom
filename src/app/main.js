@@ -48,8 +48,9 @@ function(menuView, loginView, cartView, itemView,
       app.menuData = json.parse(textJson);
 
       app.products = app.menuData['products'];
-      app.cart = {'1':{quant:1}}; //"cod" is the key
-      
+      app.cart = {}; //"cod" is the key
+      //app.cart = {'1':{quant:1}}; //"cod" is the key - Add a item for test
+
       //upload images
       var images = app.menuData['images'];
       for (i in images){
