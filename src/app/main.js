@@ -34,7 +34,7 @@ function(menuView, loginView, cartView, itemView,
     app.menuView = new menuView({app:app});
 
     // Wait for device API libraries to load
-    document.addEventListener("deviceready", onDeviceReady, false);
+    //document.addEventListener("deviceready", onDeviceReady, false); //Comment it for Cellphone uses, for teste it may be ON
 
     app.cartView = new cartView({app:app});
     app.loginView = new loginView({app:app});
