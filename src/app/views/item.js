@@ -104,8 +104,8 @@ function(hcelView, declare, domConstruct, domClass, lang,
           this.quant = value;
           if (this.onCart){
             this.app.cart[this.cod].quant = this.quant;
-            this.updateTotalValue(value);
           }
+          this.updateTotalValue(this.quant);
         }));
         //--
 
