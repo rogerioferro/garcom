@@ -6,11 +6,7 @@
   display:inline-block;
   background-color:#FDFCF8;
   width:100%;
-  height:65px;
-}
-
-.itemEdit .itemFoot{
-  height:65px;
+  height:70px;
 }
 
 .itemTitleContainer{
@@ -44,7 +40,7 @@
   max-height:64px;
   overflow:hidden;
 }
-  
+
 .itemPrice{
  color:#FFC244;
  font-weight:bold;
@@ -82,6 +78,10 @@
   margin:2px 5px;
 }
 
+.itemTotalPrice{
+ font-size: 20px;
+}
+
 .itemQuant{
   overflow:hidden;
   margin:2px 5px;
@@ -115,7 +115,7 @@
 .itemRemoveButton{
   display:none;
   position:absolute;
-  left:0;  
+  left:0;
   right:50%;
   bottom:0;
 }
@@ -128,10 +128,7 @@
   left:0;
   right:0;
   bottom:0;
-  max-width:150px;
-  margin:auto;
 }
 .itemEdit .itemFavButton{
   left:50%;
-  max-width:none;
 }

@@ -39,7 +39,7 @@ function(hcelView, declare, domConstruct, domClass, lang,
                                       fixed:'bottom'});
 
         var totalLabel = domConstruct.create('div',
-                            {'class':'itemTotal  itemBigLabel',
+                            {'class':'itemTotal  itemBigLabel  itemTotalPrice',
                              innerHTML:'Valor Total:'}, this.foot.domNode);
         this.totalPriceDomNode = domConstruct.create('span',
                             {'class':'itemPrice'}, totalLabel);
