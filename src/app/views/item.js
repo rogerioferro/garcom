@@ -13,6 +13,7 @@ function(hcelView, declare, domConstruct, domClass, lang,
 
   var itemView = declare(hcelView, {
       id : 'itemView',
+      quant : 1,
       createDom : function(){
 
         this.on("BeforeTransitionOut", this.goOut);
@@ -29,7 +30,7 @@ function(hcelView, declare, domConstruct, domClass, lang,
 
         this.head.rightButton.on('click',lang.hitch(this,function(){
           if (!this.onCart){
-            this.app.cartView.addItem(this.cod);
+            this.app.cartView.addItem(this.cod, this.quant);
           }
         }));
         //---
@@ -51,9 +52,6 @@ function(hcelView, declare, domConstruct, domClass, lang,
             this.app.cartView.removeItem(this.cod);
             this.performTransition(this.moveTo);
           }
-          //~ else{
-            //~ this.app.cartView.addItem(this.cod);
-          //~ }
           this.updateState();
         }));
         this.foot.addChild(this.removeButton);
@@ -104,8 +102,9 @@ function(hcelView, declare, domConstruct, domClass, lang,
         this.picker = new hcelPicker({value:1, minValue:1, maxValue:99});
         this.picker.placeAt(quantDomNode);
         this.picker.on('change', lang.hitch(this,function(value){
+          this.quant = value;
           if (this.onCart){
-            this.app.cart[this.cod].quant = value;
+            this.app.cart[this.cod].quant = this.quant;
             this.updateTotalValue(value);
           }
         }));

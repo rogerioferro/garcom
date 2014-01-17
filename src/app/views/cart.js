@@ -102,10 +102,10 @@ function(screenClass, declare, iframe, script, json, lang, on,
 
       this.list.addChild(item);
     },
-    addItem : function(cod){
+    addItem : function(cod, quant){
       var cart = this.app.cart;
       if (!(cod in cart)){
-        cart[cod] = {quant:1};
+        cart[cod] = {'quant':quant};
         if (this.list){
           this._createDomItem(cod);
           this.updateTotal();
@@ -132,6 +132,7 @@ function(screenClass, declare, iframe, script, json, lang, on,
       }
     },
     updateTotal : function(){
+      if (!this.totalPriceDomNode) return;
       var total = 0;
       for (cod in this.app.cart){
         var quant = Number(this.app.cart[cod].quant);          
