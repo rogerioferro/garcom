@@ -106,8 +106,10 @@ function(screenClass, declare, iframe, script, json, lang, on,
       var cart = this.app.cart;
       if (!(cod in cart)){
         cart[cod] = {quant:1};
-        this._createDomItem(cod);
-        this.updateTotal();
+        if (this.list){
+          this._createDomItem(cod);
+          this.updateTotal();
+        }
         prod = this.app.products[cod];
         if ('item' in prod){
           prod['item'].set('rightIcon','mblDomButtonCheck');

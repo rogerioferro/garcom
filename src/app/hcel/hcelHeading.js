@@ -9,6 +9,7 @@ function(_WidgetBase, lang, declare, hcelButton, domClass, domConstruct, mblTran
   return declare("hcel_heading", _WidgetBase, {
     leftText : '',
     rightText : '',
+    enableRightButton : true,
     buildRendering: function() {
       this.inherited(arguments);
       this.domNode = domConstruct.create('div',{'class':'hcelHeading'});
@@ -42,6 +43,12 @@ function(_WidgetBase, lang, declare, hcelButton, domClass, domConstruct, mblTran
         this.rightButton.domNode.style.left = left + 'px';
       }
     },
+    showRightButton: function(){
+      if (this.rightButton){
+        var domNode = this.rightButton.domNode;
+        domNode.style.display = this.enableRightButton?"block":"none";
+      }
+    },
     _setLabelAttr: function(/*String*/label){
       this._set("label", label);
       if (!this.labelNode){
@@ -70,12 +77,25 @@ function(_WidgetBase, lang, declare, hcelButton, domClass, domConstruct, mblTran
         this.leftButton.set('moveTo',this.moveTo);
       }
     },
+    _setEnableRightButtonAttr : function(enable){
+      this._set("enableRightButton", enable);
+      this.showRightButton();
+    },
     _setRightTextAttr : function(rightText){
       this._set("rightText", rightText);
+      if (this.rightText == ''){
+        if (this.rightButton){
+          this.rightButton.destroyRecursive();
+          this.rightButton = undefined;
+          this.resize();
+        }
+        return;
+      }
       if (!this.rightButton){
         this.rightButton = new hcelButton({baseClass:'hcelHeadingRightButton',
                                            moveTo:this.rightMoveTo});
         this.rightButton.placeAt(this.domNode);
+        this.showRightButton();
         this.resize();
       }
       this.rightButton.set('label',this.rightText);

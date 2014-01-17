@@ -48,7 +48,7 @@ function(menuView, loginView, cartView, itemView,
       app.menuData = json.parse(textJson);
 
       app.products = app.menuData['products'];
-      app.cart = {}; //"cod" is the key
+      app.cart = {'1':{quant:1}}; //"cod" is the key
       
       //upload images
       var images = app.menuData['images'];

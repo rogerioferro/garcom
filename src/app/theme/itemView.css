@@ -112,14 +112,14 @@
   border:1px solid #D9D7D0;
 }
 
-.itemAddButton{
+.itemRemoveButton{
   display:none;
   position:absolute;
   left:0;  
   right:50%;
   bottom:0;
 }
-.itemEdit .itemAddButton{
+.itemEdit .itemRemoveButton{
   display:block;
 }
 

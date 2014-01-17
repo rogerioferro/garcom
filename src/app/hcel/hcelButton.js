@@ -75,11 +75,11 @@ function(_WidgetBase, on, touch, lang, declare, array,
     },
     _onRelease: function(e){
       this._onLeave(e);
+      this.onClick(e);
       if (this.moveTo){
         var opts ={moveTo:this.moveTo};
         new mblTransitionEvent(this.domNode,opts,e).dispatch();
       }
-      this.onClick(e);
       return false;
     },
     onClick: function(value){

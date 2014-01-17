@@ -21,10 +21,17 @@ function(hcelView, declare, domConstruct, domClass, lang,
         this.head = new hcelHeading({'class':'itemHead',
                                     label:'Detalhes',
                                     leftText:'Voltar',
+                                    rightText:'OK',
                                     fixed:'top',
                                     transition:'none'});
         this.addFixedBar(this.head);
         this.head.startup();
+
+        this.head.rightButton.on('click',lang.hitch(this,function(){
+          if (!this.onCart){
+            this.app.cartView.addItem(this.cod);
+          }
+        }));
         //---
 
         //Foot
@@ -37,18 +44,19 @@ function(hcelView, declare, domConstruct, domClass, lang,
         this.totalPriceDomNode = domConstruct.create('span',
                             {'class':'itemPrice'}, totalLabel);
 
-        this.addButton = new hcelButton({'class':'itemButton itemAddButton'});
-        this.addButton.on('click',lang.hitch(this, function(){
+        this.removeButton = new hcelButton({'class':'itemButton itemRemoveButton',
+                                            'icon':'mblDomButtonTrash'});
+        this.removeButton.on('click',lang.hitch(this, function(){
           if (this.onCart){
             this.app.cartView.removeItem(this.cod);
             this.performTransition(this.moveTo);
           }
-          else{
-            this.app.cartView.addItem(this.cod);
-          }
+          //~ else{
+            //~ this.app.cartView.addItem(this.cod);
+          //~ }
           this.updateState();
         }));
-        this.foot.addChild(this.addButton);
+        this.foot.addChild(this.removeButton);
         var btn1 = new hcelButton({'class':'itemButton itemFavButton',
                                    icon:'mblDomButtonGrayStar',
                                    iconSelected:'mblDomButtonYellowStar'});
@@ -123,7 +131,8 @@ function(hcelView, declare, domConstruct, domClass, lang,
       updateState : function(){
         this.onCart = this.cod in this.app.cart;
         domClass[this.onCart?'add':'remove'](this.domNode,'itemEdit');
-        this.addButton.set('icon',(this.onCart?'mblDomButtonTrash':'mblDomButtonGrayPlus'));
+        //this.removeButton.set('icon',(this.onCart?'mblDomButtonTrash':'mblDomButtonGrayPlus'));
+        this.head.set('enableRightButton',!this.onCart);
         var quant = this.onCart?Number(this.app.cart[this.cod].quant):1;
         this.picker.set('value',quant)
         this.updateTotalValue(quant);
@@ -136,6 +145,7 @@ function(hcelView, declare, domConstruct, domClass, lang,
 
         this.moveTo = view.id;
         this.head.set('moveTo',this.moveTo);
+        this.head.set('rightMoveTo',this.moveTo);
         var label = this.onCart?'Editar':'Detalhes';
         this.head.set('label', label);
         
