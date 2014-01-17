@@ -6,7 +6,7 @@
   display:inline-block;
   background-color:#FDFCF8;
   width:100%;
-  height:40px;
+  height:65px;
 }
 
 .itemEdit .itemFoot{
@@ -83,13 +83,9 @@
 }
 
 .itemQuant{
-  display:none;
   overflow:hidden;
   margin:2px 5px;
   line-height:42px;
-}
-.itemEdit .itemQuant{
-  display:block;
 }
 .itemQuantLabel{
   float:left;
@@ -99,13 +95,9 @@
 }
 
 .itemTotal{
-  display:none;
   padding: 2px 0;
   margin: 0 5px;
   border-top: 1px solid #EDECE8;
-}
-.itemEdit .itemTotal{
-  display:block;
 }
 
 .itemButton{
@@ -121,15 +113,25 @@
 }
 
 .itemAddButton{
+  display:none;
   position:absolute;
   left:0;  
   right:50%;
   bottom:0;
 }
+.itemEdit .itemAddButton{
+  display:block;
+}
 
 .itemFavButton{
   position:absolute;
-  left:50%;
+  left:0;
   right:0;
   bottom:0;
+  max-width:150px;
+  margin:auto;
+}
+.itemEdit .itemFavButton{
+  left:50%;
+  max-width:none;
 }

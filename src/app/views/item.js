@@ -115,7 +115,7 @@ function(hcelView, declare, domConstruct, domClass, lang,
         if (this.descrDomNode){
           this.descrDomNode.style.height = 'auto';
         }
-        this.fixedFooterHeight = this.onCart?65:40;
+        //this.fixedFooterHeight = this.onCart?65:40;
         this.inherited(arguments);
         this.scroll = this.containerNode.offsetHeight > this.viewHeight;
         this.resizeDescr();
@@ -124,11 +124,9 @@ function(hcelView, declare, domConstruct, domClass, lang,
         this.onCart = this.cod in this.app.cart;
         domClass[this.onCart?'add':'remove'](this.domNode,'itemEdit');
         this.addButton.set('icon',(this.onCart?'mblDomButtonTrash':'mblDomButtonGrayPlus'));
-        if (this.onCart){
-          var quant = Number(this.app.cart[this.cod].quant);
-          this.picker.set('value',quant)
-          this.updateTotalValue(quant);
-        }
+        var quant = this.onCart?Number(this.app.cart[this.cod].quant):1;
+        this.picker.set('value',quant)
+        this.updateTotalValue(quant);
         this.resize();
       },
       start : function(view, cod){
