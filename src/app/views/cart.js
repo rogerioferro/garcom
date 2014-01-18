@@ -16,13 +16,13 @@ function(screenClass, declare, iframe, script, json, lang, on,
          domConstruct, domClass,
          hcelHeading,  mblList, mblListItem,
          hcelButton, mblContainer){
-           
+
   var cartView = declare(screenClass,{
     id : "cartView",
     createDom : function(){
 
       this.on("AfterTransitionIn", this.resize);
-      
+
       this.addFixedBar(
         new hcelHeading({label : "Pedido",
                          leftText : "Card&aacute;pio",
@@ -41,7 +41,7 @@ function(screenClass, declare, iframe, script, json, lang, on,
       this.updateTotal();
       this.addFixedBar(foot);
       //---
-        
+
       this.list = new mblList();
       for (cod in this.app.cart){
         this._createDomItem(cod);
@@ -68,7 +68,7 @@ function(screenClass, declare, iframe, script, json, lang, on,
       item.on('click',lang.hitch(this, function(cod){
           this.app.itemView.start(this, cod);
       }, cod));
-      
+
       var content = domConstruct.create('div',
         {'class':'cartItemTitle'}, item.domNode);
       item.title1DomNode = domConstruct.create('div',
@@ -83,7 +83,7 @@ function(screenClass, declare, iframe, script, json, lang, on,
         {'class':'cartItemPriceTot'},item.domNode);
 
       item.updateDom = function(){
-        var quant = Number(this.app.cart[this.cod].quant);          
+        var quant = Number(this.app.cart[this.cod].quant);
         var attr = this.app.products[this.cod];
         this.title1DomNode.innerHTML = attr['label'];
         this.quantDomNode.innerHTML = quant + ' un.';
@@ -105,6 +105,17 @@ function(screenClass, declare, iframe, script, json, lang, on,
     addItem : function(cod, quant){
       var cart = this.app.cart;
       if (!(cod in cart)){
+        //if there is no Item in the Cart, it will be done in this function,
+        //so ENABLE button "Concluir Pedido"
+        if (Object.keys(this.app.cart).length == 0){
+          app.menuView.head.set("enableRightButton", true);
+          for (var index in app.menuView.subScreens){//like foreach, run all the array
+            var view = app.menuView.subScreens[index];
+            if (view.head){ //If the screen is already dinamically created
+              view.head.set("enableRightButton", true);
+            }
+          }
+        }
         cart[cod] = {'quant':quant};
         if (this.list){
           this._createDomItem(cod);
@@ -124,6 +135,18 @@ function(screenClass, declare, iframe, script, json, lang, on,
           itemCart['item'].destroyRecursive();
         }
         delete this.app.cart[cod];
+        //if there is no Item in the Cart
+        //DISABLE button "Concluir Pedido"
+        if (Object.keys(this.app.cart).length == 0){
+          app.menuView.head.set("enableRightButton", false);
+          for (var index in app.menuView.subScreens){//like foreach, run all the array
+            var view = app.menuView.subScreens[index];
+            if (view.head){ //If the screen is already dinamically created
+              view.head.set("enableRightButton", false);
+            }
+          }
+          //vai para o cardápio
+        }
         this.updateTotal();
         prod = this.app.products[cod];
         if ('item' in prod){
@@ -135,14 +158,14 @@ function(screenClass, declare, iframe, script, json, lang, on,
       if (!this.totalPriceDomNode) return;
       var total = 0;
       for (cod in this.app.cart){
-        var quant = Number(this.app.cart[cod].quant);          
+        var quant = Number(this.app.cart[cod].quant);
         var attr = this.app.products[cod];
         total += (quant * Number(attr['price']));
       }
       this.totalPriceDomNode.innerHTML = "R$ "+total.toFixed(2);
     }
   });
-  
+
   return cartView;
 });
 
@@ -152,9 +175,9 @@ function(screenClass, declare, iframe, script, json, lang, on,
     //~ addItem : function(code, quant){
       //~ if( !products[code] || !products[code].desc || !products[code].price)
         //~ return;
-        //~ 
+        //~
       //~ quant = Number(quant) || 1;
-//~ 
+//~
       //~ for (var i in this.listArray){
         //~ var obj = this.listArray[i];
         //~ if (obj.code == code){
@@ -163,7 +186,7 @@ function(screenClass, declare, iframe, script, json, lang, on,
           //~ return;
         //~ }
       //~ }
-      //~ 
+      //~
       //~ desc = products[code].desc;
       //~ price = Number(products[code].price);
       //~ /*create a new item*/
@@ -195,13 +218,13 @@ function(screenClass, declare, iframe, script, json, lang, on,
                             //~ {'class':'cart-price-tot',
                              //~ 'innerHTML':(price*quant).toFixed(2)},
                             //~ item.containerNode);
-//~ 
+//~
       //~ var picker = new hcelPicker({value:quant, minValue:1, maxValue:99});
       //~ picker.placeAt(div_quant);
       //~ picker.on("change",lang.hitch(this,function(value){
         //~ this.updateTotal();
       //~ }));
-//~ 
+//~
       //~ var obj = { code:code,
                   //~ desc:desc,
                   //~ price:price,
@@ -209,7 +232,7 @@ function(screenClass, declare, iframe, script, json, lang, on,
                   //~ picker:picker,
                   //~ item:item };
       //~ this.listArray.push(obj);
-//~ 
+//~
       //~ item.own(on.once(div_icon,"click", lang.hitch(this,function(obj,e){
         //~ var item = obj.item;
         //~ var picker = obj.picker;
@@ -219,9 +242,9 @@ function(screenClass, declare, iframe, script, json, lang, on,
         //~ item.destroyRecursive();
         //~ this.updateTotal();
       //~ },obj)));
-//~ 
+//~
       //~ item.placeAt(this.footer.domNode,"before");
-//~ 
+//~
     //~ },
     //~ updateTotal : function(){
       //~ var total = 0;
@@ -230,7 +253,7 @@ function(screenClass, declare, iframe, script, json, lang, on,
         //~ var quant = Number(obj.picker.get('value'));
         //~ var line = quant * obj.price;
         //~ total += line;
-        //~ obj.div_price_tot.innerHTML =Number(line).toFixed(2); 
+        //~ obj.div_price_tot.innerHTML =Number(line).toFixed(2);
       //~ }
       //~ this.total.innerHTML = 'R$ '+Number(total).toFixed(2);
     //~ }
@@ -256,7 +279,7 @@ function(screenClass, declare, iframe, script, json, lang, on,
           //~ timeout: 2000,
           //~ query: {send:'cart'}
         //~ });
-//~ 
+//~
         //~ promise.response.always(function(response){
           //~ promise.cancel();
           //~ script.get("http://www.hcel.com.br/jsonp",{

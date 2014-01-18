@@ -20,15 +20,16 @@ function(hcelView, declare, domConstruct, win, lang, itemView,
         head_attr.fixed = "top";
         head_attr.transition = 'none';
         head_attr.rightText = 'Concluir';
+        head_attr.enableRightButton = (Object.keys(this.app.cart).length > 0); //Enable/Disable "Concluir Pedido" according to the cart array
         head_attr.rightMoveTo = 'cartView';
         if ('moveTo' in data){
           head_attr.leftText = 'Voltar';
           head_attr.moveTo = data.moveTo;
         }
-        var head = new hcelHeading(head_attr);
+        this.head = new hcelHeading(head_attr);
 
-        this.addFixedBar(head);
-        head.startup();
+        this.addFixedBar(this.head);
+        this.head.startup();
         /* */
 
         if(!this.viewData) return;
@@ -38,9 +39,9 @@ function(hcelView, declare, domConstruct, win, lang, itemView,
         /* */
 
         //var showItem = this.viewData['type'] != 'group';
-        
+
         var itemList = this.viewData['list'] || this.viewData['codes'];
-        
+
         /*List Item add*/
         for(var i in itemList){
           var showItem = false;
@@ -74,7 +75,7 @@ function(hcelView, declare, domConstruct, win, lang, itemView,
                 this.app.itemView.start(this, cod);
               }, attr['cod']));
           }
-          
+
           list.addChild(item);
         }
 
@@ -97,9 +98,9 @@ function(hcelView, declare, domConstruct, win, lang, itemView,
         }
         screen.destroyRecursive();
       }
-      
+
       this.clearView();
-      
+
       for (var screen in screens){
         if (screen == 'menuView'){
           this.viewData = screens[screen];

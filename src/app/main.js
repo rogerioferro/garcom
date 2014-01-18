@@ -30,6 +30,8 @@ define(["app/views/menu", //default view
 function(menuView, loginView, cartView, itemView,
          image, json, textJson) {
 
+    app.cart = {}; //"cod" is the key
+    //app.cart = {'1':{quant:1}}; //"cod" is the key - Add a item for test
 
     app.menuView = new menuView({app:app});
 
@@ -48,8 +50,7 @@ function(menuView, loginView, cartView, itemView,
       app.menuData = json.parse(textJson);
 
       app.products = app.menuData['products'];
-      app.cart = {}; //"cod" is the key
-      //app.cart = {'1':{quant:1}}; //"cod" is the key - Add a item for test
+
 
       //upload images
       var images = app.menuData['images'];
@@ -66,7 +67,7 @@ function(menuView, loginView, cartView, itemView,
     }
 
   //Coment it to mobile version
-  //onDeviceReady();
+  onDeviceReady();
 
 });
 

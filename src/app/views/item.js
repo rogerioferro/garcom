@@ -87,7 +87,7 @@ function(hcelView, declare, domConstruct, domClass, lang,
         //Description
         domConstruct.create('div',
                       {'class':'itemLabel',
-                       innerHTML:'Detalhes:'}, this.itemContainerNode);
+                       innerHTML:'Detalhes:'}, this.itemContainerNode); //See this with Rogerio
         this.descrDomNode = domConstruct.create('div',
                       {'class':'itemDescr'}, this.itemContainerNode);
         //--
@@ -146,8 +146,8 @@ function(hcelView, declare, domConstruct, domClass, lang,
         this.moveTo = view.id;
         this.head.set('moveTo',this.moveTo);
         this.head.set('rightMoveTo',this.moveTo);
-        var label = this.onCart?'Editar':'Detalhes';
-        this.head.set('label', label);
+        //var label = this.onCart?'Editar':'Detalhes';
+        //this.head.set('label', label);
 
         this.icon = mblIconUtils.setIcon(app.getIcon(this.attr),
                       null, this.icon, null, this.iconDomNode);
