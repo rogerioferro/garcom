@@ -145,7 +145,7 @@ function(screenClass, declare, iframe, script, json, lang, on,
               view.head.set("enableRightButton", false);
             }
           }
-          //vai para o cardápio
+          app.cartView.performTransition(app.menuView.id); //Back to Menu If there is nothing in Cart
         }
         this.updateTotal();
         prod = this.app.products[cod];
