@@ -11,11 +11,13 @@ define(["app/hcel/hcelView",
         "dojox/mobile/EdgeToEdgeList",
         "dojox/mobile/ListItem",
         "app/hcel/hcelButton",
-        "dojox/mobile/Container"],
+        "dojox/mobile/Container",
+        "dojox/mobile/TransitionEvent"],
 function(screenClass, declare, iframe, script, json, lang, on,
          domConstruct, domClass,
          hcelHeading,  mblList, mblListItem,
-         hcelButton, mblContainer){
+         hcelButton, mblContainer,
+         mblTransitionEvent){
 
   var cartView = declare(screenClass,{
     id : "cartView",
@@ -145,7 +147,9 @@ function(screenClass, declare, iframe, script, json, lang, on,
               view.head.set("enableRightButton", false);
             }
           }
-          app.cartView.performTransition(app.menuView.id); //Back to Menu If there is nothing in Cart
+          //app.cartView.performTransition(app.menuView.id); //Back to Menu If there is nothing in Cart
+          var opts ={moveTo:app.menuView.id};
+          new mblTransitionEvent(this.domNode,opts).dispatch();
         }
         this.updateTotal();
         prod = this.app.products[cod];
