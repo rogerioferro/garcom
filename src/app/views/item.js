@@ -48,7 +48,9 @@ function(hcelView, declare, domConstruct, domClass, lang,
                                             'icon':'mblDomButtonTrash'});
         this.removeButton.on('click',lang.hitch(this, function(){
           if (this.onCart){
-            this.app.cartView.removeItem(this.cod);
+            if( this.app.cartView.removeItem(this.cod)){
+              this.moveTo = 'menuView'
+            }
             this.performTransition(this.moveTo);
           }
           this.updateState();

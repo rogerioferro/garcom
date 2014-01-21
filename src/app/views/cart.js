@@ -130,6 +130,7 @@ function(screenClass, declare, iframe, script, json, lang, on,
       }
     },
     removeItem : function(cod){
+      var zeroItem = false;
       var cart = this.app.cart;
       if (cod in cart){
         var itemCart = cart[cod];
@@ -147,9 +148,7 @@ function(screenClass, declare, iframe, script, json, lang, on,
               view.head.set("enableRightButton", false);
             }
           }
-          //app.cartView.performTransition(app.menuView.id); //Back to Menu If there is nothing in Cart
-          var opts ={moveTo:app.menuView.id};
-          new mblTransitionEvent(this.domNode,opts).dispatch();
+          zeroItem = true;
         }
         this.updateTotal();
         prod = this.app.products[cod];
@@ -157,6 +156,7 @@ function(screenClass, declare, iframe, script, json, lang, on,
           prod['item'].set('rightIcon','mblDomButtonGrayPlus');
         }
       }
+      return zeroItem; //Return to the function if exist or not item in the cart
     },
     updateTotal : function(){
       if (!this.totalPriceDomNode) return;
